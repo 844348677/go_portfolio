@@ -24,4 +24,13 @@ func main() {
 	e := 30
 	//%T 打印变量所属类型
 	fmt.Printf("c type is %T\n", e)
+
+	//赋值　赋值前必须先声明变量
+	var n int
+	n = 10
+	fmt.Println(n)
+	//先声明　ｂ的类型　再给ｂ赋值为２０
+	m := 20
+	//　不能在次　:=
+	fmt.Println("m = ", m)
 }
