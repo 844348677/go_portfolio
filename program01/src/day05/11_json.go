@@ -8,9 +8,11 @@ import (
 
 //成员变量名　首字母必须大写
 type IT struct {
-	Company  string
+	//字段改成小写
+	//相当于改名字　二次编码
+	Company  string `json:"company"` //此字段不会输出到屏幕
 	Subjects []string
-	IsOk     bool
+	IsOk     bool `json:",string"`
 	Price    float64
 }
 
