@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 //ch只写　quit只读
@@ -13,6 +14,7 @@ func fibonacci(ch chan<- int, quit <-chan bool) {
 		select {
 		case ch <- x:
 			x, y = y, x+y
+			fmt.Printf(" x = %d , y = %d \n", x, y)
 		case flag := <-quit:
 			fmt.Println("flag = ", flag)
 			return
@@ -29,6 +31,8 @@ func main() {
 	go func() {
 		for i := 0; i < 8; i++ {
 			num := <-ch
+			//测试　停止１秒
+			time.Sleep(1 * time.Second)
 			fmt.Println(num)
 		}
 		//可以停止
