@@ -8,6 +8,10 @@ import (
 	"time"
 )
 
+//nc 127.0.0.1 8000 连接到服务器
+// who 查询在线client
+//
+
 type Client struct {
 	C    chan string //用于发送数据的管道
 	Name string      //用户名
