@@ -60,3 +60,49 @@ v,ok = <-ch
 不用类型　不能直接比较
 r := [...]int{99: -1}
 只有当两个数组的所有元素都是相等的时候数组才是相等的
+
+多个slice之间可以共享底层的数据，并且引用的数组部分区间可能重叠
+操作超出cap(s)的上限将导致一个panic异常
+超出len(s)则是意味着扩展了slice
+底层都是共享之前的底层数组
+函数传递slice将允许在函数内部修改底层数组的元素
+不能使用==操作符来判断两个slice是否含有全部相等元素
+slice唯一合法的比较操作是和nil比较
+一个零值的slice等于nil。一个nil值的slice并没有底层数组
+var s []int // len(s) == 0, s == nil
+s = nil // len(s) == 0, s == nil
+s = []int(nil) // len(s) == 0, s == nil
+s = []int{} // len(s) == 0, s != nil
+非nil值的slice的长度和容量也是0的，例如[]int{}或make([]int, 3)[3:]
+测试一个slice是否是空的，使用len(s) == 0来判断，而不应该用s == nil来判断
+Go语言函数应该以相同的方式对待nil值的slice和0长度的slice。
+make([]T, len, cap)
+[]rune("Hello, 世界")
+slice并不是一个纯粹的引用类型，它实际上是一个类似下面结构体的聚合类型
+type IntSlice struct {
+	ptr *int
+	len, cap int
+}
+x = append(x, 1)
+x = append(x, 4, 5, 6)
+是map中的元素并不是一个变量，因此我们不能对map的元素进行取址操作
+map可能随着元素数量的增长而重新分配更大的内存空间，从而可能导致之前的地址无效
+向一个nil值的map存入元素将导致一个panic异常
+第二个是一个布尔值，用于报告元素是否真的存
+
+map中的key也是不相同的
+
+结构体成员的输入顺序也有重要的意义
+为S的结构体类型将不能再包含S类型的成员
+S类型的结构体可以包含*S指针类型的成员
+
+匿名成员
+命名的类型或指向一个命名的类型的指针
+匿名成员Circle和Point都有自己的名字——就是命名的类型名字
+匿名类型的方法集
+
+data, err := json.Marshal(movies)
+个编码后的字节slice
+Year int `json:"released"`
+
+函数的类型被称为函数的标识符s
