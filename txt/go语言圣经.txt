@@ -150,3 +150,33 @@ T类型的值不拥有所有*T指针的方法，那这样它就可能只实现�
 给f函数的out参数赋了一个*bytes.Buffer的空指针，所以out的动态值是nil。
 它的动态类型是*bytes.Buffer，意思就是out变量是一个包含空指针值的非空接口，所以防御性检查out!=nil的结果依然是true
 *os.File的类型，nil是一个有效的接收者，但是*bytes.Buffer类型不在这些类型中
+
+类型断言是一个使用在接口值上的操作
+语法上它看起来像x.(T)被称为断言类型,这里x表示一个接口的类型和T表示一个类型
+
+go f() // create a new goroutine that calls f(); don't wait
+然而在我们使用go关键词的同时，需要慎重地考虑net.Conn中的方法在并发地调用时是否安全，事实上对于大多数类型来说也确实不安全
+如果说goroutine是Go语音程序的并发体的话，那么channels它们之间的通信机制
+它可以让一个goroutine通过它给另一个goroutine发送值信息
+每个channel都有一个特殊的类型，也就是channels可发送数据的类型。
+channel也一个对应make创建的底层数据结构的引用
+复制一个channel或用于函数参数传递时,只是拷贝了一个channel引用,因此调用者何被调用者将引用同一个channel对象
+。如果channel的容量大于零，那么该channel就是带缓存的channel
+一个基于无缓存Channels的发送操作将导致发送者goroutine阻塞，直到另一个goroutine在相同的Channels上执行接收操作，
+反之，如果接收操作先发生，那么接收者goroutine也将阻塞，直到有另一个goroutine在相同的Channels上执行发送操作
+基于无缓存Channels的发送和接收操作将导致两个goroutine做一次同步操作
+无缓存Channels有时候也被称为同步Channels
+happens before，这是Go语言并发内存模型的一个关键术语
+当我们说x事件既不是在y事件之前发生也不是在y事件之后发生，我们就说x事件和y事件是并发的
+这并不是意味着x事件和y事件就一定是同时发生的，我们只是不能确定这两个事件发生的先后顺序
+一个Channels的输出作为下一个Channels的输入,就是所谓的管道（pipeline）。
+当一个channel被关闭后，再向该channel发送数据将导致panic异常。
+当一个被关闭的channel中已经发送的数据都被成功接收后，后续的接收操作将不再阻塞，它们会立即返回一个零值
+使用range循环是上面处理模式的简洁语法，它依次从channel接收数据，当channel被关闭并且没有值可接收时跳出循环
+Go语言的类型系统提供了单方向的channel类型，分别用于只发送或只接收的channel。
+任何双向channel向单向channel变量的赋值操作都将导致该隐式转换
+如果我们使用了无缓存的channel，那么两个慢的goroutines将会因为没有人接收而被永远卡住。这种情况，称为goroutines泄漏，这将是一个BUG
+和垃圾变量不同，泄漏的goroutines并不会被自动回收，因此确保每个不再需要的goroutine能正常退出是重要的。
+无缓存channel更强地保证了每个发送操作与相应的同步接收操作；但是对于带缓存channel，这些操作是解耦的
+像这种子问题都是完全彼此独立的问题被叫做易并行问题(译注：embarrassingly parallel
+
