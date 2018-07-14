@@ -179,4 +179,26 @@ Go语言的类型系统提供了单方向的channel类型，分别用于只发�
 和垃圾变量不同，泄漏的goroutines并不会被自动回收，因此确保每个不再需要的goroutine能正常退出是重要的。
 无缓存channel更强地保证了每个发送操作与相应的同步接收操作；但是对于带缓存channel，这些操作是解耦的
 像这种子问题都是完全彼此独立的问题被叫做易并行问题(译注：embarrassingly parallel
+在每一个goroutine启动时加一，在goroutine退出时减
+这种计数类型被称为sync.WaitGroup
+Add是为计数器加一，必须在worker goroutine开始之前调用，而不是在goroutine中；
+否则的话我们没办法确定Add是在"closer" goroutine调用Wait之前被调用。
 
+如果多个case同时就绪时，select会随机地选择一个执行，这样来保证每一个channel都有平等的被select的机会。
+因为对一个nil的channel发送和接收操作会永远阻塞，在select语句中操作nil的channel永远都不会被select到
+Go语言并没有提供在一个goroutine中终止另一个goroutine的方法
+的广播机制：不要向channel发送值，而是用关闭一个channel来进行广播
+
+当我们能够没有办法自信地确认一个事件是在另一个事件的前面或者后面发生的话，就说明x和y这两个事件是并发的。
+数据竞争会在两个以上的goroutine并发访问相同的变量且至少其中一个为写操作时发生
+“不要使用共享数据来通信；使用通信来共享数据”
+这种函数、互斥锁和变量的编排叫作监控monitor
+defer调用只会比显式地调用Unlock成本高那么一点点，不过却在很大程度上保证了代码的整洁性
+go里没有重入锁，关于重入锁的概念，请参考java
+也就是说没法对一个已经锁上的mutex来再次上锁--这会导致程序死锁，没法继续执行下去，Withdraw会永远阻塞下去
+“多读单写”锁(multiple readers, single writer lock)，Go语言提供的这样的锁是sync.RWMutex
+懒初始化(lazy initialization)
+构建自己对并发的直觉，也就是说对并发的直觉总是不能被信任的！)
+sync.Once
+-race这个flag来运行程序，竞争检测器
+这个例子说明我们无论可以用上锁，还是通信来建立并发程序都是可行的
