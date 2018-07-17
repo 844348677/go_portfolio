@@ -38,3 +38,5 @@ https://studygolang.com/pkgdoc
 ｃ还是太难了
 
 ｓｃａｌａ是真的好玩，可惜不是工作利器呀
+
+connect refuse   https://github.com/golang 被墙了　下载对应的包
