@@ -18,6 +18,7 @@ func main() {
 func ignoreStaticPath(){
 	beego.InsertFilter("/",beego.BeforeRouter,TransparentStatic)
 	beego.InsertFilter("/*",beego.BeforeRouter,TransparentStatic)
+	beego.SetStaticPath("group1/M00/","fdfs/data/data/")
 
 }
 func TransparentStatic(ctx *context.Context){
