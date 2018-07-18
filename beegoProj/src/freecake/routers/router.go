@@ -14,5 +14,7 @@ func init() {
     //重复　覆盖问题
 	//beego.Router("/api/v1.0/session", &controllers.UserController{},"delete:Reg")
 	beego.Router("/api/v1.0/sessions", &controllers.SessionController{},"post:Login")
+	// /api/v1.0/user/avatar
+	beego.Router("/api/v1.0/user/avatar", &controllers.UserController{},"post:PostAvatar")
 
 }

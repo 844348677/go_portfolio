@@ -12,7 +12,10 @@ import (
 
 func main() {
 	ignoreStaticPath()
+	//models.TestUploadByFilename("main.go")
+	//beego.BConfig.WebConfig.Session.SessionOn = true
 	beego.Run()
+	//beego.Run(":8899")
 }
 
 func ignoreStaticPath(){
