@@ -50,6 +50,8 @@ func (this *UserController) Reg(){
 	resp["errmsg"] = "注册成功"
 
 	this.SetSession("name",user.Name)
+	this.SetSession("user_id",user.Id)
+	this.SetSession("mobile",user.Mobile)
 
 }
 
@@ -113,9 +115,118 @@ func (this *UserController) PostAvatar(){
 	//Avaurl := "192.168.1.104:8080/" + uploadResponse.RemoteFileId
 
 	urlMap := make(map[string]string)
-	urlMap["avatar_url"] = "192.168.1.104:8080/" + uploadResponse.RemoteFileId
+	//路径要全
+	urlMap["avatar_url"] = "http://192.168.1.104:8080/" + uploadResponse.RemoteFileId
 	resp["errno"] = models.RECODE_OK
 	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
 	resp["data"] = urlMap
+
+}
+
+//GetUserData
+func (this *UserController) GetUserData() {
+	resp := make(map[string]interface{})
+	defer this.retData(resp)
+
+	//1 从session 里面获取　userid
+	user_id := this.GetSession("user_id")
+
+
+	//2 从数据库中拿到　user_id 对应的 user值
+	// GetSession 万能接口类型　需要断言
+	user := models.User{Id:user_id.(int)}
+	o := orm.NewOrm()
+	err := o.Read(&user)
+	if err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+	resp["data"] = &user
+
+
+}
+
+func (this *UserController) UpdateName(){
+	resp := make(map[string]interface{})
+	defer this.retData(resp)
+
+	//1 获得　session 中的user_id
+	user_id := this.GetSession("user_id")
+
+	//2 获取前段传过来的数据
+	// beego　文档　请求数据处理
+	UserName := make(map[string]string)
+	json.Unmarshal(this.Ctx.Input.RequestBody,&UserName)
+	beego.Info("get userName = ",UserName["name"])
+
+	//3 更新　user_id 对应的name
+	o := orm.NewOrm()
+	user := models.User{Id:user_id.(int)}
+	if err := o.Read(&user); err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+	user.Name = UserName["name"]
+	beego.Info("data user = ",user)
+
+	if _,err := o.Update(&user); err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+
+	//4 把session中的name字段更新
+	this.SetSession("name",UserName["name"])
+
+	//5 把数据打包返回给前段
+	resp["data"] = UserName
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+
+}
+
+func (this *UserController) PostRealName(){
+	resp := make(map[string]interface{})
+	defer this.retData(resp)
+
+	// session 获得　user_id
+	user_id := this.GetSession("user_id")
+
+	// 获取前段穿过来的数据
+	realName := make(map[string]string)
+	json.Unmarshal(this.Ctx.Input.RequestBody,&realName)
+	beego.Info("get realName = ",realName["real_name"])
+	beego.Info("get id_card = ",realName["id_card"])
+
+	// 更新数据库中　userId对应的表的信息
+	o := orm.NewOrm()
+	user := models.User{Id:user_id.(int)}
+
+	if err := o.Read(&user); err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+
+	// 设置　需要插入的信息
+	user.Real_name = realName["real_name"]
+	user.Id_card = realName["id_card"]
+
+	if _,err := o.Update(&user); err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+
+	this.SetSession("user_id",user.Id)
+	//打包　json数据返回给前段
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+
 
 }

@@ -83,7 +83,7 @@ func (this *SessionController) Login(){
 	}
 
 	//添加session　
-	this.SetSession("name",resp["mobile"])
+	this.SetSession("name",user.Name)
 	this.SetSession("mobile",resp["mobile"])
 	this.SetSession("user_id",user.Id)
 

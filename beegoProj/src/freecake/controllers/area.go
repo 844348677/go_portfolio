@@ -47,8 +47,11 @@ func (c *AreaController) GetArea() {
 	// redis; go get github.com/astaxie/beego/cache; go get github.com/gomodule/redigo/redis
 	// redis.conf daemonize yes 后台执行
 	//　查看端口是否被占用　netstat -ano | grep 6379
+
+	//　程序启动　需要开启　redis　服务器
 	// sudo /home/liuh/redis/redis-4.0.10/src/redis-server ./redis.conf
 	// /home/liuh/redis/redis-4.0.10/src/redis-cli -p 6379
+
 	// select 1
 	// keys *
 	// set "aa" "bb"
