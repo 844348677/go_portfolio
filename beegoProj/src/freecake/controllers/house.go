@@ -125,3 +125,77 @@ func (this *HouseController) PostHouseData() {
 	resp["errno"] = models.RECODE_OK
 	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
 }
+
+func (this *HouseController) GetDetailHouseData() {
+	resp := make(map[string]interface{})
+	defer this.retData(resp)
+
+	respData := make(map[string]interface{})
+
+	// 1 获取当前用户的　user_id
+
+	user_id := this.GetSession("user_id")
+
+	// 2 从url中获取房屋　id
+	//beego文档 路由设置　正则路由
+	house_id := this.Ctx.Input.Param(":id")
+
+	// 3 从缓存中获取当前房屋数据　redis
+
+	// 4 关联查询　
+	o := orm.NewOrm()
+	h_id,err := strconv.Atoi(house_id)
+	if err != nil{
+		resp["errno"] = models.RECODE_REQERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_REQERR)
+		return
+	}
+	house := models.House{Id:h_id}
+	// 需要读数据
+	if err := o.Read(&house) ; err != nil{
+		resp["errno"] = models.RECODE_DBERR
+		resp["errmsg"] = models.RecodeText(models.RECODE_DBERR)
+		return
+	}
+	/*
+	respData["acreage"] = house.Acreage
+	respData["address"] = house.Address
+	respData["beds"] = house.Beds
+	respData["capacity"] = house.Capacity
+	respData["deposit"] = house.Deposit
+	respData["facilities"] = house.Facilities
+	respData["img_urls"] = house.Images
+	respData["max_days"] = house.Max_days
+	respData["min_days"] = house.Min_days
+	respData["price"] = house.Price
+	respData["room_count"] = house.Room_count
+	*/
+
+	o.LoadRelated(&house,"Area")
+	o.LoadRelated(&house,"User")
+	o.LoadRelated(&house,"Images")
+	o.LoadRelated(&house,"Facilities")
+	beego.Info("respData = ",respData)
+
+	user := models.User{Id:user_id.(int)}
+	house.User = &user
+
+	var facilities []int
+	for _,data := range house.Facilities{
+		facilities = append(facilities, data.Id)
+	}
+	respData["facilities"] = facilities
+
+	respData["house"] = house
+
+	//o.QueryTable("")
+
+	// 5 存入缓存　
+
+	//  6 打包返回json
+
+	resp["data"] = respData
+	resp["errno"] = models.RECODE_OK
+	resp["errmsg"] = models.RecodeText(models.RECODE_OK)
+
+}

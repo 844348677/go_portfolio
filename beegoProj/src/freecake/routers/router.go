@@ -27,4 +27,11 @@ func init() {
     // /api/v1.0/houses
 	beego.Router("api/v1.0/houses", &controllers.HouseController{},"post:PostHouseData")
 
+	// /api/v1.0/houses/4 /api/v1.0/houses/3
+	beego.Router("api/v1.0/houses/?:id", &controllers.HouseController{},"get:GetDetailHouseData")
+
+	// /api/v1.0/user/orders?role=custom
+	//beego.Router("api/v1.0/user/orders", &controllers.HouseController{},"get:GetDetailHouseData")
+
+
 }
