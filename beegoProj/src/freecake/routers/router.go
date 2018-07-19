@@ -22,5 +22,9 @@ func init() {
 	beego.Router("/api/v1.0/user/name", &controllers.UserController{},"put:UpdateName")
 	// /v1.0/user/auth
 	beego.Router("/api/v1.0/user/auth", &controllers.UserController{}, "get:GetUserData;post:PostRealName")
+	// /api/v1.0/user/houses
+	beego.Router("api/v1.0/user/houses", &controllers.HouseController{},"get:GetHouseData")
+    // /api/v1.0/houses
+	beego.Router("api/v1.0/houses", &controllers.HouseController{},"post:PostHouseData")
 
 }
