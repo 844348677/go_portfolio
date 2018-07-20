@@ -28,4 +28,20 @@ func main() {
 	fmt.Println(source)
 	fmt.Println(slice0)
 
+	// range 是对每一个元素的复制　副本　不是指向同一块地址
+	for index, value := range slice0 {
+		fmt.Printf(" value : %s value-addr : %X elem-addr : %X \n", value, &value, &slice0[index])
+	}
+
+	slice_t := []int{10}
+	fmt.Println(&slice_t[0])
+	slice_t_0_ptr := &slice_t[0]
+	slice_t = append(slice_t, 20)
+	// appeng 扩容之后　换地址了
+	fmt.Println(&slice_t[0])
+	*slice_t_0_ptr = 1
+	fmt.Println(slice_t)
+
+	//空map　和　nil map
+	//　空slice 　和  nil slice
 }
