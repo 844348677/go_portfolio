@@ -2,8 +2,6 @@ package main
 
 import (
 	"time"
-	"crypto/sha256"
-	"bytes"
 )
 
 type Block struct{
@@ -30,15 +28,21 @@ func NewBlock(data string,prevBlockHash []byte) *Block{
 		PrevBlockHash:prevBlockHash,
 		// Hash:
 		TimeStamp:time.Now().Unix(),
-		TargetBits:10,
-		Nonce:5,
+		TargetBits:targetBits,
+		Nonce:0,
 		MerKelRoot:[]byte{},
 		Data:[]byte(data),
 	}
-	block.SetHash() // 设置　区块的哈希值
+	//block.SetHash() // 设置　区块的哈希值
+	pow := NewProofOfWork(block)
+	nonce,hash := pow.Run()
+	block.Nonce = nonce
+	block.Hash = hash
+
 	return block
 }
 
+/*
 func (block *Block) SetHash(){
 	tmp := [][]byte{
 		// 实现　int 类型　转换为　byte 类型的工具函数
@@ -55,7 +59,7 @@ func (block *Block) SetHash(){
 	hash := sha256.Sum256(data)
 	block.Hash = hash[:] //由数组转换成切片
 }
-
+*/
 //　创建比特币　的创世块　　即第一个区块　　它的前一个区块的哈希值为空
 func NewGenesisBlock() *Block {
 	return NewBlock("Genesis Blcok! ",[]byte{})

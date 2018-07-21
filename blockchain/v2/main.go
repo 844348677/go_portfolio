@@ -18,6 +18,7 @@ func main(){
 		fmt.Printf("Nonce: %d\n",block.Nonce)
 
 		fmt.Printf("Data: %s\n",block.Data)
-
+		pow := NewProofOfWork(block)
+		fmt.Printf(" Isvalid :%v\n",pow.IsValid())
 	}
 }
