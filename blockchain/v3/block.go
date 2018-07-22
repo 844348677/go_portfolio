@@ -32,6 +32,7 @@ func (block *Block) Serialize() []byte{
 func Deserialize(data []byte) *Block{
 	decoder := gob.NewDecoder(bytes.NewReader(data))
 	var block Block
+	//　传指针
 	err := decoder.Decode(&block)
 	CheckErr("Deserialize " ,err)
 	return &block

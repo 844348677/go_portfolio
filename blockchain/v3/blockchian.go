@@ -39,7 +39,7 @@ func NewBlockChain() *BlockChain{
 
 			err = bucket.Put(genesis.Hash,genesis.Serialize())
 			CheckErr("NewBlockChain3",err)
-			err = bucket.Put([]byte(lastHash),genesis.Hash)
+			err = bucket.Put([]byte(lasthash),genesis.Hash)
 			CheckErr("NewBlockChain4",err)
 			lastHash = genesis.Hash
 		}
@@ -65,6 +65,7 @@ func (bc *BlockChain) AddBlock(data string) {
 
 	err = bc.db.Update(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte(blockBucket))
+
 		err := bucket.Put(block.Hash,block.Serialize())
 		CheckErr("AddBlock2 ",err)
 		err = bucket.Put([]byte(lasthash),block.Hash)
