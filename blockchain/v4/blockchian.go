@@ -142,3 +142,59 @@ func IsBlockChainExist() bool{
 	}
 	return true
 }
+
+// 找到与某地址相关的所有交易集合
+func (bc *BlockChain) FindUnspendTransacions(address string) []Transaction{
+	var transactions []Transaction
+	// key 交易的　txid  value index
+	var spentUTXOs = make(map[string][]int64)
+	bci := bc.Interator()
+	for{
+		// 返回当前区块　将current指针前移
+		block := bci.Next()
+
+		// 遍历交易
+		for _,currTx := range block.Transactions{
+			txid := string(currTx.TXID)
+
+			//遍历当前交易的inputs 找到和当前地址消耗的 txos??
+			for _,input := range currTx.TXInputs {
+				if currTx.IsCoinbase() == false{
+					if input.CanUnlockUTXOByAddress(address){
+						// map[txid] = []int64  output的index
+						// [], [0],[0,3]
+						//1 spentUTXOs[0xabcded] = [0,3]
+						//2 spentUTXOs[0x67890]] = [0]
+						spentUTXOs[txid] = append(spentUTXOs[txid], input.ReferOutputIndex)
+					}
+				}
+			}
+
+			LABEL1:
+			//　遍历output
+			// 遍历当前交易的outputs　通过output的解锁条件　确定满足条件的交易
+			for outputIndex,output := range currTx.TXOutputs{
+
+				if spentUTXOs[txid] != nil{
+					for _,usedIndex := range spentUTXOs[txid]{
+						if int64(outputIndex) == usedIndex{
+							continue LABEL1
+						}
+					}
+				}
+
+				if output.CanBeUnlockedByAddress(address){
+					transactions = append(transactions, *currTx)
+				}
+			}
+
+		}
+
+
+
+		if len(block.PrevBlockHash) == 0{
+			break
+		}
+	}
+	return transactions
+}

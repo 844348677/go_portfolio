@@ -36,6 +36,15 @@ func (tx *Transaction) SetTXID(){
 	tx.TXID = hash[:]
 }
 
+func (input *Input) CanUnlockUTXOByAddress(unlockdata string) bool{
+	// 简单　实现
+	return input.UnlockScript == unlockdata
+}
+
+func (output *Output) CanBeUnlockedByAddress(unlockdata string) bool{
+	return output.LockScript == unlockdata
+}
+
 func NewCoinbaseTX(address string, data string) *Transaction {
 
 	if data == ""{
@@ -47,4 +56,14 @@ func NewCoinbaseTX(address string, data string) *Transaction {
 	tx := Transaction{nil,[]Input{input},[]Output{output}}
 	tx.SetTXID()
 	return &tx
+}
+
+func (tx *Transaction) IsCoinbase() bool{
+	// 使用元素下标　判断个数　满足下标
+	if len(tx.TXInputs) == 1{
+		if tx.TXInputs[0].Txid == nil && tx.TXInputs[0].ReferOutputIndex == -1{
+			return true
+		}
+	}
+	return false
 }
