@@ -90,7 +90,21 @@ nginx 默认目录
         index  index.html index.htm;
     }
 
+docker 网络访问
 
+brctl show　
 
+sudo iptables -t nat -L -n
 
+sudo docker run -d -P --name mynginx1 nginx
+
+sudo docker ps -l
+
+可以访问　随机映射　端口不重复　http://192.168.1.104:32768/
+
+制定端口号
+
+sudo docker run -d -p 91:80 --name mynginx2 nginx
+
+面向产品　开发　测试　运维　自动化　微服务
 
