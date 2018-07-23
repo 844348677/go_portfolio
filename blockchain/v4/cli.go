@@ -8,9 +8,11 @@ import (
 
 const Usage = `
 	createchain -address ADDRESS "create block chain"
+	//
 	./block addBlock --data DATA	"add a block to block chain"
 	./block printchain           	"print all blocks"
 	getbalance -address ADDRESSS "get balance"
+	send -from FROM -to TO -amount AMOUNT "make a transaction"
 `
 type CLI struct {
 	//bc *BlockChain
@@ -24,10 +26,15 @@ func (cli *CLI) Run(){
 	createChainCmd := flag.NewFlagSet("createchain",flag.ExitOnError)
 	printCmd := flag.NewFlagSet("printchain",flag.ExitOnError)
 	getbalanceCmd := flag.NewFlagSet("getbalance",flag.ExitOnError)
+	sendCmd := flag.NewFlagSet("send",flag.ExitOnError)
 
 	addBlockCmdPara := addBlockCmd.String("data","","block info")
 	createChainCmdPara := createChainCmd.String("address","","address info")
 	getbalanceCmdPara := getbalanceCmd.String("address","","address info")
+
+	fromPara := sendCmd.String("from","","from address info")
+	toPara := sendCmd.String("to","","to address info")
+	amountPara := sendCmd.Float64("amount",0,"amount value")
 
 	switch os.Args[1] {
 	case "createchain":
@@ -55,6 +62,9 @@ func (cli *CLI) Run(){
 	case "getbalance":
 		err := getbalanceCmd.Parse(os.Args[2:])
 		CheckErr("getbalanceCmd ",err)
+	case "send":
+		err := sendCmd.Parse(os.Args[2:])
+		CheckErr("sendCmd ",err)
 	default:
 		fmt.Println("invalid cmd \n",Usage)
 	}
@@ -74,5 +84,13 @@ func (cli *CLI) Run(){
 			os.Exit(1)
 		}
 		cli.GetBalance(*getbalanceCmdPara)
+	}
+
+	if sendCmd.Parsed(){
+		if *fromPara == "" || *toPara == "" || *amountPara ==0{
+			fmt.Println(Usage)
+			os.Exit(1)
+		}
+		cli.Send(*fromPara,*toPara,*amountPara)
 	}
 }

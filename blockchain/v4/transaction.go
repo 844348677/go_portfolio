@@ -95,7 +95,7 @@ func NewTransaction(from , to string , amount float64 , bc *BlockChain) *Transac
 		outputs = append(outputs,Output{counted-amount,from})
 	}
 
-	tx := Transaction{nil,inputs,ouputs}
+	tx := Transaction{nil,inputs,outputs}
 	tx.SetTXID()
 	return &tx
 }

@@ -74,3 +74,10 @@ LABEL2:
 	}
 	return countTotal,container
 }
+
+func (cli *CLI) Send(from,to string,amount float64){
+	bc := GetBlockChainHandler()
+	tx := NewTransaction(from,to,amount,bc)
+	bc.AddBlock([]*Transaction{tx})
+	fmt.Println("send successfully")
+}

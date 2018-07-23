@@ -165,7 +165,8 @@ func (bc *BlockChain) FindUnspendTransacions(address string) []Transaction{
 						// [], [0],[0,3]
 						//1 spentUTXOs[0xabcded] = [0,3]
 						//2 spentUTXOs[0x67890]] = [0]
-						spentUTXOs[txid] = append(spentUTXOs[txid], input.ReferOutputIndex)
+						//spentUTXOs[txid] = append(spentUTXOs[txid], input.ReferOutputIndex)
+						spentUTXOs[string(input.Txid)] = append(spentUTXOs[string(input.Txid)],input.ReferOutputIndex)
 					}
 				}
 			}
@@ -178,6 +179,7 @@ func (bc *BlockChain) FindUnspendTransacions(address string) []Transaction{
 				if spentUTXOs[txid] != nil{
 					for _,usedIndex := range spentUTXOs[txid]{
 						if int64(outputIndex) == usedIndex{
+							fmt.Println("used , no need to add again")
 							continue LABEL1
 						}
 					}
@@ -204,7 +206,10 @@ func (bc *BlockChain) FindUTXOs(address string)[]Output{
 	txs := bc.FindUnspendTransacions(address)
 	for _,tx := range txs{
 		for _,output := range tx.TXOutputs{
-			outputs = append(outputs,output)
+			// UTXO 和　address地址是否相关
+			if output.CanBeUnlockedByAddress(address){
+				outputs = append(outputs,output)
+			}
 		}
 	}
 	return outputs
