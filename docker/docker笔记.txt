@@ -108,3 +108,31 @@ sudo docker run -d -p 91:80 --name mynginx2 nginx
 
 面向产品　开发　测试　运维　自动化　微服务
 
+启动容器　停止容器　查看容器　进入容器　删除容器
+
+数据卷　-v /data /v src:dst
+
+sudo docker run -it --name volume-test1 -h nginx -v /data centos
+
+创建了　/data　文件夹
+
+sudo docker inspect -f {{.Volumes}} volume-test1　
+
+不是这个命令　查找对应的　data文件夹
+
+将主机的目录挂在到docker容器中　目录中没有斜线　-v /opt:/opt　源:目标
+
+sudo docker run -it --name volume-test2 -h nginx -v /opt:/opt centos
+
+不仅能挂目录　还能挂在文件
+
+数据卷容器　挂在来自其他容器的目录 其他容器是可以关闭状态的
+
+sudo docker run -it --name volume-test4 --volumes-from volume-test1 centos
+
+
+
+
+
+
+
