@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func (cli *CLI) CreateChain(address string){
 	bc := NewBlockChain(address)
@@ -38,4 +40,15 @@ func (cli *CLI) PrintChain(){
 			break
 		}
 	}
+}
+func (cli *CLI) GetBalance(address string){
+	bc := GetBlockChainHandler()
+	defer bc.db.Close()
+
+	var total float64
+	utxos := bc.FindUTXOs(address)
+	for _,utxos := range utxos{
+		total += utxos.Value
+	}
+	fmt.Printf("The balance of '%s' is %f \n",address,total)
 }

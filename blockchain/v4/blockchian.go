@@ -198,3 +198,14 @@ func (bc *BlockChain) FindUnspendTransacions(address string) []Transaction{
 	}
 	return transactions
 }
+
+func (bc *BlockChain) FindUTXOs(address string)[]Output{
+	var outputs []Output
+	txs := bc.FindUnspendTransacions(address)
+	for _,tx := range txs{
+		for _,output := range tx.TXOutputs{
+			outputs = append(outputs,output)
+		}
+	}
+	return outputs
+}

@@ -10,6 +10,7 @@ const Usage = `
 	createchain -address ADDRESS "create block chain"
 	./block addBlock --data DATA	"add a block to block chain"
 	./block printchain           	"print all blocks"
+	getbalance -address ADDRESSS "get balance"
 `
 type CLI struct {
 	//bc *BlockChain
@@ -22,9 +23,11 @@ func (cli *CLI) Run(){
 	addBlockCmd := flag.NewFlagSet("addBlock",flag.ExitOnError)
 	createChainCmd := flag.NewFlagSet("createchain",flag.ExitOnError)
 	printCmd := flag.NewFlagSet("printchain",flag.ExitOnError)
+	getbalanceCmd := flag.NewFlagSet("getbalance",flag.ExitOnError)
 
 	addBlockCmdPara := addBlockCmd.String("data","","block info")
 	createChainCmdPara := createChainCmd.String("address","","address info")
+	getbalanceCmdPara := getbalanceCmd.String("address","","address info")
 
 	switch os.Args[1] {
 	case "createchain":
@@ -49,6 +52,9 @@ func (cli *CLI) Run(){
 		if printCmd.Parsed(){
 			cli.PrintChain()
 		}
+	case "getbalance":
+		err := getbalanceCmd.Parse(os.Args[2:])
+		CheckErr("getbalanceCmd ",err)
 	default:
 		fmt.Println("invalid cmd \n",Usage)
 	}
@@ -62,5 +68,11 @@ func (cli *CLI) Run(){
 		cli.CreateChain(*createChainCmdPara)
 
 	}
-	
+	if getbalanceCmd.Parsed(){
+		if *getbalanceCmdPara == ""{
+			fmt.Println(Usage)
+			os.Exit(1)
+		}
+		cli.GetBalance(*getbalanceCmdPara)
+	}
 }
