@@ -130,8 +130,53 @@ sudo docker run -it --name volume-test2 -h nginx -v /opt:/opt centos
 
 sudo docker run -it --name volume-test4 --volumes-from volume-test1 centos
 
+docker centos nginx 手动构建
 
+sudo docker run --name nginx-man -it centos
 
+yum install -y wget gcc gcc-c++ make openssl-devel
+
+wget http://nginx.org/download/nginx-1.15.1.tar.gz
+
+wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.38.tar.gz
+
+tar zxf pcre-8.38.tar.gz
+
+tar zxf nginx-1.15.1.tar.gz
+
+useradd -s /sbin/nologin -M www
+
+./configure --prefix=/usr/local/nginx --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --with-pcre=/usr/local/src/pcre-8.38
+
+make
+
+make install
+
+vi /etc/rc.local
+/usr/local/nginx/sbin/nginx
+vi /usr/local/nginx/conf/nginx.conf
+daemon off;
+
+cat /etc/rc.local
+head /usr/local/nginx/conf/nginx.conf
+
+exit
+
+sudo docker commit -m "my nginx" 2a163616400e liuh/my-nginx:v1
+sha256:9cc9ad2ce9957d88eaea91743f124546b0c70b333449914345550bfa476714aa
+
+sudo docker images
+
+sudo docker run -d -p 92:80 liuh/my-nginx:v1
+
+vi /etc/rc.local
+需要删除最后添加的一行　否则无法启动
+
+sudo docker commit -m "v2" 3c4724050d77 liuh/my-nginx:v2
+
+sudo docker run -d -p 99:80 liuh/my-nginx:v2 /usr/local/nginx/sbin/nginx
+
+sudo docker ps -l
 
 
 
