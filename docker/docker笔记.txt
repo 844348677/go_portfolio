@@ -14,5 +14,83 @@ Docker Client -> Docker Server
 
 1.Image 2.Container 3.Respository
 
+部署简单，PAAS,启动速度秒级，执行性能物理系统几乎一致，镜像是MB级别，管理简单(可管理性弱)，隔离性高，单进程，网络链接弱
+
+每个人的观点，基本是站在自己的立场上
+
+docker使用场景　simplifying configuration ,开发环境和生产环境不一致。developer productivity 环境。server Consolidation。multi-tenancy。Rapid Deployment。Code Pipleline Management。debugging。发布docker容器，交付方式改变。docker适合微服务
+
+sudo docker search centos　　搜索镜像
+
+sudo docker pull centos
+
+sudo docker images
+TAG IMAGE ID CREATED 
+
+sudo docker run centos /bin/echo 'hello world'
+
+sudo docker ps -a　自动生成名字NAMES 名字库
+
+sudo docker run --name mydocker -it centos /bin/bash
+
+检查当前镜像是否存在，不存在就下载，启动容器，分配文件系统，docker容器会运行指定的一个应用程序，应用程序退出，容器退出
+
+sudo docker start 48793c6a1cb7
+
+sudo docker run -d --name mydocker1 centos　启动后台执行　07e12c92267fdb43595bb6490c0e8b2fa0ffe6adabc3825feaf631d6c3c757b8
+
+sudo docker run -d --name mynginx nginx
+
+Unable to find image 'nginx:latest' locally
+latest: Pulling from library/nginx
+be8881be8156: Pull complete 
+f2f27ed9664f: Pull complete 
+54ff137eb1b2: Pull complete 
+Digest: sha256:4a5573037f358b6cdfa2f3e8a9c33a5cf11bcd1675ca72ca76fbe5bd77d0d682
+Status: Downloaded newer image for nginx:latest
+64df2b203a7bf2ba287e9b29311eab8aa1af9d3d615018c7b970e14a03b78a54
+
+sudo docker ps -a | grep nginx
+
+sudo docker stop e0956b8ed04a
+
+手动删除　
+
+sudo docker rm e0956b8ed04a
+
+sudo docker --help
+
+docker attach进入容器　进不去　退出　容器结束了　使用nsenter
+
+sudo docker attach 64df2b203a7b
+
+sudo docker ps -l
+
+sudo docker start 64df2b203a7b
+
+获取docker 详细内容 获取容器的pid
+
+sudo docker inspect --format "{{.State.Pid}}" mynginx
+
+进入到docker的nginx中
+
+sudo nsenter --target 7708 --mount --uts --ipc --net --pid
+
+cd /etc/nginx/
+
+配置文件目录　include /etc/nginx/conf.d/*.conf;
+
+cat conf.d/default.conf
+
+cat conf.d/default.conf 
+
+nginx 默认目录
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+
+
 
 
