@@ -23,7 +23,7 @@
       <file leaf-file-name="blockchian.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blockchian.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state relative-caret-position="750">
               <caret line="168" column="117" selection-start-line="168" selection-start-column="117" selection-end-line="168" selection-end-column="117" />
             </state>
           </provider>
@@ -206,7 +206,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="139" y="34" width="1114" height="711" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28986868" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32871974" />
@@ -216,7 +215,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32871974" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.36488813" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.51462996" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -590,7 +589,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blockchian.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="750">
           <caret line="168" column="117" selection-start-line="168" selection-start-column="117" selection-end-line="168" selection-end-column="117" />
         </state>
       </provider>

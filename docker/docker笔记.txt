@@ -1,0 +1,18 @@
+docker
+
+paas 不严格意义
+
+docker 新环境　改好了没改观　改坏了故障
+
+build ship run
+
+Containers vs VMs 资源使用率
+
+Host OS -> Docker Engine -> AppA AppA' AppB AppB'
+
+Docker Client -> Docker Server
+
+1.Image 2.Container 3.Respository
+
+
+
