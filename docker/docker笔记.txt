@@ -238,3 +238,20 @@ sudo docker run -d -p 8899:80 nginx-file:v1 /usr/local/nginx/sbin/nginx
 http://192.168.1.104:8899
 
 
+docker pull registry
+
+docker 资源隔离　LXC Kernel namespace
+pid net ipc mnt uts user
+资源限制　cgroup
+CPU 内存　(磁盘?)
+sudo apt-get install stress
+stress 压力测试工具
+-c forks:
+--cpu forks 产生多个处理sqrt()函数的CPU进程
+-m forks
+--vm forks:产生多个处理malloc()内存分配函数的进程，后接进程数量
+
+
+mkdir stress
+cd stress/
+
