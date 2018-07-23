@@ -178,6 +178,63 @@ sudo docker run -d -p 99:80 liuh/my-nginx:v2 /usr/local/nginx/sbin/nginx
 
 sudo docker ps -l
 
+dockerfile 镜像构建
+基础镜像信息　维护者信息　镜像操作命令　容器启动时执行指令
 
+liuh@liuh-pc:~/docker/docker-file$ 
+liuh@liuh-pc:~/docker/docker-file/nginx$ pwd
+/home/liuh/docker/docker-file/nginx
+
+vim Dockerfile
+
+Dockerfile 大写开头　，内容如下　Dockerfile 和　下载文件同级目录
+
+drwxrwxr-x 2 liuh liuh    4096  7月 24 01:51 ./
+drwxrwxr-x 3 liuh liuh    4096  7月 24 01:41 ../
+-rw-rw-r-- 1 liuh liuh     306  7月 24 01:51 Dockerfile
+-rw-rw-r-- 1 liuh liuh 1024086  7月  3 23:13 nginx-1.15.1.tar.gz
+-rw-rw-r-- 1 liuh liuh 2053336  7月 24 01:46 pcre-8.38.tar.gz
+
+liuh@liuh-pc:~/docker/docker-file/nginx$ cat Dockerfile 
+# This is my first Dockerfile
+# Version 1.0
+# Author: liuh
+
+#Base images
+FROM centos
+
+#
+
+MAINTAINER Liu H
+
+#ADD auto tar zxf *.tar
+
+ADD pcre-8.38.tar.gz /usr/local/src
+ADD nginx-1.15.1.tar.gz /usr/local/src
+
+#RUN
+
+RUN yum install -y wget gcc gcc-c++ make openssl-devel
+RUN useradd -s /sbin/nologin -M www
+
+#WORKDIR
+WORKDIR /usr/local/src/nginx-1.15.1
+
+RUN ./configure --prefix=/usr/local/nginx --user=www --group=www --with-http_ssl_module --with-http_stub_status_module --with-pcre=/usr/local/src/pcre-8.38 && make && make install
+
+RUN echo "daemon off;" >> /usr/local/nginx/conf/nginx.conf
+
+ENV PATH /usr/local/nginx/sbin:$PATH
+EXPOSE 80
+
+CMD ["nginx"]
+
+使用　ｄｏｃｋｅｒｆｉｌｅ　构建　ｄｏｃｋｅｒ　进行
+
+sudo docker build -t nginx-file:v1 /home/liuh/docker/docker-file/nginx/
+
+sudo docker run -d -p 8899:80 nginx-file:v1 /usr/local/nginx/sbin/nginx
+
+http://192.168.1.104:8899
 
 
