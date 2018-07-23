@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"encoding/gob"
 	"fmt"
+	"os"
 )
 
 const reword float64 = 12.5
@@ -66,4 +67,35 @@ func (tx *Transaction) IsCoinbase() bool{
 		}
 	}
 	return false
+}
+
+func NewTransaction(from , to string , amount float64 , bc *BlockChain) *Transaction{
+	counted, container := bc.FindSuitableUTXOs(from,amount)
+
+	if counted < amount{
+		fmt.Println("not enough founds ! ")
+		os.Exit(1)
+	}
+
+	var inputs []Input
+	var outputs []Output
+	// 	var container = make(map[string][]int64)
+	for txid, outputIndexs := range container{
+		for _,index := range outputIndexs{
+			input := Input{[]byte(txid),index,from}
+			inputs = append(inputs,input)
+		}
+	}
+
+	output := Output{amount,to}
+	outputs = append(outputs,output)
+
+	//多余的　钱给自己
+	if counted > amount{
+		outputs = append(outputs,Output{counted-amount,from})
+	}
+
+	tx := Transaction{nil,inputs,ouputs}
+	tx.SetTXID()
+	return &tx
 }

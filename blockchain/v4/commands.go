@@ -52,3 +52,25 @@ func (cli *CLI) GetBalance(address string){
 	}
 	fmt.Printf("The balance of '%s' is %f \n",address,total)
 }
+
+func (bc *BlockChain) FindSuitableUTXOs(address string, amount float64) (float64,map[string][]int64){
+	txs := bc.FindUnspendTransacions(address)
+	var countTotal float64
+	var container = make(map[string][]int64)
+
+LABEL2:
+	for _,tx := range txs{
+		for index,output := range tx.TXOutputs{
+			// 钱不足　继续查找　直到查找的总和大于　amount
+			if countTotal < amount{
+				if output.CanBeUnlockedByAddress(address){
+					countTotal += output.Value
+					container[string(tx.TXID)] = append(container[string(tx.TXID)],int64(index))
+				}
+			}else {
+				break LABEL2
+			}
+		}
+	}
+	return countTotal,container
+}
