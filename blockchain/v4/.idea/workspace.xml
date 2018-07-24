@@ -23,7 +23,7 @@
       <file leaf-file-name="blockchian.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blockchian.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
+            <state relative-caret-position="15">
               <caret line="168" column="117" selection-start-line="168" selection-start-column="117" selection-end-line="168" selection-end-column="117" />
             </state>
           </provider>
@@ -41,8 +41,8 @@
       <file leaf-file-name="transaction.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/transaction.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="97" column="26" lean-forward="true" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
+            <state relative-caret-position="1365">
+              <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -68,7 +68,7 @@
       <file leaf-file-name="cli.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cli.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="1335">
               <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
             </state>
           </provider>
@@ -77,11 +77,8 @@
       <file leaf-file-name="commands.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commands.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
+            <state relative-caret-position="960">
               <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
-              <folding>
-                <element signature="e#14#43#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -150,7 +147,7 @@
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../src/myblog" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
@@ -207,7 +204,7 @@
   <component name="ToolWindowManager">
     <frame x="139" y="34" width="1114" height="711" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28986868" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29549718" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32871974" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -558,18 +555,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/transaction.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="97" column="26" lean-forward="true" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
+        <state relative-caret-position="1365">
+          <caret line="97" column="26" selection-start-line="97" selection-start-column="26" selection-end-line="97" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/commands.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
+        <state relative-caret-position="960">
           <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
-          <folding>
-            <element signature="e#14#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -582,14 +576,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cli.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="1335">
           <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blockchian.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
+        <state relative-caret-position="15">
           <caret line="168" column="117" selection-start-line="168" selection-start-column="117" selection-end-line="168" selection-end-column="117" />
         </state>
       </provider>

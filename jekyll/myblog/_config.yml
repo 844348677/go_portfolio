@@ -1,0 +1,26 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: liuh
+email: 844348677@qq.com
+description: > # this means to ignore newlines until "baseurl:"
+  我的个人博客
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://liuh.trade" # the base hostname & protocol for your site
+#twitter_username: jekyllrb
+github_username:  844348677
+
+# Build settings
+markdown: kramdown
+
+#Local Server Port
+port: 80
+
+#Local Server Hostname
+#host: 192.168.1.104
+74.82.201.174

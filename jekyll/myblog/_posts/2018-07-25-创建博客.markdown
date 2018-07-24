@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "创建博客"
+date:   2018-07-25 00:42:48 +0800
+categories: jekyll update
+---
+域名　liuh.trade
+
+服务器　Bandwagon Host
+
+Jeklly
+
