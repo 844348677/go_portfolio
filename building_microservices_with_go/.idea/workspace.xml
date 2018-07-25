@@ -68,8 +68,8 @@
       <file leaf-file-name="json_5.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/r_w_json_5/json_5.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="327">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
               <folding>
                 <element signature="e#20#59#0" expanded="true" />
               </folding>
@@ -137,18 +137,6 @@
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="basic_http_example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="r_w_json_4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="r_w_json_5" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,8 +257,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/r_w_json_5/json_5.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+        <state relative-caret-position="327">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
           <folding>
             <element signature="e#20#59#0" expanded="true" />
           </folding>

@@ -28,3 +28,24 @@ type helloWorldRequest struct{
 type helloWorldResponse struct{
 	Message string `json:"message"`
 }
+
+// Routing in net/http
+// DefaultServeMux is instance of ServeMux
+
+// ListenAndServe function second parameter nil
+// -> DefaultServeMux
+
+//Path
+// http.Handle("/images/",newFooHandler())
+// http.Handle("/images/persian",newBarHandler())
+// http.handle("/images",newBuzzHandler())
+// /images		=>Buzz
+// /images/		=> Foo
+// /images/cat	=> Foo
+// /images/cat.jpg	=>Foo
+// /images/persion/cat.jpg	=> Bar
+
+// Convenience handlers
+
+// FileServer
+
