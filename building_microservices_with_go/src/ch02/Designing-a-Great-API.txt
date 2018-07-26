@@ -98,6 +98,15 @@ Accept-content type
 
 Accept-Encoding - gzip , deflate
 
+Standard response headers
+Date    Content-Type    Content-Encoding    X-Request-ID/X-Correlation-ID
+
+Returning errors
+
+Accessing APIs from JavaScript
+
+JSONP
+
 
 
 
