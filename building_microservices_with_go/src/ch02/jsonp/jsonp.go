@@ -22,9 +22,9 @@ func helloWorldHandler(w http.ResponseWriter,r *http.Request){
 
 	callback := r.URL.Query().Get("callback")
 	if callback != ""{
-		// 书上代码有问题
-		r.Header.Add("Content-Type","application/javascript")
-		//w.Header().Add("Content-Type","application/javascript")
+		// 书上代码有问题 github　上的代码也有问题　改请求头有啥用？　应该是响应头
+		//r.Header.Add("Content-Type","application/javascript")
+		w.Header().Add("Content-Type","application/javascript")
 		fmt.Fprintf(w,"%s (%s)",callback,string(data))
 	}else{
 		fmt.Fprint(w,string(data))
