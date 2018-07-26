@@ -48,3 +48,56 @@ DELETE/deleteCat/1234
 POST/cats/1234/delete
 
 HTTP verbs
+GET POST PUT PATCH DELETE HEAD OPTIONS
+
+GET
+
+POST
+
+PUT
+
+PATCH
+
+DELETE
+
+HEAD
+
+OPTIONS
+
+URI query design
+it is perfectly acceptable to use a query string as part of an API call
+// i would refrain from using this to pass data to the service
+Paging
+Filtering
+Sorting
+
+the first is that the max length for a URI is 2083
+the second is that generally a POST request would always include a request body
+
+Response codes
+
+2xx success
+2xx status codes indicate that the clients request has been successfully received and understood
+
+3xx Redirection
+the 3xx indicate class of status codes indicates that the client must take additional action to complete the request
+
+4xx Client Error
+
+5xx Server Error
+
+HTTP headers
+
+Standard request headers
+
+Authorization string
+
+DATE
+
+Accept-content type
+
+Accept-Encoding - gzip , deflate
+
+
+
+
