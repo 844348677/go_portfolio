@@ -48,4 +48,16 @@ type helloWorldResponse struct{
 // Convenience handlers
 
 // FileServer
+// FileServer  server static file , images or other content
+// func FileServer(root FileSystem) Handler
+// http.Handle("/images", http.FileServer(http.Dir("./images")))
+// map the contents of the file system path ./images to the server route /images
+
+// func NotFoundHandler() Handler
+
+//func RedirectHandler(url string,code int) Handler
+
+// func StripPrefix(prefix string,h Handler) Handler
+
+// func TimeoutHandler(h Handler, dt time.Duration, msg string) Handler
 

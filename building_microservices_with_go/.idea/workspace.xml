@@ -56,8 +56,8 @@
       <file leaf-file-name="json_4.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/r_w_json_4/json_4.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="47" selection-start-line="47" selection-end-line="49" selection-end-column="1" />
+            <state relative-caret-position="72">
+              <caret line="51" selection-start-line="51" selection-end-line="64" selection-end-column="1" />
               <folding>
                 <element signature="e#20#55#0" expanded="true" />
               </folding>
@@ -65,14 +65,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="json_5.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="json_5.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/r_w_json_5/json_5.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="930">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
               <folding>
                 <element signature="e#20#59#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_6.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/r_w_json_6/json_6.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_5.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/r_w_json_7/json_5.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
+              <folding>
+                <element signature="e#20#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/rpc/server/server.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -96,6 +126,10 @@
         <option value="$PROJECT_DIR$/src/r_w_jsong_3/r_w_json.go" />
         <option value="$PROJECT_DIR$/src/r_w_json_4/json_4.go" />
         <option value="$PROJECT_DIR$/src/r_w_json_5/json_5.go" />
+        <option value="$PROJECT_DIR$/src/r_w_json_6/json_5.go" />
+        <option value="$PROJECT_DIR$/src/r_w_json_6/json_6.go" />
+        <option value="$PROJECT_DIR$/src/r_w_json_7/json_5.go" />
+        <option value="$PROJECT_DIR$/src/rpc/server/server.go" />
       </list>
     </option>
   </component>
@@ -136,7 +170,14 @@
               <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="basic_http_example" type="462c0819:PsiDirectoryNode" />
+              <item name="rpc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rpc" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -245,23 +286,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/r_w_json_5/json_5.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+          <folding>
+            <element signature="e#20#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/r_w_json_4/json_4.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="47" selection-start-line="47" selection-end-line="49" selection-end-column="1" />
+        <state relative-caret-position="72">
+          <caret line="51" selection-start-line="51" selection-end-line="64" selection-end-column="1" />
           <folding>
             <element signature="e#20#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/r_w_json_5/json_5.go">
+    <entry file="file://$PROJECT_DIR$/src/r_w_json_6/json_6.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="283">
+          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/r_w_json_7/json_5.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="46" column="15" selection-start-line="46" selection-start-column="15" selection-end-line="46" selection-end-column="15" />
           <folding>
             <element signature="e#20#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpc/server/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
