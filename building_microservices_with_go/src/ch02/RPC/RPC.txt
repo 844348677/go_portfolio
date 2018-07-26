@@ -54,5 +54,24 @@ removes the need to decode any proprietary binary protocal at the expense of tra
 Filtering
 
 Versioning APIs
+when you should version
+Breaking changes include
+Removing or renaming APIs or API parameters
+Changing the type of an API parameter, for example , from integer to string
+Changing to response code,error codes, or fault contracts
+Changes to the behavior of an existing API
+
+Things that do not involve a breaking change include
+Adding parameter to a returned entity
+Adding additional endpoints or functionality
+Bug fixes or other  maintenance that does not include items in the breaking changes list
+
+Semantic versioning
+
+Version formats for REST APIs
+
+Version formats for RPC
+
+Naming for RPC
 
 
