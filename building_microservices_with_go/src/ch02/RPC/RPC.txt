@@ -1,0 +1,58 @@
+RPC APIs
+
+RPC stands for remote procedure call
+it is a method of exucuting a function or method on a remote machine
+interface defination
+SOAP , Thrift Protocal Buffers
+make it easier to generate client and server stubs fro different technology stacks
+using a DSL (domain specific language)
+create application clients and serverrs
+REST need to use HTTP as a transport layer
+RPC is not bound by this constraint
+
+JMI was tightly bound
+quickly generate a client for your users
+
+RPC API design
+a good RESTful API
+one of the main different : you may not be using HTTP as your transport
+the benefits
+using binary serialization is incredibly efficient on the network and
+no longer have the tight coupling that RMI and CORBA enforced
+
+RPC message frameworks
+
+Gob
+
+Thrift
+
+Protocal Buffers
+providing a DSL
+generator (written in C) reads can can generate client and server stubs for over ten languages
+pluggable architecture
+not just RPC
+they are coupled to the gRPC framework
+gRPC uses protocal buffers as the method for serializing and de-serializing structured data
+Protocal buffer service defination
+service User{
+    rpc CreateUser(User) return (Error){}
+}
+message User{
+    required string name = 1;
+    required int32 id = 2;
+    optional string email = 3;
+}
+message Error{
+    optional code int32 = 1
+    optional detail string =2
+}
+
+JSON-RPC
+a standard way of representing objects for RPC using JSON
+removes the need to decode any proprietary binary protocal at the expense of transfer speed
+
+Filtering
+
+Versioning APIs
+
+
