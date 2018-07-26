@@ -1,0 +1,50 @@
+Writing an API contract feel part art , part science and ,
+two most popular options
+RESTful and RPC
+
+RESTful APIs
+
+"REST emphasizes scalability of component interactions generality of interfaces ,
+independent deployment of components,
+andintermediary components to reduce interaction latency,
+enforce security and encapsulate legacy systems"
+
+URIs
+One of the main components in the HTTP protocol is a URI
+URI Uniform Resource Identifiers
+URL Uniform Resource Locator
+URI 和 URL 讨论了一整页，哈哈哈，最后决定使用URI,URL是非正式的概念
+a URL is a type of URI that identifies a resource via its network location
+观点来自作者
+
+URI format
+
+URI path design for REST services
+
+Collections
+GET/cats -> All cats in the collection
+GET/cats/1 -> Single document for a cat 1
+
+Documents
+GET/cats/1  -> Single document for cat 1
+GET/cats/1/kittents -> All kittens  belonging to cat 1
+GET/cats/1/kittens/1    -> kitten 1 for cat 1
+
+Controller
+POST/cats/1/feed  -> Feed cat 1
+POST/cats/1/feed?food=fish  -> Feed cat 1 a fish
+
+Store
+PUT/cats/2
+this would add a new cat to the store with an ID of 2
+
+CRUD function names
+when designing great REST URIs we never use a CURD function name as part of the URI,
+instead we use a HTTP verb
+DELETE/cats/1234
+antipattern:
+GET/deleteCat/1234
+DELETE/deleteCat/1234
+POST/cats/1234/delete
+
+HTTP verbs
