@@ -25,8 +25,80 @@ think of it like types and instances ,
  if it doesn't then it connects to the default registry, to retrieve it
 
  the --rm flag tells the Docker engine to remove the container and delete any resources such as volumes it was using on exit
- 
 
+we will start a container and create a shell inside of it to show how you can navigate to the internal file system
 
+docker run -it --rm alpine:latest sh
+sudo docker run -it --rm alpine:latest sh
+
+alpine is a lightweight version of linux and is perfect for running Go application.
+the -it flags stand for interactive terminal it maps the standard in from your terminal to the input of the running container
+the sh statement after the name of the image we want to run is the name of the command we would like to execute in the container when it start
+
+if all want well , you should now be inside a shell of the container
+
+ls
+
+bin    etc    lib    mnt    root   sbin   sys    usr
+dev    home   media  proc   run    srv    tmp    var
+This is the root folder of the newly started container ,
+container are immutable,
+so any changes you make to the file system in a running container is disposed of when the container is stopped
+
+Container are immutable instances of images, and the data volumes are by default non-persistent
+
+docker ps
+
+The docker ps command queries the engine and returns a list of the container,
+by default this only shows the running container, if we add the -a flag we can alse see stopped containers
+
+docker ps -a
+
+jump back to the Apline Linux container , create a file in the root file system
+
+touch mytestfile.txt
+
+exit
+
+docker ps
+
+docker ps -a
+
+"Container are immutable instance of images, and the data volumes are by default non-persistent"
+
+there is something worth noting, however, unless you explicity remove a container it will persist in a stopped state on the Docker host
+
+Remobing containers is important to remember for two reasons
+this first is that if you do not remember this,
+you will fiil up the disk on your host quickly as every time you create a container Docker will allocates space on the host fro the container volumes
+the second is that the container can be restarted
+
+restarted that sounds cool, in fact, it is a handy feature, not something you should use in your production environment,
+for that you need to remember the golden rule and design your application accordingly
+
+restart a stopped container
+
+docker start -it [container_id] sh
+这个命令现在不对了！！！
+重启docker  再进入docker container
+sudo docker restart   1861653d703c
+sudo docker attach 1861653d703c
+
+When running in a production environment , you cannot ensure that you can restart a container
+
+docker rm container_id
+
+if you want to remove all the stopped containers you can use the following command
+
+docker rm -v $(docker ps -a -q)
+
+the docker ps -a -q the -a flag will list all the containers including the stopped ones,
+-q will return a list of the container IDs rather than the full details.
+we are passing this as a parameter list to docker rm, whick will remove all the containers in the lsit
+
+to avoid having to remove a container we can use the --rm flag when starting a new container.
+this flag tell Docker to remove the container when it stops
+
+Docker volumes
 
 
