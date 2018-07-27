@@ -437,6 +437,20 @@ the first is to ensure that our context only has the files on it we require
 secondary option of using a .dockerignore file
 
 Dcker Ignore files
+https://godoc.org/path/filepath#Match
 
+Running Daemons in containers
+one of the things
+to use a Daemon runner such as initd or systemd to ensure that
+the application is started in the background and continues to run even if it crashes
+This is an anti-pattern when you are using Docker containers,
+for Docker to successfully stop the application it will attempt to kill the process running with PID 1
+Daemon will generally start with PID 1 and start your application with another process ID,
+which will mean they are not killed when you stop the Docker container
 
+Docker Compose
+That was all super easy-ish ????
+a compelling feature of Docker that allows you to start multiple containers at once with your stack defination stored in a handy YAML file
 
+Installing Docker Compose on Linux
+Linux, need install this yourself
