@@ -262,5 +262,8 @@ To create a bridge network, we can use th following command:
 
 docker network create testnetwork
 
+when you create a network it use the bridge as a default driver
+s
+
 
 
