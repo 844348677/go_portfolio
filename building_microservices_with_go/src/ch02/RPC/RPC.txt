@@ -73,5 +73,50 @@ Version formats for REST APIs
 Version formats for RPC
 
 Naming for RPC
+GET /v1/users
+RPC method
+Users.v1.Users
+GET /v1/users/123434
+Users.v1.User
+GET /v1/users/12343/permissions/1232
+Permissions.v1.Permission
+DELETE /v1/users/123123
+Users.v1.DeleteUser
+
+Object type standardization
+Many of the serialization packages Protocol Buffers such as protocol buffers and Thrift
+that use stubs to generate client code will happily deal with serialization of simple types such as
+Dates into native types that enable your consumer to easily use and manipulatee these objects
+
+Dates
+use the DataLiteral format and preferably the Iso8601Literal
+Iso8601Literal
+{"date":"2016-07-14T16:00Z"}
+StucturedDateLiteral
+{"date":{"kind":"U","value":1471186826}}
+
+Durations
+ISO 8601
+P[n]Y[n]M[n]DT[n]H[n]M[n]S
+P3Y6M4DT12H30M5S
+represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds"
+
+Intervals
+ISO 8601 specification
+Start and end, such as 2007-03-01T13:00:00Z/2008-05-11T15:30:00Z
+Start and duration, such as 2007-03-01T13:00:00Z/P1Y2M10DT2H30M
+Duration and end, such as P1Y2M10DT2H30M/2008-05-11T15:30:00Z
+Duration only, such a P1Y2M10DT2H30M, with additional context information
+
+Documenting APIs
+
+REST based-based APIs
+Swagger
+API Blueprint
+RAML
+
+RPC based-based APIs
+your contract is your documentation
+
 
 

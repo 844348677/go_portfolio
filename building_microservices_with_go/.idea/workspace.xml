@@ -14,7 +14,7 @@
       <file leaf-file-name="example.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch01/basic_http_example/example.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="150">
               <caret line="14" selection-start-line="14" selection-end-line="28" />
             </state>
           </provider>
@@ -23,7 +23,7 @@
       <file leaf-file-name="Designing-a-Great-API.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch02/Designing-a-Great-API.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
+            <state relative-caret-position="1470">
               <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
             </state>
           </provider>
@@ -32,8 +32,8 @@
       <file leaf-file-name="RPC.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch02/RPC/RPC.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="300">
+              <caret line="110" column="16" lean-forward="true" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -41,11 +41,8 @@
       <file leaf-file-name="jsonp.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch02/jsonp/jsonp.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-47">
+            <state relative-caret-position="300">
               <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
-              <folding>
-                <element signature="e#15#54#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -62,7 +59,7 @@
       <file leaf-file-name="json_5.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_7/json_5.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
+            <state relative-caret-position="60">
               <caret line="7" selection-start-line="7" selection-end-line="12" selection-end-column="1" />
               <folding>
                 <element signature="e#20#59#0" expanded="true" />
@@ -197,7 +194,7 @@
     <frame x="110" y="24" width="1114" height="744" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25422138" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2598499" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -205,7 +202,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32899022" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -231,6 +228,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch02/Designing-a-Great-API.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch02/jsonp/jsonp.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch02/CORS/cors.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_7/json_5.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" selection-start-line="7" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="e#20#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch02/RPC/RPC.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch01/basic_http_example/example.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="14" selection-start-line="14" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_3/r_w_json.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -249,9 +291,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="e#20#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -311,9 +350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#14#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -335,9 +371,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
           <caret line="62" selection-start-line="62" selection-end-line="62" />
-          <folding>
-            <element signature="e#20#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -373,9 +406,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-          <folding>
-            <element signature="e#16#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -419,7 +449,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_7/json_5.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
+        <state relative-caret-position="60">
           <caret line="7" selection-start-line="7" selection-end-line="12" selection-end-column="1" />
           <folding>
             <element signature="e#20#59#0" expanded="true" />
@@ -429,18 +459,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch01/basic_http_example/example.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="150">
           <caret line="14" selection-start-line="14" selection-end-line="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch02/jsonp/jsonp.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
+        <state relative-caret-position="300">
           <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
-          <folding>
-            <element signature="e#15#54#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -453,15 +480,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch02/Designing-a-Great-API.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
+        <state relative-caret-position="1470">
           <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch02/RPC/RPC.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="300">
+          <caret line="110" column="16" lean-forward="true" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
         </state>
       </provider>
     </entry>
