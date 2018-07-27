@@ -258,5 +258,9 @@ e15e0af7abc4        host                host                local
 8a3854681d21        none                null                local
 
 Creating a bridge network
-T
+To create a bridge network, we can use th following command:
+
+docker network create testnetwork
+
+
 
