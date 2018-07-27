@@ -286,7 +286,7 @@ the define the base image , software to be installed and give us the capability 
 Building application code for Docker
 !!!!
 
-CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -a installsuffix cgo -ldflags '-s' -o server
+CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -a -installsuffix cgo -ldflags '-s' -o server
 
 we are passing the argument -ldflags '-s' this argument passes the -s argument to the linker when we build the application
 and tell it to statically link all dependencies
@@ -380,11 +380,63 @@ The second example would only create one layer
 
 Building images from Dockerfiles
 
+docker build -t testserver .
+
+the -t argument is the tag we wish to give the container, this takes the form name:tag,
+if we omit the tag portion of the argument as we have in our example command,
+then the tag latest will be automatically assigned
+
+docker images
+
+你丫的　书又错了　dockerfile 中　改　再运行　sudo docker build -t testserver .
+好像不是书的错，　是 go build 我没加　禁止交叉编译的问题
+CGO_ENABLED=0 go build -a -installsuffix cgo -ldflags '-s' -o server
+测试　不设置禁止交叉变异
+go build -a -installsuffix cgo -ldflags '-s' -o server
+COPY ./server ./server
+
+docker: Error response from daemon: OCI runtime create failed: container_linux.go:348: starting container process caused "exec: \"/bin/sh\": stat /bin/sh: no such file or directory": unknown.
+
+还是　书的问题　dockerfile 最后一行需要修改
+ENTRYPOINT ["./server"]
+
+sudo docker run --rm -p 8080:8080 testserve
+curl -XPOST localhost:8080/helloworld -d '{"name":"Nic"}'
 
 
+OK
 
+CGO_ENABLED=0 go build -a -installsuffix cgo -ldflags '-s' -o server
 
+Dockerfile :
+FROM scratch
 
+MAINTAINER liuh
+
+EXPOSE 8080
+
+COPY ./server ./
+
+ENTRYPOINT ["./server"]
+
+sudo docker build -t testserver .
+sudo docker run --rm -p 8080:8080 testserver
+curl -XPOST localhost:8080/helloworld -d '{"name":"liuh"}'
+
+The final argument is the context we would like to send to the Docker Engine
+run a Docker build, the context is automatically forward to the server
+the Docker Engine will not be running on your local machine, and therefore it will not have access to your local filesystem
+
+Docker build context
+Docker build command,
+we set the context path as the final argument.
+the context is transferred to the server
+only send the files you need to be packaged inside the container or the files you need when building the container
+two ways
+the first is to ensure that our context only has the files on it we require
+secondary option of using a .dockerignore file
+
+Dcker Ignore files
 
 
 
