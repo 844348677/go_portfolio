@@ -263,7 +263,128 @@ To create a bridge network, we can use th following command:
 docker network create testnetwork
 
 when you create a network it use the bridge as a default driver
-s
+it uses the bridge as a default driver
+
+Connecting containers to custom network
+
+docker run -it --rm -v $(pwd):/src -w /src --name server --network=testnetwork golang:alpine go run json_4.go
+
+let's try to curl the container using the same command we excuted earlier
+
+docker run --rm appropriate/curl:latest curl -i -XPOST server:8080/helloworld -d '{"name":"Nic"}'
+
+curl: (6) Could not resolve host: server
+
+sudo docker run --rm --network=testnetwork appropriate/curl:latest curl -i -XPOST server:8080/helloworld -d '{"name":"Nic"}'
+
+//需要制定　--network  指定名字　
+
+Writing Dockerfiles
+Dockerfiles are the recipes for our images
+the define the base image , software to be installed and give us the capability to set the various structure that our application needs
+
+Building application code for Docker
+!!!!
+
+CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -a installsuffix cgo -ldflags '-s' -o server
+
+we are passing the argument -ldflags '-s' this argument passes the -s argument to the linker when we build the application
+and tell it to statically link all dependencies
+// 把所有的静态　link 引用进来　因为要使用 Scratch　container ,里面没有　C library GLibC
+this is very useful when we use the popular Scratch container as a base
+Scratch is the lightest base you can get it has no application frameworks or application
+this is opposed to Ubuntu , which takes about 150MB
+The difference between Scratch and Ubuntu is that Scratch does not have access to the standard C library GLibC
+
+if we do not build a static binary, then it will not execute if we try to run it in a Scratch container
+the reason :
+Go application is a static binary but it still has a dependency on GLibC, both the net and the os/user package
+link ot GLibC so if we are to run our application with a Scratch base image we need to statically link this
+the benefit , however, is an incredibly small image, we end up with an image which is roughly 4MB in size
+
+not using Linux
+prefix the architecture varaibles GOOS=linux GOARCH=386 to your go build command as we did in the earlier example
+测试
+go build -a -installsuffix cgo -ldflags '-s' -o server
+
+Dokcer file
+
+FROM
+the FROM instruction set the base image for subsequent instructions
+you can use any image that is either stored in a remote registry or locally on your Docker Engine
+
+FROM image // assuming latest
+FROM image:tag // where you can specify a tag to use
+
+scratch , this is a particular kind of image, which is basically a blank canvas　画布
+we could use Ubuntu or Debian or Alpine or pretty much anything really
+use scratch to produce the smallest possible image
+
+MAINTAINER
+The MAINTAINER instruction allows you to set the author of the generated image
+
+EXPOSE
+The EXPOSE instruction informs Docker that the container listens on the specified networks ports at runtime
+Expose does not make the ports accessible to the host
+this function still needs to be performed with the -p mapping
+
+COPY
+The COPY instruction copies files
+from the source in the first part of this instruction
+to the destination specified in the second part
+
+COPY <src> <dest>
+COPY ["<src>", "<dest>"] // useful when paths contain whitespace
+
+<src> must be part of the context for the build, you cannot specify relative folders such as ../
+A root / specified in the <src> will be the root of the context
+A root / specified in the <dest> will map to the containers root file system
+Specifying a COPY instruction without a destination will copy the file or folder into the WORKDIR with the same name as the original
+
+ENTRYPOINT
+An ENTRYPOINT allows you to configure the executable that you would like to run when your container starts
+Using ENTRYPOIT makes it possible to specify arguments as part of the docker run command which is appended to the ENTRYPOINT
+ENTRYPOINT has two forms:
+ENTRYPOINT ["excutable","param1","param2"] // preferred form
+ENTRYPOINT command param1 param2 //shell form
+
+ENTRYPOINT ./server . this is our Go binary that we would like to run
+
+We can pass additional arguments to the application via the docker run command arguments
+
+docker run --rm helloworld --config=/configfile.json
+
+CMD
+The CMD instruction has three forms
+CMD ["executable","param1","param2"] // exec form
+CMD ["param1","param2"] // append default parameter to ENTRYPOINT
+CMD command param1 param2 //shell form
+
+if we specify a default value for CMD, we can still override it by passing the command arguments to the docker urn command
+Only one CMD instruction is permitted in a Docker file
+
+Good practice for creating Dockerfiles
+Every time we issue a command in the Dockerfile , Docker will create a new layer
+When we mutate this command, the layer must be completely recreated and potentially all the following layers too
+which can dramatically slow down your build
+group your commands as tightly as possible to reduce the possibility of this occurring
+
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y curl
+RUN apt-get isntall -y nginx
+
+RUN apt-get update && apt-get install -y wget curl nginx
+
+The second example would only create one layer
+
+Building images from Dockerfiles
+
+
+
+
+
+
 
 
 

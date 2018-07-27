@@ -12,6 +12,8 @@
 *.out
 
 # .idea 文件夹
-*/.idea/
-*/.idea/*
+#*/.idea/
+#*/.idea/*
+#.idea
+#没一个能用的
 .idea

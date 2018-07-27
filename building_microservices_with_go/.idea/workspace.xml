@@ -14,9 +14,25 @@
       <file leaf-file-name="Introducint_Docker.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch03/Introducint_Docker.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="265" lean-forward="true" selection-start-line="265" selection-end-line="265" />
+            <state relative-caret-position="218">
+              <caret line="380" column="32" selection-start-line="380" selection-start-column="32" selection-end-line="380" selection-end-column="32" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch03/Dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="json_4.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch03/r_w_json_4/json_4.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-765" />
           </provider>
         </entry>
       </file>
@@ -63,6 +79,7 @@
         <option value="$PROJECT_DIR$/src/ch02/jsonp/jsonp.go" />
         <option value="$PROJECT_DIR$/src/ch02/CORS/cors.go" />
         <option value="$PROJECT_DIR$/src/ch02/RPC/RPC.txt" />
+        <option value="$PROJECT_DIR$/src/ch03/Dockerfile" />
         <option value="$PROJECT_DIR$/src/ch03/Introducint_Docker.txt" />
       </list>
     </option>
@@ -105,6 +122,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ch03" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ch03" type="462c0819:PsiDirectoryNode" />
+              <item name="r_w_json_4" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -122,15 +146,16 @@
     <property name="settings.editor.selected.configurable" value="go" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/rpc_http" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ch01" />
       <recent name="$PROJECT_DIR$/src/rpc/contract" />
       <recent name="$PROJECT_DIR$/src/rpc" />
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/ch03" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/rpc_http" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -453,10 +478,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch03/r_w_json_4/json_4.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch03/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch03/Introducint_Docker.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="265" lean-forward="true" selection-start-line="265" selection-end-line="265" />
+        <state relative-caret-position="218">
+          <caret line="380" column="32" selection-start-line="380" selection-start-column="32" selection-end-line="380" selection-end-column="32" />
         </state>
       </provider>
     </entry>
