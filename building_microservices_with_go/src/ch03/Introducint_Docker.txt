@@ -179,6 +179,84 @@ curl -XPOST localhost:8080/helloworld -d '{"name":"Nic"}'
 
 like volumes, you can specify multiple instances of the -p argument, which enables you to set up the bingding for multiple ports
 
-Removing a container starting with an explicit name 
+Removing a container starting with an explicit name
 
+Removing a container starting with an explicit name
+Containers that start with a name parameter are not automatically removed even if you specify the -rm argument
+if we append the -v option to the command , we can also remove the volumes that are associated with it
+
+docker rm -v server
+
+Docker networking
+Docker networking is an interesting topic, and by default, Docker supports the following network modes:
+bridge
+host
+none
+orverly
+
+Bridge networking
+The bridge network is the default network that your container will connect ot when you launch them
+this is how we were able to join our containers together in the last example
+to facilitate this, Docker uses some of the core Linux capabilities such as networkding namespaces and virtual Ethernet interfaces(or veth interfaces)
+
+When the Docker engine starts , it creates the docker0 virtual interface on the host machine
+The docker0 interface is a virtual Ethernet bridge that automatically forwards packets between any other network interfaces that are attached to it.
+when a container starts it creates a veth pair, it gives one to the container, which becomes its eth0, and the other connects to the docker0 bridge
+
+http://172.17.0.1:8080/helloworld
+http://192.168.1.104:8080/helloworld
+http://127.0.0.1:8080/helloworld
+都能访问
+
+Host networking
+the host network is essentially the same network that the Docker engine is running on.
+when you connect a container to the host network all of the ports that are exposed by the container are automatically mapped to the hosts,
+it alse shares the IP address of the host
+while this may seem like a nice convenience , Docker was always designed to be capable of running multiple instances of the same container on the engine,
+and since you can only bind a socket to one port in Linux using the host network limits this feature
+
+the host network can also pose a security risk to your container as it is no longer protected by the principle of no trust
+and you no longer have the ability to explicitly control if a port is exposed or not
+that being said
+due to the efficiencies of host networking it may in some instances be appropriate to connect a container to the host network if you anticipate that it is going to heavily use the network
+就是预期有大量的使用网络，将container链接到host network ，因为　host networking 高效
+An APi gateway might be on such example,
+this container would still be possible to route request to other API containers that are sitting on the bridge network
+
+No network
+Removing your container from any network might in som instance be something you wish to do
+
+Overlay network
+The Docker overlay network is a unique Docker network that is used to connect containers running on seperate hosts to on another.
+developing software one host all containers
+production be running multiple hosts, each running multiple containers
+the containers still need to talk to one another , and while we could route all traffic through
+an ESB (enterprise service bus)
+this is a little bit of an anti-pattern in the microservice world
+it is in effect a network tunnel between machines which passes the traffic unmodified over th physical network
+the problem with the overly is that you can no longer rely on Docker to update the etc/hosts file for you,
+and you must depend on a dynamic service registry
+
+Custom network drivers
+Docker also supports plugins for networking ,
+based around its open source libnetwork project
+you can write custom networking plugin that can replace the networking subsystem of the Docker engine
+
+Weaveworks
+
+Project Calico
+
+Creating custom bridge networks
+
+To see the currently running networks on your docker engine, we can execute the following command
+
+docker network ls
+
+NETWORK ID          NAME                DRIVER              SCOPE
+7f821b53187e        bridge              bridge              local
+e15e0af7abc4        host                host                local
+8a3854681d21        none                null                local
+
+Creating a bridge network
+T
 
