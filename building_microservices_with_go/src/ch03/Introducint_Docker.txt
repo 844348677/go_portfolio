@@ -68,9 +68,9 @@ docker ps -a
 
 there is something worth noting, however, unless you explicity remove a container it will persist in a stopped state on the Docker host
 
-Remobing containers is important to remember for two reasons
+Removing containers is important to remember for two reasons
 this first is that if you do not remember this,
-you will fiil up the disk on your host quickly as every time you create a container Docker will allocates space on the host fro the container volumes
+you will fill up the disk on your host quickly as every time you create a container Docker will allocates space on the host fro the container volumes
 the second is that the container can be restarted
 
 restarted that sounds cool, in fact, it is a handy feature, not something you should use in your production environment,
@@ -100,5 +100,85 @@ to avoid having to remove a container we can use the --rm flag when starting a n
 this flag tell Docker to remove the container when it stops
 
 Docker volumes
+there are some instances when you may wish to write some files to a disk or when you want to read data from a disk such as in a development setup
+Docker has the concept of voluemes , which can be mounted either from the host running the Docker machine or from another Docker container.
+
+Union filesystem
+the concept of a Union File System
+The Union filesystem allows us to represent a logical file system by grouping different directories and or files together
+it uses a Copy on Write technique,
+which copies the layer when we modify the file system,
+this way we only use about 1MB of space when creating a new image
+when data is written to the file system   Docker copies th layer an puts it on the top of the stack
+
+Mounting volumes
+The -v , or --volume parameter allows you to specify a pair of values corresponding to the file system
+you wish to mount on the host and the path where you would like to mount the volume inside the container
+
+this time mounting a volume on the local file system
+
+sudo docker run -it -v $(pwd):/host alpine:latest /bin/sh
+
+if you change into thte host folder, you will see that there is access to the same folder from there you ran the docker run command
+
+-v hostfolder:destinationfolder
+
+this paths need to be absolute , and you cannot use a relative path like ./ or ../foldername
+the volume you have just mounted has read/write access
+any changes you make will be synchronized to the folder on the host so be careful to not go running
+
+Docker ports
+when running web application inside a container it is quite common that we will need to expose some ports to he outside world
+By defualt, a Docker container is completely isolated,
+and if you start a server running on port 8080 inside your container unless you explicitly specify that port is accessible from the outsied,
+it will not be accessible
+
+Mappint ports
+
+cd /home/liuh/go/go_portfolio/building_microservices_with_go/src/ch01/basic_http_example
+sudo docker run -it --rm -v $(pwd):/src -p 8080:8080 -w /src golang:alpine /bin/sh
+
+Move to the folder where you checked out the sample code, and run the following Docker command: 上面
+
+Unable to find image 'golang:alpine' locally
+alpine: Pulling from library/golang
+
+go run example.go
+
+2018/07/27 14:14:17 server staring on port 8080
+
+The -w flag : is to set the working directory
+that means that any command we run in the container will be run inside this folder
+When we start the shell , you will see that rather than having to change into the folder we specify in the second part of the volume mounting we are alreading in that folder
+and can run our application
+using a slightly different image this time
+golang:alpine :
+which is a version of Alpine with the most recent Go tools installed
+
+curl -XPOST localhost:8080/helloworld
+
+ch01 中的　json4　有完整的代码
+cd /home/liuh/go/go_portfolio/building_microservices_with_go/src/ch01/r_w_json_4
+curl -XPOST localhost:8080/helloworld -d '{"name":"Nic"}'
+
+{"message":"Hello Nic"}
+
+docker ps
+
+-p
+this takes a pair of values separated by a colon(:)
+the first is the destination port on the host that we would like to bing to
+the second is the source port on the Docker container to which our application is bound
+
+you would not be able to start the program locally twice because of the port binding
+
+we can do this one command by replacing the /bin/sh command with our go run command
+
+sudo docker run -it --rm -v $(pwd):/src -p 8080:8080 -w /src golang:alpine go run json_4.go
+curl -XPOST localhost:8080/helloworld -d '{"name":"Nic"}'
+
+like volumes, you can specify multiple instances of the -p argument, which enables you to set up the bingding for multiple ports
+
+Removing a container starting with an explicit name 
 
 
