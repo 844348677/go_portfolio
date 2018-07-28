@@ -38,6 +38,37 @@ You my not write more of a unit test than is sufficient to fail, and not compili
 Third law:
 You may not write more production code than is sufficient to pass the currently failing test
 
+Dependency injection and mocking
+we will pass our dependencies into our handler rather creating them internally
+
+Code coverage
+
+go test -cover ./...
+
+Behavioral Driven Development
+BDD
+is a technique often executed by an application framework called Cucumber
+
+Testing with Docker Compose
+More often than not you are going to be using a functioniong database
+spin up a real database and to do that we can use Docker-Compose as it is a fantastic way of starting our denpendies
+
+version: '2'
+services:
+  mongodb:
+    image: mongo
+    ports:
+        - 27017:27017
+
+run docker-compose up command
+download the image of MongoDB and start an instance exposing there ports on our local host
+
+We now need to creat a new struct in our project which is going to implement the store interface
+
+//　书太多拼写错误了
+data/mongostore.go
+DeleteAllKittens
+InsertKitten
 
 
 
