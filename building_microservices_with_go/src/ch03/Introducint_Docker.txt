@@ -513,13 +513,34 @@ and pass the -v argument to remove any associated volumes
 
 docker-compose rm -v
 
+运行报错
+ERROR: Couldn’t connect to Docker daemon at http+docker://localunixsocket - is it running?
+If it’s at a non-standard location, specify the URL with the DOCKER_HOST environment variable.
 
+正确的是将当前用户加入docker组
+sudo gpasswd -a ${USER} docker
+然后退出当前用户比如切换为root，再次切换为jing。然后执行docker-compose up -d就ok了。
+sudo su
+su liuh
+docker-compose up -d
+估计是　docker 使用的　apt-get 安装的　docker-compse 使用的　pip　安装的　问题
 
+docker-compose rm -v
 
+Specifying the location of a compose file
 
+docker-compose -f ./docker-compose.yml up
 
+Specifying a project name
+we can specify the project name replacing the default name of default
 
+docker-compose -p testproject up
 
+This will then create two containers
+testproject_testserver
+testproject_curl
 
+head over to the documentation and read more in depth on the concepts of Dockerfiles, Composefiles, the Docker Engine, and Docker Compose
+invaluable tool
 
 

@@ -14,8 +14,17 @@
       <file leaf-file-name="Introducint_Docker.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch03/Introducint_Docker.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="515" lean-forward="true" selection-start-line="515" selection-end-line="515" />
+            <state relative-caret-position="262">
+              <caret line="537" lean-forward="true" selection-start-line="537" selection-end-line="537" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch03/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -71,6 +80,7 @@
         <option value="$PROJECT_DIR$/src/ch02/CORS/cors.go" />
         <option value="$PROJECT_DIR$/src/ch02/RPC/RPC.txt" />
         <option value="$PROJECT_DIR$/src/ch03/Dockerfile" />
+        <option value="$PROJECT_DIR$/src/ch03/docker-compose.yml" />
         <option value="$PROJECT_DIR$/src/ch03/Introducint_Docker.txt" />
       </list>
     </option>
@@ -85,7 +95,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="188" />
+    <option name="x" value="163" />
     <option name="y" value="24" />
     <option name="width" value="1119" />
     <option name="height" value="744" />
@@ -112,13 +122,6 @@
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ch03" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ch03" type="462c0819:PsiDirectoryNode" />
-              <item name="r_w_json_4" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -162,7 +165,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="188" y="24" width="1119" height="744" extended-state="4" />
+    <frame x="163" y="24" width="1119" height="744" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2586368" />
@@ -484,10 +487,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch03/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch03/Introducint_Docker.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="515" lean-forward="true" selection-start-line="515" selection-end-line="515" />
+        <state relative-caret-position="262">
+          <caret line="537" lean-forward="true" selection-start-line="537" selection-end-line="537" />
         </state>
       </provider>
     </entry>
