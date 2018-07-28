@@ -11,37 +11,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Introducint_Docker.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ch03/Introducint_Docker.txt">
+      <file leaf-file-name="Testing.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch04/Testing.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="537" lean-forward="true" selection-start-line="537" selection-end-line="537" />
+            <state relative-caret-position="338">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch03/docker-compose.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch03/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="8" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="json_4.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch03/r_w_json_4/json_4.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-765" />
           </provider>
         </entry>
       </file>
@@ -82,6 +57,7 @@
         <option value="$PROJECT_DIR$/src/ch03/Dockerfile" />
         <option value="$PROJECT_DIR$/src/ch03/docker-compose.yml" />
         <option value="$PROJECT_DIR$/src/ch03/Introducint_Docker.txt" />
+        <option value="$PROJECT_DIR$/src/ch04/Testing.txt" />
       </list>
     </option>
   </component>
@@ -121,7 +97,7 @@
               <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ch03" type="462c0819:PsiDirectoryNode" />
+              <item name="ch04" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -496,8 +472,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch03/Introducint_Docker.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
+        <state relative-caret-position="2348">
           <caret line="537" lean-forward="true" selection-start-line="537" selection-end-line="537" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch04/Testing.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,43 @@
+Testing
+
+"The art of a good nigth's sleep is knowing you will not get woken by a support call and
+piece of mind from being able to confidently change your software in a always moving market"
+
+the principle fo releasing little and often provides significent business benefits;
+the downside(or the benefit, depending on your viewpoint) to releasing little and often is that
+you can no longer spend three months running through a regresiion test suite before you release to market
+
+one of the biggest problem with change is the concern that
+the change you are making may have an undesirable effect on another part of the system
+this effect applies to microservices as well as large monolithic systems
+
+The testing pyramid
+Succeeding with Agile
+
+Cucumber, BDD
+1 focus on one scenario
+2 write failing step defination
+
+Unit test
+3 wirte a failing test
+4 get test to pass
+5 Refactor
+
+6 When step passes
+7 Refactor
+
+Gherkin
+
+Unit tests
+
+let's just remind ourselves awesome Uncle Bob Marin in his book Clean Code
+First law:
+You may not write production code until you have written a failing unit test
+Second law:
+You my not write more of a unit test than is sufficient to fail, and not compiling is failing
+Third law:
+You may not write more production code than is sufficient to pass the currently failing test
+
+
+
+
