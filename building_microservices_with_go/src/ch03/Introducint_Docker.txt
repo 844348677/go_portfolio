@@ -453,4 +453,52 @@ That was all super easy-ish ????
 a compelling feature of Docker that allows you to start multiple containers at once with your stack defination stored in a handy YAML file
 
 Installing Docker Compose on Linux
-Linux, need install this yourself
+Linux, need to install this yourself
+// https://docs.docker.com/compose/
+
+sudo pip install -U docker-compose
+docker-compose version
+sudo docker version
+
+version: '2'
+services:
+    testserver:
+        image:testserver
+    curl:
+        image:appropriate/curl
+        entrypoint sh -c "sleep 8 && curl -XPOST testserver:8080/helloworld -d'{\"name\":\"Nic\"}'"
+
+Docker Compose files  are written in YAML,
+inside this file you can define services that will make up your application
+two services
+the first is image:testserver
+the second is a simple service that curls this API
+
+Line 1 defines the version of the Docker compose file we are using
+version 2 is the latest version and is a breaking change from
+version 1 which along with the --link directive is now deprecated and will be removed in
+我看官网的　版本都３了！
+
+in line 2 we define the services .
+Services are the containers that you would like to start with your stack
+Each service has to have unique name to the compose file,
+but not necessarily to all the containers running on your Docker Engine
+To avoid conficts when starting a stack
+-p projectname to the docker-compose up
+this will prefix the name of any of our container with the specified project name
+
+The minimum information you need to specify for a service is the image
+
+Line 6 defines our second service ,
+execute a command
+
+Service startup
+
+
+
+
+
+
+
+
+
