@@ -70,5 +70,41 @@ data/mongostore.go
 DeleteAllKittens
 InsertKitten
 
+Benchmarking and profiling
+Go has two excellent ways to analyze the performance of your code.
+We have benchmark tests and the fantastic pprof
 
+Benchmarks
+Benchmarking is a way of measuring the performance of your code by executing it multiple times with a fixed workload
+
+json.Marsha method was slower than the josn.Encode method
+
+for n:=0;n<b.N;n++
+
+When running a benchmark, Go need to run it multiple times to get an accurate ression
+
+command
+
+Profiling
+
+Go supports three different types of profiling:
+CPU : Identifies the tasks which require the most CPU time
+Heap: Identifies the statements responsible for allocating the most memory
+Blocking: Identifies the operations responsible for blocking Go routines for the longest time
+
+If we would like to enable profiling on our application , we can do one of two things:
+
+Add import "net/http/pprof" to you startup file
+Manually start profile
+
+真没想到作者在测试页有这么高的造诣，哈哈哈
+
+Summary
+premature optimization is the root of all evil
+much-misunderstood
+
+"Programmers waste enormous amounts of time thinking about, or worrying about, the speed of noncritical parts of their programs,
+and these attempts at efficiency have a strong negative impact when debugging and maintenance are considered,We should forget about small efficiencies,
+say about 97% of the time: premature optimization is the root of all evil.
+Yet we should not pass up our opportunities in that critical 3%"
 
