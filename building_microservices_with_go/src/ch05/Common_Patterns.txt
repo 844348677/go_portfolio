@@ -1,0 +1,23 @@
+Common Patterns
+the design patterns that will help you avoid failure
+
+not  software design patterns factories or facades
+architectural designs like load balancing and service discovery
+
+Design for failure
+Anything that can go wrong will go wrong
+be prepared for failure
+cloud computing networks can be flakey
+think about this failure up front while discussing upcoming features
+
+Designing Data-Intensive Applications
+Martin Kleppman
+The bigger a system gets, the more likely it is that one of its components is broken. Over time,
+broken things get fixed, and new things break, but in a system with thousands nodes, it is reasonable
+to assume that something is always broken. if the error handling strategy consists of only giving up such a large system would never work
+
+
+
+
+
+
