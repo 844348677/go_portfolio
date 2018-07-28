@@ -493,6 +493,27 @@ Line 6 defines our second service ,
 execute a command
 
 Service startup
+a gotcha with Docker compose
+
+sh -c "sleep 8 && curl -XPOST testserver:8080/helloworld -d'{\"name\":\"Nic\"}'"
+
+All compose will do is check that the container has been started
+
+"Container started , and service ready is not the same thing"
+
+In reality, you would probably never start a single command like we are here in your compose file
+
+use a Docker network, Docker automatically adds a mapping to the containers resolve.conf
+pointing to the built in Dokcer DNS server
+
+docker-compose up
+
+To remove any stopped container that you have started with docker-compose , we can use the particular compose command rm
+and pass the -v argument to remove any associated volumes
+
+docker-compose rm -v
+
+
 
 
 
