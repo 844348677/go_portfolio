@@ -1,0 +1,179 @@
+---
+layout: post
+title:  "git简单指南"
+date:   2018-07-25 12:42:48 +0800
+categories: jekyll update
+---
+
+终于一份简单的git指南
+
+codecademy 的　git 教程　差不多半天时间能走完
+
+简单清晰的流程，同时还能边学边练，逻辑清晰
+
+
+１　basic git workflow
+
+git init	//creates a new Git repository
+
+git status	//working directory and staging area
+
+git add		//add file from the working directory to the staging area
+
+git diff	//shows the difference between the working directory and the staging area
+
+git commit	//permanently stores file changes from the staging area int the repository
+
+git log		//previous commits
+
+
+git init -> working directory 
+
+git add -> staging area
+
+git commit -> repository
+
+
+
+git status untracked files
+
+git add filename
+
+git add .
+
+git diff filename
+
+git commit -m "xxxx"
+
+git log
+
+
+
+2 BACKTRACK
+
+three different ways to backtrack in git
+
+git checkout HEAD filename	//discards changes in the working directory 
+
+git reset HEAD filename		// unstages file changes in the staging area
+
+git reset commit_SHA		// reset to a previos commmit int your commit history
+
+
+git show HEAD
+
+!!!! the commit you are currently on is known as the HEAD commit
+
+!!!! the most recently make commit is the HEAD commit
+
+git checkout HEAD filename
+
+restore the file in your working direcotry to look exactly as it did when you last made a commit
+git add filename_1 filename_2
+
+git reset HEAD filename
+
+!!!! before you commit !!!! after you add !!!! unstage that file from the staging area
+
+git reset commit_SHA
+
+git log -> SHA -> the first 7 charactors of the SHA of the previous commit
+
+
+before reset : HEAD is at the most recent comit
+
+after  reset : HEAD goes to a previously made commit of your choice
+
+
+
+3 branching
+
+git branch	// List all a Git project's branches
+
+git branch branch_name	// creates a new branch
+
+git checkout branch_name	//switch from one branch to another
+
+git merge branch_name		//join file changes from on branch to another
+
+git branch -d branch_name	//deletes the branch specified
+
+
+master branch
+
+git branch // all branches , * is showing you what branch you're on
+
+git branch new_branch // to create a new branch !!whitespaces
+
+git checkout branch_name // you can switch to the new branch
+
+git merge branch_name
+
+!!!! 先用 checkout master 切到master ,在master下运行　需要把 branch_name 的branch merge到master
+
+master is the receiver branch , since it accepts those change
+
+branch_name is the giver branch,since it provides the changes
+
+!!!! merge conflit 
+
+git branch -d branch_name
+
+git branch -D branch_name
+
+
+
+4 teamwork
+
+git clone	//create a local copy of a remote
+
+git remote -v	// list a Git projects remotes
+
+git fetch	// fetch work from the remote into the local copy
+
+git merge origin/master	// merges origin/master into your local branch
+
+git push origin <branch_name> // pushes a local branch to the origin remote
+
+
+git clone remote_location clone_name
+
+! remote_location tells Git where to go to find the remote
+
+! clone_name is the name you give to the directory in which
+
+!! remote address also names origin . origin -> remote projecto
+
+git remote -v
+
+git fetch
+
+!!!! this command will not merge changes from the remote into your local repository
+
+git merge origin/master
+
+!!!! fetch to your local copy of the git project, those are on th origin/master
+
+//　fetch不进行merge操作，把远程修改下载到本地。再用　git merge origin/master　远程的master  merge 到本地
+
+!!!! 注意两个概念　orinin/master  和  local的　master
+
+!!!! git workflow
+
+1. fecth and merge changes from the remote
+
+2. create a branch to work on a new project feature
+
+3. develop the feature on your branch and commit your work
+
+4. fetch and merge from the remote again (in case new commits were made while you were workding)
+
+5. push your branch up to the remote fro review
+
+
+git push origin your_branch_name
+
+!!!! origin 是远程的　your_branch_name　是本地的branch , 注意　会在远程的　创建一个　your_branch_name 的branch　, git push origin master 会将本地的 master merge到　origin/master
+
+
+OK

@@ -1,0 +1,148 @@
+Microservice Frameworks
+
+the most popular frameworks for building microservices and
+look at an example project to see the implementation
+
+What make a good microservice framework
+
+Ability to interface with other frameworks :
+it must be possible to interact with any service build with the framework to interact with any service built with the framework by clients who are no built using the same framework
+
+    Implement standards :
+    a standard message protocal should be used to maximize interation , for example:
+        JSON-RPC
+        Thrift
+        Protocol Buffers
+        JSON
+    Open :
+    the framework should be open in both the source code and the roadmap
+Patterns :
+the framework must implement the standard patterns of microservice architecture
+    Circuit breaking :
+    client calls to downstream services must implement circuit breaking
+    Service discovery :
+    it must be capable of registering with a dynamic service registry and capable of query the same registry to locate connected services
+    Proprietary :
+    proprietary service registary must be open and usable from other clients who do not implement the framework or its SDKs
+    Timeouts :
+    downstream client calls should be configurable with a user determind timeout
+    Health checks :
+    The framework must create an automatic health check endpoint
+    Routing :
+    the framework must support multiple routes with an easy to use pattern based matching
+    Middleware :
+    the framework must support middleware to allow the user to create shared code for handlers
+    Load balancing :
+    downstream client connections should be capable of load balancing
+    Language independence :
+    the framework needs to be language independent to enable cross-team polyglot workflow. at a minimum , it should be possible to create client SDKs in multiple languages
+Communication Protocols :
+the service should support good standards in one of the following communication protocols
+    REST :
+    if the framework implements REST, it must take full advantage of semantic API design with appropriate use of HTTP verbs and status codes
+    RPC :
+    If the framework is RPC-based, it must use a standard and open messaging protocol
+Maintainable :
+the frameworkd must be maintainable with the minimum effort
+    Easy to update :
+    it must be easy to update with the minimum amount of code changes
+    Well versioned :
+    the framework must be well versioned with breaking changes to the API mainly restricted to major version updates
+Tooling :
+there must be adequate tooling to fit with modern development practices
+    CI/CD :
+    it must integrate and work well with continuous integration and continuous deployment pipelines , the tooling must be scriptable
+    Cross-platform :
+    the tools must work cross-platform , with OSX , and Linux as a bare minimum
+Code generation :
+it should support code generation templates to scaffold a service and possibly extend the service
+Fast set up :
+the framework should be fast to se up and with the minimum number of steps and dependencies
+Ease of use :
+Any good framework should be easy to use ; you will not thank yourself for choosing a framewrokd which is a pain to wrok with. this category has been broken down into the following subcategories
+Extensible :
+whe required , the user should be able to extend the framework through
+    Plugins :
+    a pluggable software architecture to be able to create generators and tmeplates
+    Middleware:
+    extension through handler middleware
+Support :
+a good support network is incredibly important throughout the life cycle of the service
+    Maintained :
+    the framework must be well maintained with
+        Regular updates:
+        the framework is regularly updated and released
+        Accept pull requests
+        the author accepts pull request from community contributros
+        Corporate sponsor :
+        while this option is not essential , a corporate sponsor can extend the life cycle of a framework as there is less likelihood of a leftpad situation
+    Documentaition :
+    the framework should be well documented with clear and concise example and comprehensive API documentation
+        Easy to follow :
+        documentation should be accessible and easy to read
+     Code samples :
+        adequate code examples should be provided to support a developer using the framework
+    Tutorials :
+    the framework will ideally have community contributed tutorials in both blog and video formats
+    Community :
+    there should be a healthy community using and supporting the framework with at least one of the following channels of communication
+        Slack
+        Gitter
+        Github
+        Mailing lit
+        Stack Overflow
+Secure :
+the framework should be secure and implement the latest industry standars:
+    TLS :
+    securing the endpoints of the framework using TLS should be possible
+    OWASP :
+    the framework should implement OWASP advisory
+    Validation :
+    reqeusts should be automatically validated based on rules implemented by message annotation
+    Well patched :
+    security vulnerabilities should be regularly assessed and patched
+    Authentication / Authorization :
+    the framework should implement a method of authentication and authorization such as the OAuth standard
+Open source :
+the framework should be open sourced and released under a license which allows forking and modification
+    Community :
+    these should be a good open source community following and contribution for the project
+    Popular :
+    the framework should be popular and commercially used
+Quality
+the code quality of the framework should be visible and of a high standard. community contributions should follow a published process and standard
+    high test coverage :
+    the coverage should be high and monitored; pull request should ensure adherence to coding standards
+        Unit tests :
+        high fast running unit tests are essential
+        Behavioral/functional :
+        ideally,the framework should implement behavioral and functional tests regarding the generated code and the build process
+    Automated build :
+    automated builds of the source code should be present and visible. pull request should run a automated build, and the state reported on the request
+    Code quality :
+    Automated code quality tools should be used and the results visible, for examples
+            Coveralls
+            Code Climate
+            Sonar
+    Standard language patterns :
+    a standard method of writing the code taking account of the language level idioms is essential
+    Efficient :
+    the framework must produce code which is efficient when run
+    Fast :
+    the code must execute quickly and be designed for performance
+    Low latency :
+    request should be low latency
+    Low memory :
+    the service should be memory efficient
+    Supports a large number of connections :
+    it should support a significant number of concurrent connections
+
+Micro
+
+
+
+
+
+
+
+

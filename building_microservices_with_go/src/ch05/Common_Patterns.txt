@@ -65,6 +65,25 @@ Throttling
 
 Service discovery
 SOA service-oriented architecture
+Microservices are easy; build microservice systems is hard
+The solution is service discovery and the use of a dynamic service registry,
+Consul or Etcd
 
+Server-side discovery
+Client-side discovery
+
+Server-side discovery
+
+Client-side discovery
+
+Load balancing
+
+Caching
+
+Premature optimization
+
+Stale cache in times of database or downstream service failure
+
+Summary
 
 
