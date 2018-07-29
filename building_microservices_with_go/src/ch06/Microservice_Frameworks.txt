@@ -138,11 +138,56 @@ the code quality of the framework should be visible and of a high standard. comm
     it should support a significant number of concurrent connections
 
 Micro
+Micro by Asim Aslam
+Micro is a pluggable RPC microservices framework supporting service discovery, load-balancing, synchronous and asynchronous communication and multiple message encoding formats
+micro/go-micro
 
+golang/protobuf
+Installation
+go get -u github.com/golang/protobuf/protoc-gen-go
+protoc --version
+libprotoc 2.6.1
 
+Setup
+Protocol Buffers
+protocol buffer 3.0 install
+安装
+tar -xvf protobuf-all-3.6.0.tar.gz
+cd protobuf-3.6.0/
+./configure --prefix=/usr/local/protobuf
+make
+make check
+make install
+配置
+sudo vim /etc/profile
+    export PATH=$PATH:/usr/local/protobuf/bin/
+    export PKG_CONFIG_PATH=/usr/local/protobuf/lib/pkgconfig/
+source /etc/profile
+sudo vim /etc/ld.so.conf
+    /usr/local/protobuf/lib
+ldconfig
 
+whereis protoc
+which protoc
 
+vim .bashrc
+    ####### add protobuf lib path ########
+    #(动态库搜索路径) 程序加载运行期间查找动态链接库时指定除了系统默认路径之外的其他路径
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/protobuf/lib/
+    #(静态库搜索路径) 程序编译期间查找动态链接库时指定查找共享库的路径
+    export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/protobuf/lib/
+    #执行程序搜索路径
+    export PATH=$PATH:/usr/local/protobuf/bin/
+    #c程序头文件搜索路径
+    export C_INCLUDE_PATH=$C_INCLUDE_PATH:/usr/local/protobuf/include/
+    #c++程序头文件搜索路径
+    export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/local/protobuf/include/
+    #pkg-config 路径
+    export PKG_CONFIG_PATH=/usr/local/protobuf/lib/pkgconfig/
+    ######################################
+source .bashrc
 
-
-
-
+系统安装的　protoc 版本低
+算了　不卸载了　
+３.6 用下面的
+/usr/local/protobuf/bin/protoc
