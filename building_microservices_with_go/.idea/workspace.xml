@@ -14,8 +14,8 @@
       <file leaf-file-name="Common_Patterns.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch05/Common_Patterns.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="308">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
             </state>
           </provider>
         </entry>
@@ -79,7 +79,7 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="177" />
+    <option name="x" value="199" />
     <option name="y" value="24" />
     <option name="width" value="1119" />
     <option name="height" value="744" />
@@ -149,7 +149,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="177" y="24" width="1119" height="744" extended-state="4" />
+    <frame x="199" y="24" width="1119" height="744" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2586368" />
@@ -555,8 +555,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch05/Common_Patterns.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="308">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
         </state>
       </provider>
     </entry>

@@ -16,8 +16,55 @@ The bigger a system gets, the more likely it is that one of its components is br
 broken things get fixed, and new things break, but in a system with thousands nodes, it is reasonable
 to assume that something is always broken. if the error handling strategy consists of only giving up such a large system would never work
 
+a good story
 
+Patterns
 
+Event procession
+
+Event processiong with at least once delivery
+
+Handling Errors
+
+Dead Letter Queue
+
+Idempotent transactions and message order
+
+At Most Once Delivery At Least Once
+
+Atomic transactions
+
+we use SOAP as our message protocol a decade or so ago
+Web Service-Transactions
+
+legacy systems
+denoting software or hardware that has been superseded but is difficult to replace because of its wide use.
+
+Timeouts
+
+throughput the amount of material or items passing through a system or process.
+
+Connection Timeout
+The time it takes to open a network connection to the server
+Request Timeout
+The time it takes for a server to process a request
+
+Back Off
+
+Circuit breaking
+
+Health checks
+consul
+
+Data store connection status (genneral connection state, connection pool status)
+current response time (rolling average)
+current conncetions
+bad requests (running average)
+
+Throttling
+
+Service discovery
+SOA service-oriented architecture
 
 
 
