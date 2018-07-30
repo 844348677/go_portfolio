@@ -1,0 +1,7 @@
+package gomicro
+
+func main(){
+
+}
+
+

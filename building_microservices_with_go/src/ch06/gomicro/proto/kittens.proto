@@ -1,3 +1,33 @@
 
-syntax = "proto3"
+syntax = "proto3";
 
+package bmigo.micro;
+
+message RequestEnvelope{
+    string service_method = 1;
+    fixed64 seq = 2;
+}
+
+message ResponseEnvelope{
+    string service_method = 1;
+    fixed64 seq = 2;
+    string error = 3;
+}
+
+message Request{
+    string name = 1;
+}
+
+message Response{
+    string msg = 1;
+}
+
+service Kittens{
+    rpc Hello(Request) returns (Response) {}
+}
+
+// 生成文件　命令
+// pwd
+// /home/liuh/go/go_portfolio/building_microservices_with_go/src/ch06/gomicro/proto
+
+// /usr/local/protobuf/bin/protoc --proto_path=$GOPATH/src:. --micro_out=. --go_out=. kittens.proto

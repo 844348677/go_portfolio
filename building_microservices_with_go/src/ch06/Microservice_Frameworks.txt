@@ -191,3 +191,16 @@ source .bashrc
 算了　不卸载了　
 ３.6 用下面的
 /usr/local/protobuf/bin/protoc
+
+go get github.com/micro/protoc-gen-micro
+
+生成文件
+/usr/local/protobuf/bin/protoc --proto_path=$GOPATH/src:. --micro_out=. --go_out=. kittens.proto
+
+it process the proto DSL file and outputs native language source files
+All this is doing is allowing a strut to be serialized using the binary standard set out by Protocol Buffers
+
+use this with Micro
+main.go
+
+
