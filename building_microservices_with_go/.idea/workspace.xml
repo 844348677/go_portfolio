@@ -14,8 +14,20 @@
       <file leaf-file-name="Microservice_Frameworks.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+            <state relative-caret-position="100">
+              <caret line="210" selection-start-line="210" selection-end-line="210" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch06/Kite/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="70" column="119" selection-start-line="70" selection-start-column="119" selection-end-line="70" selection-end-column="119" />
+              <folding>
+                <element signature="e#14#83#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,14 +50,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
+            <state relative-caret-position="135">
+              <caret line="103" selection-start-line="103" selection-end-line="103" />
               <folding>
                 <element signature="e#17#144#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="options.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../src/github.com/micro/go-micro/options.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="103">
+              <caret line="214" selection-start-line="214" selection-end-line="214" />
             </state>
           </provider>
         </entry>
@@ -62,8 +83,11 @@
       <file leaf-file-name="kittens.micro.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.micro.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="45" column="19" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="19" />
+            <state relative-caret-position="-45">
+              <caret line="83" column="27" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="27" />
+              <folding>
+                <element signature="e#303#503#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,8 +95,11 @@
       <file leaf-file-name="kittens.pb.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.pb.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="158" column="5" selection-start-line="158" selection-start-column="5" selection-end-line="158" selection-end-column="5" />
+            <state relative-caret-position="-375">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="e#96#179#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,8 +107,8 @@
       <file leaf-file-name="kittens.proto" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="32" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="32" />
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -132,10 +159,11 @@
         <option value="$PROJECT_DIR$/src/ch04/Testing.txt" />
         <option value="$PROJECT_DIR$/src/ch05/Common_Patterns.txt" />
         <option value="$PROJECT_DIR$/src/ch04/data/mongostore.go" />
-        <option value="$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto" />
-        <option value="$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt" />
         <option value="$PROJECT_DIR$/src/ch06/gomicro/client/client.rb" />
+        <option value="$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto" />
         <option value="$PROJECT_DIR$/src/ch06/gomicro/main.go" />
+        <option value="$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt" />
+        <option value="$PROJECT_DIR$/src/ch06/Kite/main.go" />
       </list>
     </option>
   </component>
@@ -149,8 +177,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="161" />
-    <option name="y" value="34" />
+    <option name="x" value="228" />
+    <option name="y" value="24" />
     <option name="width" value="1106" />
     <option name="height" value="702" />
   </component>
@@ -183,23 +211,7 @@
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ch06" type="462c0819:PsiDirectoryNode" />
-              <item name="gomicro" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ch06" type="462c0819:PsiDirectoryNode" />
-              <item name="gomicro" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ch06" type="462c0819:PsiDirectoryNode" />
-              <item name="gomicro" type="462c0819:PsiDirectoryNode" />
-              <item name="proto" type="462c0819:PsiDirectoryNode" />
+              <item name="Kite" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -242,7 +254,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="161" y="34" width="1106" height="702" extended-state="0" />
+    <frame x="228" y="24" width="1106" height="702" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25236294" />
@@ -254,7 +266,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49766573" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49766573" visible="true" weight="0.32867134" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -273,34 +285,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ch01/basic_http_example/example.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" selection-start-line="14" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_3/r_w_json.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_4/json_4.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" selection-start-line="51" selection-end-line="64" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_5/json_5.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="930">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_6/json_6.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -582,27 +566,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.micro.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="45" column="19" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.pb.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="158" column="5" selection-start-line="158" selection-start-column="5" selection-end-line="158" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="32" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/client/client.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -610,19 +573,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
+    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.pb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-375">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#96#179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../src/github.com/micro/go-micro/server/options.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-285">
+          <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../src/github.com/micro/go-micro/server/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-616">
+          <caret line="111" column="1" lean-forward="true" selection-start-line="111" selection-start-column="1" selection-end-line="111" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.micro.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="83" column="27" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="27" />
+          <folding>
+            <element signature="e#303#503#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../src/github.com/micro/go-micro/options.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="214" selection-start-line="214" selection-end-line="214" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="101" column="16" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="16" />
+        <state relative-caret-position="135">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
           <folding>
             <element signature="e#17#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="210" selection-start-line="210" selection-end-line="210" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch06/Kite/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="70" column="119" selection-start-line="70" selection-start-column="119" selection-end-line="70" selection-end-column="119" />
+          <folding>
+            <element signature="e#14#83#0" expanded="true" />
           </folding>
         </state>
       </provider>

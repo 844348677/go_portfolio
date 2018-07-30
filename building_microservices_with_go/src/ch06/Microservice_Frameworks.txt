@@ -216,3 +216,11 @@ main.go
 // go get -v -u github.com/micro/micro
 
 https://micro.mu/
+consul 没安装　估计是这里有问题　待安装测试
+
+Kite
+
+Setup
+
+go get -u -v github.com/koding/kite
+

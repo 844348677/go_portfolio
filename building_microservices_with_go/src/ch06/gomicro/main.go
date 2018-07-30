@@ -1,10 +1,9 @@
-package gomicro
+package main
 
 import (
-
+	log "github.com/golang/glog"
 	"github.com/micro/go-micro/cmd"
 	"github.com/micro/go-micro/server"
-	"log"
 	"golang.org/x/net/context"
 	kittens "./proto"
 )
@@ -47,6 +46,7 @@ func main(){
 			new(Kittens),
 		),
 	)
+
 
 	// Run server
 	if err := server.Run();err != nil{
@@ -100,3 +100,12 @@ func main(){
 // Support
 
 // Extensibility
+// all of  the standard dependencies fro service discovery , messaging , and transport follow an interface-driven abstraction.
+
+// What we learned about Micro
+
+
+// consul 有问题
+// ERROR: logging before flag.Parse: F0731 01:28:19.481429   20912 main.go:52] Put http://127.0.0.1:8500/v1/agent/service/register: dial tcp 127.0.0.1:8500: connect: connection refused
+// Put http://127.0.0.1:8500/v1/agent/service/register: dial tcp 127.0.0.1:8500: connect: connection refused
+
