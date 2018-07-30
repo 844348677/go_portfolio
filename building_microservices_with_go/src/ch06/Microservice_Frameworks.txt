@@ -226,3 +226,38 @@ go get -u -v github.com/koding/kite
 
 
 gRPC
+Protocol Buffers messaging protocol from Google
+gRPC is  a cross-platform which uses HTTP/2 as the transport and Protocol Buffers as the message protocol
+The intention behind the project was to build a framework which promotos good microservice design, concentrating on messages rather than distributed objects
+gRPC is also optimized for the many network problems we face in microservice architecture
+its ability to stream data between client and server
+
+Setup
+https://github.com/google/protobuf/releases
+
+go get google.golang.org/grp
+go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+
+a Docker container which has all these packages (nicholasjackson/building-microservices-in-go)
+
+docker run -it --rm nicholasjackson/building-microservices-in-go
+
+Code generations
+the beauty of gRPC is the code generation
+we can generate all our client and server code
+All we then have to do is to wire up our handlers which will deal with the business logic
+
+service Kittens{
+    rpc Hello(Request) returns(Response) {}
+}
+this is the service definition, which contains the contract for our handlers
+proto DSL
+command
+protoc
+
+protoc -I /proto /proto/kittens.proto --go_out=plugins=grpc:/proto
+
+this will create our message and our service definations , and output them to the kittens.pb.go file
+
+
+
