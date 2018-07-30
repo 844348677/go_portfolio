@@ -11,11 +11,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Microservice_Frameworks.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Microservice_Frameworks.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="260" lean-forward="true" selection-start-line="260" selection-end-line="260" />
+            <state relative-caret-position="3">
+              <caret line="234" column="5" lean-forward="true" selection-start-line="234" selection-start-column="5" selection-end-line="234" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kittens.proto" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch06/grpc/proto/kittens.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -155,6 +164,7 @@
         <option value="$PROJECT_DIR$/src/ch06/gomicro/main.go" />
         <option value="$PROJECT_DIR$/src/ch06/Kite/main.go" />
         <option value="$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt" />
+        <option value="$PROJECT_DIR$/src/ch06/grpc/proto/kittens.proto" />
       </list>
     </option>
   </component>
@@ -203,6 +213,21 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ch06" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ch06" type="462c0819:PsiDirectoryNode" />
+              <item name="grpc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ch06" type="462c0819:PsiDirectoryNode" />
+              <item name="grpc" type="462c0819:PsiDirectoryNode" />
+              <item name="proto" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -245,6 +270,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="196" y="24" width="1106" height="702" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22873347" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -274,13 +300,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_6/json_6.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch01/r_w_json_7/json_5.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -632,8 +651,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="260" lean-forward="true" selection-start-line="260" selection-end-line="260" />
+        <state relative-caret-position="3">
+          <caret line="234" column="5" lean-forward="true" selection-start-line="234" selection-start-column="5" selection-end-line="234" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch06/grpc/proto/kittens.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
     </entry>
