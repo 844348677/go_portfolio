@@ -69,3 +69,22 @@ func main() {
 // Patterns
 // Service discovery is built into Kite with the application kontrol
 // The backend store for kontrol is not propriety, but it uses a plugin architecture and supports  etcd,consul, and son
+
+// Language independence
+
+// Efficiency
+
+//Quality
+
+// Open source
+
+// Security
+// JWT
+
+// Support
+
+// Extensibility
+
+// Summing up Kite
+
+
