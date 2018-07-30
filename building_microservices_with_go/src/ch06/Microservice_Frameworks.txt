@@ -187,6 +187,7 @@ vim .bashrc
     ######################################
 source .bashrc
 
+https://github.com/google/protobuf/releases
 系统安装的　protoc 版本低
 算了　不卸载了　
 ３.6 用下面的
@@ -202,5 +203,9 @@ All this is doing is allowing a strut to be serialized using the binary standard
 
 use this with Micro
 main.go
+
+// micro 文档
+// https://micro.mu/docs/index.html
+// go get -u github.com/micro/micro
 
 

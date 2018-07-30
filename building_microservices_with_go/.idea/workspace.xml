@@ -11,20 +11,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Microservice_Frameworks.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Microservice_Frameworks.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="203" column="7" selection-start-line="203" selection-start-column="7" selection-end-line="203" selection-end-column="7" />
+            <state relative-caret-position="228">
+              <caret line="189" column="43" selection-start-line="189" selection-start-column="43" selection-end-line="189" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="kitten.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch04/data/kitten.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="10" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mongostore.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch04/data/mongostore.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="37">
+              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="30">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -40,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.pb.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+              <caret line="204" selection-start-line="204" selection-end-line="204" />
               <folding>
                 <element signature="e#96#179#0" expanded="true" />
               </folding>
@@ -100,12 +118,12 @@
         <option value="$PROJECT_DIR$/src/ch04/main.go" />
         <option value="$PROJECT_DIR$/src/ch04/handler/search_test.go" />
         <option value="$PROJECT_DIR$/src/ch04/docker-compose.yml" />
-        <option value="$PROJECT_DIR$/src/ch04/data/mongostore.go" />
         <option value="$PROJECT_DIR$/src/ch04/Testing.txt" />
         <option value="$PROJECT_DIR$/src/ch05/Common_Patterns.txt" />
         <option value="$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto" />
-        <option value="$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt" />
         <option value="$PROJECT_DIR$/src/ch06/gomicro/main.go" />
+        <option value="$PROJECT_DIR$/src/ch04/data/mongostore.go" />
+        <option value="$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt" />
       </list>
     </option>
   </component>
@@ -141,6 +159,26 @@
               <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ch04" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ch04" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
+              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="ch04" type="462c0819:PsiDirectoryNode" />
+              <item name="handler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
@@ -480,31 +518,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch04/handler/search_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch04/data/kitten.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch04/data/datastore.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch04/handler/search.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -522,27 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch04/data/mongostore.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="34" column="17" lean-forward="true" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch04/Testing.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch05/Common_Patterns.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1305">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -553,7 +549,7 @@
     <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/proto/kittens.pb.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
           <folding>
             <element signature="e#96#179#0" expanded="true" />
           </folding>
@@ -565,17 +561,59 @@
         <state relative-caret-position="-982" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
+    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="203" column="7" selection-start-line="203" selection-start-column="7" selection-end-line="203" selection-end-column="7" />
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch06/gomicro/main.go">
+    <entry file="file://$PROJECT_DIR$/src/ch05/Common_Patterns.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="540">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch04/Testing.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="97" column="22" lean-forward="true" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch04/handler/search.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch04/handler/search_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch04/data/kitten.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch04/data/mongostore.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="189" column="43" selection-start-line="189" selection-start-column="43" selection-end-line="189" selection-end-column="43" />
         </state>
       </provider>
     </entry>

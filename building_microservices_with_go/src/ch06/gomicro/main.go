@@ -1,7 +1,9 @@
 package gomicro
 
-func main(){
+import "github.com/"
 
+func main(){
+	cmd
 }
 
 

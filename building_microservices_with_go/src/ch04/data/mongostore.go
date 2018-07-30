@@ -10,7 +10,7 @@ type MongoStore struct {
 	session *mgo.Session
 }
 // 又是在哪找的　包
-// https://godoc.org/
+// https://godoc.org/labix.org/v2/mgo
 // https://godoc.org/labix.org/v2/mgo
 // go get gopkg.in/mgo.v2
 // http://labix.org/mgo
