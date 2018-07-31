@@ -1,0 +1,28 @@
+
+
+Metrics :
+these are things such as time series data (for example, transaction or individual component timings)
+Text-based logs :
+Text-based records are your real old-fashioned logs which are spat out by things such as Nginx or a text log from your application software
+Exceptions :
+exceptions potentially could fall into the two previous categories ; however , I like to break these out into a separate category since exception should be , well , exceptional
+
+Logging best practices
+free e-book
+The pragmatic logging handbook
+
+Metrics
+
+Types of data best represented by metrics
+
+Naming conventions
+
+Storage and querying
+
+Software as a service
+
+Self-hosted
+
+Grafana
+
+
