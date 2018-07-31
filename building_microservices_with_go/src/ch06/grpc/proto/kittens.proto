@@ -13,3 +13,5 @@ message Response {
 service Kittens {
     rpc Hello(Request) returns (Response) {}
 }
+
+// /usr/local/protobuf/bin/protoc -I . --proto_path=$GOPATH/src:. --go_out=plugins=grpc:. kittens.proto
