@@ -20,11 +20,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoggingAndMonitoring.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoggingAndMonitoring.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch07/LoggingAndMonitoring.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="512">
+              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Security.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch08/Security.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -163,6 +172,7 @@
         <option value="$PROJECT_DIR$/src/ch06/grpc/main.go" />
         <option value="$PROJECT_DIR$/src/ch06/Microservice_Frameworks.txt" />
         <option value="$PROJECT_DIR$/src/ch07/LoggingAndMonitoring.txt" />
+        <option value="$PROJECT_DIR$/src/ch08/Security.txt" />
       </list>
     </option>
   </component>
@@ -198,12 +208,6 @@
               <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
               <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="building_microservices_with_go" type="b2602c69:ProjectViewProjectNode" />
-              <item name="building_microservices_with_go" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ch07" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -277,13 +281,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ch01/rpc_http/server/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch01/rpc_http/contract/contract.go">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -644,8 +641,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch07/LoggingAndMonitoring.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="512">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch08/Security.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

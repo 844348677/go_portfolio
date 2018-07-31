@@ -25,4 +25,21 @@ Self-hosted
 
 Grafana
 
+Prometheus server
+
+Logging
+a distributed logging store, such as an ELK stack
+or software as a service platform , such as Logmatic or Loggly
+
+Elasticsearch, Logstash, and Kibana (ELK)
+
+Elasticsearch is our database for our logging data,
+Kibana is the application we will use for querying this data ,
+and Logstash is used fro reading the data from your application logs and storing it in Elasticsearch
+
+Exceptions
+
+Panic and recover
+
+Summary
 

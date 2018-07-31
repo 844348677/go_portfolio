@@ -1,0 +1,9 @@
+Security
+
+Encryption and signing
+
+Symmetric-key encryption
+secret-key or conventional cryptography : one key is used for both the encryption and decryption of the data
+
+
+
