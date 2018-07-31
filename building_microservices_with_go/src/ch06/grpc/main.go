@@ -37,3 +37,28 @@ func main(){
 	grpcServer.Serve(lis)
 }
 
+//Tooling
+
+// Maintainable
+
+// Format
+
+// Patterns
+
+// Language independence
+
+// Efficiency
+
+// Quality
+
+// Open source
+
+// Security
+// all the features we could need . gRPC supports TLS encryption, authentication, and request validation
+
+// Support
+
+// Extensibility
+
+// A few lines about
+

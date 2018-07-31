@@ -261,3 +261,4 @@ this will create our message and our service definations , and output them to th
 
 /usr/local/protobuf/bin/protoc -I . --proto_path=$GOPATH/src:. --go_out=plugins=grpc:. kittens.proto
 
+// Summary
