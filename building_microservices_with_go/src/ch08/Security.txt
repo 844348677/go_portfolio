@@ -4,6 +4,34 @@ Encryption and signing
 
 Symmetric-key encryption
 secret-key or conventional cryptography : one key is used for both the encryption and decryption of the data
+for a remote end to be able to decryt this information , it must first have the key ,
+and this key must be securely held as a single compromise of on server will lead to the compromise of all servers who share this key
 
+Public-key cryptography
+to get around the need for both sides requiring to know the secret
+public-key cryptography uses a pair of keys of encryption
+asymmetric encryption
+The public key is used for encrypting information while the private can only be used fro decrypting
 
+Digital signatures
+A digital signature works by encrypting a message with a private key and then transferring the signed message
+if the message can be decrypted with public key , then the message must have originated from the holder of a private key
+create oneway hash of the message and then use the private key to encrypt this .
+the recipient will decrypt the hash  with the public key and generate the same hash from the message; then , the message can be deemed to be from a trustworthy source
+
+X.509 digital certificates
+
+TLS/SSL
+
+External security
+
+Layer 2 or 3 firewalls
+Layer is more commonly used for routing as it deals purely with MAC addresses and not IP addresses whereas layer 3 is IP address aware
+Heartbleed
+
+Web application firewall
+
+API Gateway
+
+DDos protection
 
