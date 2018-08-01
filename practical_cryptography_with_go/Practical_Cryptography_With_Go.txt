@@ -140,3 +140,22 @@ Indistinguishability
 two particular kinds of indistinguishability
 IND-CPA　indistinguishability under a chosen plaintext attack
 IND-CCA　 indistinguishability under a chosen ciphertext attack
+
+In IND-CPA
+the attacker sends a pair of messages that are the same length to the server to be encrypted.
+The server chooses one of the messages, encrypts it, and sends back the ciphertext.
+The attacker should not be able to determine which message was encrypted.
+This property maintains confidentiality.
+encrypting a message does not hide its length
+
+In IND-CCA
+the attacker submits ciphertexts of its own choosing that the server decrypts.
+the attacker submits two challenge ciphertexts and the server picks one at random to decrypt and send back to the attacker.
+The attacker should not be able to distinguish which ciphertext the plaintext corresponds to.
+two variants of IND-CCA;
+the first (IND-CCA1) means that an attacker cannot submit new ciphertexts after the challenge is sent.
+The second (IND-CCA2, or adaptive CCA) allows the attacker to continue submitting ciphertexts after the challenge.
+padding oracle attack.
+
+Authenticity and integrity
+
