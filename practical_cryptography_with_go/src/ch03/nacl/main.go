@@ -91,7 +91,29 @@ func Encrypt(key *[KeySize]byte, message []byte) ([]byte, error) {
 // Decryption expects that the message contains a prepended nonce, and we verify this assumption by checking the length of the message.
 // A message that is too short to be a valid encryption message is dropped right away.
 
+// Decrypt extracts the nonce from the ciphertext, and attempts to decrypt with NaCl's secretbox.
+func Decrypt(key *[KeySize]byte, message []byte) ([]byte, error) {
+	// const Overhead = poly1305.TagSize
+	// const TagSize = 16
+	if len(message) < (NonceSize + secretbox.Overhead) {
+		return nil, ErrDecrypt
+	}
 
+	var nonce [NonceSize]byte
+	copy(nonce[:], message[:NonceSize])
+	out, ok := secretbox.Open(nil, message[NonceSize:], &nonce, key)
+	if !ok {
+		return nil, ErrDecrypt
 
+	}
+	return out, nil
+}
 
+// Keep in mind that random nonces are not always the right choice
+// key exchanges
+// how we actually get and share the keys that we’re using
+
+// NaCl will encrypt a message
+// then apply a MAC algorithm to this ciphertext to get the final message
+// “encrypt-then-MAC”
 
