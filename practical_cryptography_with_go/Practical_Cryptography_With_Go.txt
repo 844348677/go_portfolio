@@ -159,3 +159,14 @@ padding oracle attack.
 
 Authenticity and integrity
 
+an attacker can exploit the different responses between invalid ciphertext (when decryption fails) and invalid message (the plaintext is wrong) to extract the key.
+For AES-256 in CBC or CTR mode with an HMAC-SHA-256,
+that means 32 bytes of AES key and 32 bytes of HMAC key for a total key size of 64 bytes;
+
+how to apply a MAC
+encrypt-then-MAC:
+
+Encrypt-and-MAC
+we would apply a MAC to the plaintext, then send the encrypted plaintext and MAC.
+
+
