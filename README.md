@@ -18,3 +18,9 @@ connect refuse   https://github.com/golang 被墙了　下载对应的包
 TODO 给文件夹　写一个简单的说明
 
 https://godoc.org/
+
+http://www.allitebooks.com/
+
+http://www.foxebook.net/
+
+https://www.wowebook.org/

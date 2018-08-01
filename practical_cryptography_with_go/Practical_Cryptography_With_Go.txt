@@ -1,0 +1,70 @@
+Practical Cryptography With Go
+https://leanpub.com/gocrypto/read
+
+Chapter 1: Introduction
+how to communicate securely.
+confidentiality, integrity, and authenticity
+Confidentiality is the requirement that only the intended party can read a given message
+integrity is the requirement that a message’s contents cannot be tampered with
+authenticity is the requirement that the provenance (or origin) of a message can be trusted
+
+a baseline vocabulary
+
+The plaintext is the original message.
+The ciphertext is traditionally a message that has been transformed to provide confidentiality.
+A cipher is a cryptographic transformation that is used to encrypt or decrypt a message.
+A message authentication code (or MAC) is a piece of data that provides authenticity and integrity. A MAC algorithm is used both to generate and validate this code.
+To encrypt a message is to apply a confidentiality transformation, but is often used to describe a transformation that satisfies all three goals.
+To decrypt a message to reverse the confidentiality transformation, and often indicates that the other two properties have been verified
+A hash or digest algorithm transforms some arbitrary message into a fixed-size output, also called a digest or hash. A cryptographic hash is such an algorithm that satisfies some specific security goals
+A peer or party describes an entity involved in the communication process. It might be a person or another machine.
+
+protect against both passive and active attacks
+
+A passive attack is one in which a party for whom a message is not intended is listening on the communications
+被动攻击　偷听
+An active attack is one in which some adversarial party is tampering with messages, and can inject, alter, or replay messages
+
+solve specific problems
+Eavesdropping
+Tampering
+Spoofing
+
+context of cryptography
+some of the engineering concerns when building secure systems
+symmetric and asymmetric (or public-key) cryptography
+storing secrets
+trust
+
+https://github.com/kisom/gocrypto/
+
+Chapter 2
+Engineering concerns and platform security
+
+Basic security
+authentication, authorisation, and auditing
+Authentication means that the system verifies the identity of parties interacting with the system
+authorisation verifies that they should be allowed to carry out this interaction
+uditing creates a log of security events that can be verified and checked to ensure the system is providing security
+
+Authentication
+“who am I talking to?”
+it attempts to verify the identity of some party.
+
+Something you know (such as a password)
+Something you have (such as an authentication token of some kind)
+
+their password and a time-based one-time password (such as with TOTP)
+two-step verification
+
+Authorisation
+“should you be doing this?”
+an access control list
+“discretionary access control
+role-based security
+
+Auditing
+
+Policy
+
+
