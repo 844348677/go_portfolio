@@ -124,10 +124,19 @@ Cryptography is often seen as the fun part of building secure systems
 It’s not a one-size-fits-all security solution
 
 Chapter 3: Symmetric Security
+Symmetric cryptography is the simplest form of cryptography: all parties share the same key.
+two components to symmetric encryption:
+the algorithm that provides confidentiality (which is a block or stream cipher)
+the component that provides integrity and authenticity (the MAC algorithm)
 
+Most ciphers do not provide both in the same algorithm, but those that do are called Authenticated Encryption (AE), or Authenticated Encryption with Additional Data (AEAD), ciphers.
+four ciphersuites:
+NaCl
+AES-GCM
+AES-CTR with an HMAC
+AES-CBC with an HMAC
 
-
-
-
-
-
+Indistinguishability
+two particular kinds of indistinguishability
+IND-CPA　indistinguishability under a chosen plaintext attack
+IND-CCA　 indistinguishability under a chosen ciphertext attack
