@@ -76,7 +76,29 @@ On errors
 Input sanitisation
 
 Memory
+Process isolation
+irect memory access (DMA)
 
+Does it live on disk for long-term storage? If so, who has access to it? What authorisation mechanisms ensure that only authenticated parties have access?
+When it’s loaded in memory, who owns it? How long does it live in memory? What happens when it’s no longer used?
+If the secrets lived on a virtual machine, how much trust can be placed in parties that have access to the host machine? Can other tenants (i.e. users of other virtual machines) find a way to access secrets? What happens when the machine is decomissioned?
 
+Randomness
+on Unix platforms
+/dev/urandom
+Go standard library
+crypto/rand.Reader
+
+Time
+
+Side channels
+
+Privacy and anonymity
+
+Trusted computing
+
+Virtual environments
+
+Public key infrastructure
 
 
