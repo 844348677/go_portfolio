@@ -100,5 +100,34 @@ Trusted computing
 Virtual environments
 
 Public key infrastructure
+dread X.509 certificate format
+Key rotation
+cryptoperiod of a key
+ TLS
+Key revocation is part of the key rotation problem: how can a key be marked as compromised or lost?
+certificate revocation lists,
+OCSP (the online certificate status protocol)
+Due to these concerns and the difficulty in providing a useful public key infrastructure
+PKI tends to be a dirty word in the security and cryptographic communities.
+
+What cryptography does not provide
+
+Data lifetimes
+
+Options, knobs, and dials
+The more options a system has for picking the cryptography it uses, the greater the opportunity for making a cryptographic mistake.
+
+Compatibility
+
+Conclusion
+Cryptography is often seen as the fun part of building secure systems
+It’s not a one-size-fits-all security solution
+
+Chapter 3: Symmetric Security
+
+
+
+
+
 
 
