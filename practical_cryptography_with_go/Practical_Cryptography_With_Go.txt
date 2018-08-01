@@ -168,5 +168,25 @@ encrypt-then-MAC:
 
 Encrypt-and-MAC
 we would apply a MAC to the plaintext, then send the encrypted plaintext and MAC.
+In order to verify the MAC, the receiver has to decrypt the message
+this still permits an attacker to submit modified ciphertexts with the same problems described earlier. This presents a surface for IND-CCA attacks.
 
+MAC-then-encrypt
+a MAC is applied and appended to the plaintext, and both are encrypted.
+the receiver still has to decrypt the message, and the MAC can be modified by modifying the resulting ciphertext, which is a surface for IND-CCA attacks as well.
+
+Encrypt-then-MAC
+encrypt the message and append a MAC of the ciphertext. The receiver verifies the MAC, and does not proceed to decrypt if the MAC is invalid. This removes the IND-CCA surface.
+
+NaCl
+the Networking and Cryptography library
+a symmetric library (secretbox) and an asymmetric library (box)
+It uses a 32-byte key and 24-byte nonces
+A nonce is a number used once: a nonce should never be reused in a set of messages encrypted with the same key, or else a compromise may occur.
+
+The secretbox system uses a stream cipher called “XSalsa20” to provide confidentiality, and a MAC called “Poly1305”
+The package uses the data types *[32]byte for the key and *[24]byte for the nonce
+https://en.wikipedia.org/wiki/NaCl_(software)
+
+./src/ch03/nacl/main.go
 
