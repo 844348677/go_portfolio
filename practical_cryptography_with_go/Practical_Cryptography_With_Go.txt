@@ -313,3 +313,15 @@ func (s *Session) Decrypt(message []byte) ([]byte, error) {
 }
 
 Password-based key derivation
+The simplest mechanism for exchanging keys is to use a password to derive the key.
+golang.org/x/crypto/scrypt
+key derivation function (KDF), called PBKDF2
+using a lot of memory or a lot of CPU in an attempt to reduce the effectiveness of hardware implementations, making them more expensive to produce.
+
+The resource requirements of scrypt are controlled by its parameters:
+N: the number of iterations.16384 (214) is recommended for interactive logins and 1048576 (220) for file encryption.
+r: relative memory cost parameter (controls the blocksize in the underlying hash). The original presentation recommends a value of 8.
+p: relative CPU cost parameter. The original presentation recommends a value of 1.
+
+
+
