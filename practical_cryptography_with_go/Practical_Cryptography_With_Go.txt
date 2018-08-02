@@ -194,4 +194,8 @@ https://en.wikipedia.org/wiki/NaCl_(software)
 AES-GCM
 ./src/ch03/aes_gcm/main.go
 
+AES-CTR with HMAC
+AES-CTR and AES-CBC with an HMAC
+./src/ch03/aes_ctr_with_hmac
+
 

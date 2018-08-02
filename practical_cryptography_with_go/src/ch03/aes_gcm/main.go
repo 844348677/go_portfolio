@@ -1,4 +1,4 @@
-package main
+package second
 
 import "errors"
 import (
