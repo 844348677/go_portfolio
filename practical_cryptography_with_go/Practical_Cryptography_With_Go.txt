@@ -198,4 +198,20 @@ AES-CTR with HMAC
 AES-CTR and AES-CBC with an HMAC
 ./src/ch03/aes_ctr_with_hmac
 
+AES-CBC
+./src/ch04/aes_cbc/
+underlying nature of the block cipher:
+AES operates on blocks of data, and a full block is needed to encrypt or decrypt.
 
+
+Messages v. streams
+messages : discrete-sized chunks of data.
+
+Processing streams of data is more difficult due to the authenticity requirement.
+encrypting a stream
+We can’t encrypt-then-MAC: by it’s nature, we usually don’t know the size of a stream.
+We can’t send the MAC after the stream is complete, as that usually is indicated by the stream being closed.
+We can’t decrypt a stream on the fly, because we have to see the entire ciphertext in order to check the MAC.
+
+
+Chapter 4: Secure Channels and Key Exchange
