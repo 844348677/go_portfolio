@@ -215,3 +215,101 @@ We can’t decrypt a stream on the fly, because we have to see the entire cipher
 
 
 Chapter 4: Secure Channels and Key Exchange
+symmetric cryptography requires both sides to share the same key.
+it’s assumed that if encryption is required, the communication medium is insecure.
+exchanging keys over an insecure channel.
+
+Secure channel
+set up a secure channel between two peers
+an attacker cannot eavesdrop or forge messages
+The easiest way to prevent a replay is to keep track of message numbers; this number might be serialised as part of the message.
+a message might be considered as the pairing of a message number and some message contents.
+We’ll track numbers for both sent and received messages.
+
+type Message struct {
+	Number   uint32
+	Contents []byte
+}
+
+Serialising the message appends the contents to the 4-byte message number.
+The out variable is initialised with only four bytes, but with a capacity that accounts for the message contents.
+
+func MarshalMessage(m Message) []byte {
+	out := make([]byte, 4, len(m.Contents) + 4)
+	binary.BigEndian.PutUint32(out[:4], m.Number)
+
+	return append(out, m.Contents...)
+}
+
+Unmarshaling a message first checks the assumption that the message contains a sequence number and at least one byte of contents
+Then, the message number and contents are extracted.
+
+func UnmarshalMessage(in []byte) (Message, bool) {
+	m := Message{}
+	if len(in) <= 4 {
+		return m, false
+	}
+
+	m.Number = binary.BigEndian.Uint32(in[:4])
+	m.Contents = in[4:]
+
+	return m, true
+}
+
+//
+
+type Channel io.ReadWriter
+
+type Session struct {
+	lastSent uint32
+	sendKey *[32]byte
+
+	lastRecv uint32
+	recvKey *[32]byte
+
+	Channel Channel
+}
+
+func (s *Session) LastSent() uint32 {
+	return s.lastSent
+}
+
+func (s *Session) LastRecv() uint32 {
+	return s.lastRecv
+}
+
+//
+
+func (s *Session) Encrypt(message []byte) ([]byte, error) {
+	if len(message) == 0 {
+		return nil, secret.ErrEncrypt
+	}
+
+	s.lastSent++
+	m := MarshalMessage(Message{s.lastSent, message})
+	return secret.Encrypt(s.sendKey, m)
+}
+
+//
+
+func (s *Session) Decrypt(message []byte) ([]byte, error) {
+	out, err := secret.Decrypt(s.recvKey, message)
+	if err != nil {
+		return nil, err
+	}
+
+	m, ok := UnmarshalMessage(out)
+	if !ok {
+		return nil, secret.ErrDecrypt
+	}
+
+	if m.Number <= s.lastRecv {
+		return nil, secret.ErrDecrypt
+	}
+
+	s.lastRecv = m.Number
+
+	return m.Contents, nil
+}
+
+Password-based key derivation
