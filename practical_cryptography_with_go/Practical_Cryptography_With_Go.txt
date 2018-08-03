@@ -323,5 +323,50 @@ N: the number of iterations.16384 (214) is recommended for interactive logins an
 r: relative memory cost parameter (controls the blocksize in the underlying hash). The original presentation recommends a value of 8.
 p: relative CPU cost parameter. The original presentation recommends a value of 1.
 
+// deriveKey generates a new NaCl key from a passphrase and salt.
+func deriveKey(pass, salt []byte) (*[secret.KeySize]byte, error) {
+	var naclKey = new([secret.KeySize]byte)
+	key, err := scrypt.Key(pass, salt, 1048576, 8, 1, secret.KeySize)
+	if err != nil {
+		return nil, err
+	}
+
+	copy(naclKey[:], key)
+	util.Zero(key)
+	return naclKey, nil
+}
+
+// The encryption function will take a passphrase and a message, generate a random salt, derive a key, encrypt the message, and prepend the salt to the resulting ciphertext.
+
+func Encrypt(pass, message []byte) ([]byte, error) {
+	salt, err := util.RandBytes(SaltSize)
+
+}
+
+//未完待续
+
+Asymmetric key exchange: ECDH
+elliptic curves ([Sull13]) called the Elliptic Curve Diffie-Hellman key agreement protocol
+a variant on the Diffie-Hellman key exchange for elliptic curves.
+An asymmetric encryption algorithm,
+public key encryption algorithm,
+the key used to encrypt and the key used to decrypt are different.
+The key that’s used to encrypt is made public, and anyone who has this public key can encrypt a message to it.
+The decryption key is kept private by the holder.
+In symmetric security, all communicating parties have to share keys, which means (N * (N - 1)) / 2 keys. With asymmetric keys, only N public keys have to be exchanged.
+
+both sides have a key pair consisting of a private component and a public component.
+
+ephemeral key pairs
+
+NaCl: Curve25519
+In NaCl, generating new key pairs and performing a key exchange is simple, and provided by functions in
+golang.org/x/crypto/nacl/box
+
+pub, priv, err := box.GenerateKey(rand.Reader)
+
+以目前的功力　只能看到这了，　需要补充现代密码学的知识　为啥当年没修现代密码学呢
 
 
+
+　
