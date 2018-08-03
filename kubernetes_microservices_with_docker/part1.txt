@@ -1,0 +1,39 @@
+chapter 1 
+installing kubernetes using docker
+
+Kubernetes is software for managing a cluster of Docker containers.
+
+A Pod is a collection of one or more Docker containers with single interface features such as providing networking and filesystem at the Pod level rather than at the container level.
+
+
+setting the environment
+installing Docker
+installing kubernetes
+starting etcd
+starting kubernetes master
+starting service proxy
+listing the kubernetes docker containers
+installing kubectl
+listing services
+testing the kubernetes installation
+
+the kernel version may be verified with the following command
+
+uname -r
+
+installing Docker
+
+installing kubernetes
+kubernetes is an open source container cluster manager. the main components of kubernetes are the following
+1 etcd
+2 kubernetes master
+3 service proxy
+4 kubelet
+
+
+
+
+
+
+
+
