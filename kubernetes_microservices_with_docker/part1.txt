@@ -37,10 +37,55 @@ A service proxy runs to each node to provide the kubernetes service interface fo
 
 optionally create a directory (/kubernetes) to install kubernetes and permissions to global(777)
 
+sudo mkdir /kubernetes
+sudo chmod -R 777 /kubernetes
 
+change directory to the /kubernetes directory and start the Docker engine
 
+cd kubernetes/
+pwd
+/home/liuh/docker/kubernetes
+sudo service docker start
 
+set some Linux kernel parameter
 
+cd /boot
+ls -l
+uname -r
+sudo vi config-4.4.0-130-generic
+
+CONFIG_RESOURCE_COUNTERS=y
+CONFIG_MEMCG=y
+CONFIG_MEMCG_SWAP=y
+CONFIG_MEMCG_SWAP_ENABLED=y
+CONFIG_MEMCG_KMEM=y
+
+Most of the configs listed earlier are already turned on . The CONFIG_MEMCG_SWAP_ENABLED config is not set
+Set CONFIG_MEMCG_SWAP_ENABLED=y and save the kernel configuration file 
+
+Next, we need to add support fro memory and swap accounting to the kernel. the command-line parameters provided to the kernel may be listed with the following command
+
+cat /proc/cmdline
+
+Grub2 is the default boot loader for Ubuntu. to turn on memeory and swap accounting, open the /etc/default/grub file in the editor. The GRUB_CMDLINE_LINUX is set to an empty string 
+
+set the GRUB_CMDLINE_LINUX as follow, which enables memory and swap accounting in the kernel at boot
+
+CRUB_CMDLINE_LINUX  = "cgroup_enable=memory swapaccount=1"
+
+Update the grub.cfg file with the following command
+
+sudo update-grub
+
+Reboot the system
+
+sudo reboot
+
+Return the command to list the command-line kernel parameters
+
+cat /proc/cmdline
+
+Having set the prerequisite kernel parameter, next we shall start the Kubernetes componets etcd, master, and service proxy
 
 
 
