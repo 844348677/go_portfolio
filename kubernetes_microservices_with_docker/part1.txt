@@ -30,6 +30,15 @@ kubernetes is an open source container cluster manager. the main components of k
 3 service proxy
 4 kubelet
 
+etcd is a simple, secure, fast and reliable distributed key-value store
+kubernetes master exposes the kubernetes API using which containers are run on nodes to handle tasks
+kubelet ia an agent that runs on each node to monitor the containers running on the node, restarting them if required to keep the replication level
+A service proxy runs to each node to provide the kubernetes service interface for clients. a service is an abstraction fro the logical set of pods represented by the service, and a service selector is used to select the pods represented by the service. the service proxy routes the client traffice to a matching pod. labels are used to match a service with a pod
+
+optionally create a directory (/kubernetes) to install kubernetes and permissions to global(777)
+
+
+
 
 
 
