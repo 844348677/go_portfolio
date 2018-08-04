@@ -101,6 +101,17 @@ The following kinds of namespaces exist:
 	Inter-process communication (ipc)
 	UTS
 	User ID (user)
+each namespace kind is used to isolate a certain group of resources
+By assigning two different UTS namespaces to a pair of processes, you can make them see different local hostnames.
+
+Limiting resource available to a process
+cgroups, a Linux kernel feature that limits the resource usage of a process(or a group of processes)
+a processes can't use more than the configured amount of CPU,memory,network bandwidth
+This way, processes cannot hog resources reserved for other processes, which is similar to when each process runs on a separate machine.
+
+Introducing the Docker container platform
+
+
 
 
 
