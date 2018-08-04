@@ -1,2 +1,48 @@
 1. Introducing Kubernetes
 
+monoliths
+legacy system
+slow release cycles and are updated relatively infrequently
+developers package up the whole system and hand it over to the ops teams
+
+microservices
+microservices are decoupled from each other, they can be developed, deployed , updated , and scaled individually
+But with bigger numbers of deployable components and increasingly larger datacenters, it becomes increasingly difficult to configure, manage, and keep the wholesystem running smoothly.
+resource utilization and hardware costs
+automation
+
+abstracts away the hardware infrastructure
+deploy and run 
+When deploying a multi-component application through Kubernetes, it selects a server for each component, deploys it, and enables it to easily find and communicate with all the other components of your application.
+
+largest datacenters , such as the ones built and operated by cloud providers
+
+changes
+a consequence of splitting big monolithic apps into smaller microservices
+and the change in the infrastructure that runs those apps
+
+Moving from monolithc apps to microservices
+develop, deployed , and managed as one entity . run as a single OS process
+Changes to one part fo the application require a redeployment of the whole application
+certain parts of an application are extremely hard or next to impossible to scale horizontally
+
+splitting apps into microservices
+each microservices run as an independent process and communicates with other microservices through simple, well-define interfaces
+API
+
+scaling microservices
+a per-serivce basis
+which means you have the option of scaling only those services  that require more resources, while leaving others at their original scale
+splitting the app into microservices allow you to horizontally scale the parts that allow scaling out
+
+deploying microservices
+microservices also have drawbacks
+components increases
+making it hard to debug and trace execution calls
+distributed tracing system such as Zipkin
+
+understanding the divergence of environment requirements
+the bigger the number of components you need to deploy on the same host, the harder it will be to manage all  their dependencies to satisfy all their requirement
+
+
+
