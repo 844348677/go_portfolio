@@ -39,3 +39,4 @@ PersistentVolume (pv) : Points to persistent storage that can be mounted into a 
 PersisitentVolumeClaim (pvc) : A request for and claim to a PersistentVolume
 
 StorageClass (sc) : Defines the type of dynamically-provisioned storage claimable in a PersistentVolumeClaim
+
