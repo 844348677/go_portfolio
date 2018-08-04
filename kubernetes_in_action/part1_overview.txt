@@ -44,5 +44,27 @@ distributed tracing system such as Zipkin
 understanding the divergence of environment requirements
 the bigger the number of components you need to deploy on the same host, the harder it will be to manage all  their dependencies to satisfy all their requirement
 
+providing a consistent environment ot applications
+huge difference between development and production environment, difference even exist between individual production machines
+developers often take care of their development laptops on their own
+
+moving to continuous delivery : DevOps and NoOps
+the same team that develops the application also take part in deploying it and taking care of it over whole lifetime
+this means the developer, QA, and operations teams now need to collaborate throughtout the whole process. this practice is called DevOps
+
+understanding the benefits
+release newer versions of application nore often
+
+letting developers and sysadmins do what they do best
+Kubernetes enables us to achieve all of this. By abstracting away the actual hardware and exposing it as a single platform for deploying and running apps, it allows developers to configure and deploy their applications without any help from the sysadmins and allows the sysadmins to focus on keeping the underlying infrastructure up and running, while not having to know anything about the actual applications running on top of it.
+
+
+
+
+
+
+
+
+
 
 
