@@ -17,7 +17,7 @@ When deploying a multi-component application through Kubernetes, it selects a se
 
 largest datacenters , such as the ones built and operated by cloud providers
 
-changes
+Changes
 a consequence of splitting big monolithic apps into smaller microservices
 and the change in the infrastructure that runs those apps
 
@@ -26,45 +26,62 @@ develop, deployed , and managed as one entity . run as a single OS process
 Changes to one part fo the application require a redeployment of the whole application
 certain parts of an application are extremely hard or next to impossible to scale horizontally
 
-splitting apps into microservices
+Splitting apps into microservices
 each microservices run as an independent process and communicates with other microservices through simple, well-define interfaces
 API
 
-scaling microservices
+Scaling microservices
 a per-serivce basis
 which means you have the option of scaling only those services  that require more resources, while leaving others at their original scale
 splitting the app into microservices allow you to horizontally scale the parts that allow scaling out
 
-deploying microservices
+Deploying microservices
 microservices also have drawbacks
 components increases
 making it hard to debug and trace execution calls
 distributed tracing system such as Zipkin
 
-understanding the divergence of environment requirements
+Understanding the divergence of environment requirements
 the bigger the number of components you need to deploy on the same host, the harder it will be to manage all  their dependencies to satisfy all their requirement
 
-providing a consistent environment ot applications
+Providing a consistent environment ot applications
 huge difference between development and production environment, difference even exist between individual production machines
 developers often take care of their development laptops on their own
 
-moving to continuous delivery : DevOps and NoOps
+Moving to continuous delivery : DevOps and NoOps
 the same team that develops the application also take part in deploying it and taking care of it over whole lifetime
 this means the developer, QA, and operations teams now need to collaborate throughtout the whole process. this practice is called DevOps
 
-understanding the benefits
+Understanding the benefits
 release newer versions of application nore often
 
-letting developers and sysadmins do what they do best
+Letting developers and sysadmins do what they do best
 Kubernetes enables us to achieve all of this. By abstracting away the actual hardware and exposing it as a single platform for deploying and running apps, it allows developers to configure and deploy their applications without any help from the sysadmins and allows the sysadmins to focus on keeping the underlying infrastructure up and running, while not having to know anything about the actual applications running on top of it.
 
+Introducing container technologies
+kubernetes uses Linux container technologies to provide isolate of runing application, 
+Kubernetes, Docker,  rkt
 
+Understanding what containers are
+only smaller numbers of large components. Virtual Machine (VM)
+But when these components start getting smaller and their numbers start to grow
 
+Isolating components with Linux container technologies
+Instead of using virtual machines to isolate the environments of each microservice (or software processes in general), developers are turning to Linux container technologies.
+run multiple services on the same host machine
+not only exposing a different environment to each of them, but also isolating them from each other
+A process running in a container runs inside the host’s operating system, like all the other processes
+VMs, where processes run in separate operating systems
+But the process in the container is still isolated from other processes.
 
+Comparing virtual machine to containers
+coantainers are much more lightweight
+nothing more than a single isolated process running in the host OS, consuming only the resources that the app consumes and without the overhead of any additional processes
+you often end up grouping multiple applications into each VM because you don’t have enough resources to dedicate a whole VM to each app. 
+When using containers, you can (and should) have one container for each application
 
-
-
-
+the main benefit of virtual machines is the full isolation they provide, because each VM runs its own Linux kernel,
+while containers all call out to the same kernel, which can clearly pose a security risk
 
 
 
