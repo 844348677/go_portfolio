@@ -83,5 +83,24 @@ When using containers, you can (and should) have one container for each applicat
 the main benefit of virtual machines is the full isolation they provide, because each VM runs its own Linux kernel,
 while containers all call out to the same kernel, which can clearly pose a security risk
 
+introducing the mechanisms that make container isolation possible
+the first one ,Linux Namespaces, makes sure each process see its own personal view of the system (file,process, network interfaces,hostname)
+the second on is Linux Control Groups (cgroups) , which limit the amount of resources the process can consume(CPU,memory,network bandwith)
+
+Isolating processes with Linux Namespaces
+by default, each Linux system initially has one single namespace.
+All system resources, such as filesystems, process IDs, user IDs, network interfaces, and others, belong to the single namespace.
+But you can create additional namespaces and organize resources across them.
+When running a process, you run it inside one of those namespaces. The process will only see resources that are inside the same namespace.
+a process doesn’t belong to one namespace, but to one namespace of each kind.
+namespace of each kind.
+The following kinds of namespaces exist:
+	Mount (mnt)
+	Process ID (pid)
+	Network (net)
+	Inter-process communication (ipc)
+	UTS
+	User ID (user)
+
 
 
