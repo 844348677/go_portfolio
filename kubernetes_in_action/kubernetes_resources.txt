@@ -1,0 +1,41 @@
+Namespace (ns) : Enable organizing resources into non-overlapping groups 
+
+Deploying workloads
+
+Pod (po) : the basic deployable unit containing one or more process in co-located containers
+
+ReplicaSet (rs) : Keeps one or more pod replicas running
+
+ReplicationController (rc) : the older , less-powerful equivalent of a ReplicaSet
+
+Job : Runs pods that perform a completable task
+
+CronJob : Runs a scheduled job once or periodically 
+
+DaemonSet (ds) : Runs one pod replica per node (on all nodes or only on those matching a node selector)
+
+StatefulSet (sts) : RUns stateful pods with a stable identity
+
+Deployment (deply) : Declarative deployment and updates of pods
+
+Sevices
+
+Service (svc) : Exposes one or more pods at a single and stable IP address and port pair
+
+Endpoints (ep) : Defines which pods (or other servers) are exposed through a service
+
+Ingress (ing) : Expose one or more services to externel clients through a single externelly reachable IP addresss
+
+Config
+
+ConfigMap (cm) : A key-value map fro storing non-sensitive config options for apps and exposing it to them
+
+Secret : Like a ConfigMap, but for sensitive data
+
+Storage 
+
+PersistentVolume (pv) : Points to persistent storage that can be mounted into a pod through a PersistentVolumeClain
+
+PersisitentVolumeClaim (pvc) : A request for and claim to a PersistentVolume
+
+StorageClass (sc) : Defines the type of dynamically-provisioned storage claimable in a PersistentVolumeClaim
