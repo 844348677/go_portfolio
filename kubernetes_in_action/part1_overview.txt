@@ -146,10 +146,110 @@ Therefore, even if they share files, they’re still isolated from each other. T
 When a container is run, a new writable layer is created on top of the layers in the image. When the process in the container writes to a file located in one of the underlying layers, a copy of the whole file is created in the top-most layer and the process writes to the copy.
 
 Understanding the portability limitations of container images
+one small caveat exists : all containers running on a host use the host's Linux kernel
+the different version of the Linux kernel
+the different hardware architecture (x86,ARM-based)
 
+Intoducing rkt - an alternative to Docker
 
+Introducing Kubernetes
+as the number of deployable application components in your system grows, it becomes harder to manage them all.
+This has forced them to develop solutions for making the development and deployment of thousands of software components manageable and cost-efficient.
 
+Understanding its origins
+help both application developers and system administrators manage those thousands of applications and services.
+After having kept Borg and Omega secret for a whole decade, in 2014 Google introduced Kubernetes, an open-source system based on the experience gained through Borg, Omega, and other internal Google systems.
 
+Looking at Kubernetes from the top of a mountain
+Kubernetes is a software system that allows you to easily deploy and manage containerized applications on top of it.
+without having to know any internal details of these applications and without having to manually deploy these applications on each host.
+This is of paramount importance for cloud providers, because they strive for the best possible utilization of their hardware while still having to maintain complete isolation of hosted applications.
+Kubernetes enables you to run your software applications on thousands of computer nodes as if all those nodes were a single, enormous computer.
+It abstracts away the underlying infrastructure and, by doing so, simplifies development, deployment, and management for both development and the operations teams.
+Deploying applications through Kubernetes is always the same, whether your cluster contains only a couple of nodes or thousands of them.
+Additional cluster nodes simply represent an additional amount of resources available to deployed apps.
 
+Understanding the core of what kubernetes does
+developer -> App descriptor -> Kubernetes master -> Tens or thousands of worker nodes exposed as a single deployment platform
+a master node and any number of worker nodes
+when the developer submits a list of apps to the master, kubernetes deploys them to the cluster of worke nodes. What node a component lands on doesn't (and shouldn't) matter
+the developer can specify that certain apps must run together and Kubernetes will deploy them on the same worker node. Other will be spread around the cluster, but they can talk to each other in the same way, regardless of where they're deployed
+
+Helping developers focus on the core app feature
+Kubernetes can be thought of as an operating system for the cluster.
+infrastructure-related services
+Kubernetes to provide these services.
+this includes things such as service discovery, scaling, load-balancing, self-healing, and even leader election
+
+Helping OPS teams achieve better resource utilization
+Kubernetes will run your containerized app somewhere in the cluster, provide information to its components on how to find each other, and keep all of them running.
+Because your application doesn’t care which node it’s running on, Kubernetes can relocate the app at any time, and by mixing and matching apps, achieve far better resource utilization than is possible with manual scheduling.
+
+Understanding the architecture of a Kubernetes cluster
+at the hardware level, a kubernetes cluster is composed of many nodes, which can be split into two types
+	the master node, which hosts the kubernetes Control Plane that controls and manages the whole Kubernetes system
+	Worker nodes that run the actual application you deploy
+Control Plane (master) :
+etcd <- API server ; API server <- Schedule ; API server <- Controller Manager
+Worker node(s) :
+(master)API server <- Kubelet -> Container Runtime ; (master)API server <- kube-proxy
+
+The Control Plane
+The Control Plane is what controls the cluster and makes it functions.
+in consist of multiple components that can run on a single master node or be split across multiple nodes and replicated to ensure high availability. these components are
+	The Kubernetes API server, which you and the other Control Plane componenets communicate with
+	The Schedule, which schedules your apps (assigns a worker node to each deployable component of your application)
+	The Control Manager, which performs cluster-level functions, such as replicating components, keeping track of worker nodes, handling node failures , and so on
+	etcd, a reliable distributed data store that persistently stores the cluster configuration
+the components of the Control Plane hold and control the state of the cluster, but they don't run your applications. 
+
+The Nodes
+The worker nodes are the machines that run your containerized application.
+the task of running, monitoring, and providing services to your application is done by the following components 
+	Docker, rkt, or another container runtime, which runs your containers
+	the Kubelet, which talks to the API server and manages containers on its node
+	the Kubernetes Service Proxy (kube-proxy), which load-balances network traffic between application components
+
+Running an application in Kubernetes
+to run an application in Kubernetes, you first need to package it up into one or more container images,
+push those images to an image registry,
+and then post a description of your app to the Kubernetes API server
+The description includes information such as the container image or images that contain your application components,how those components are related to each other, and which ones need to be run co-located (together on the same node) and which don’t. For each component, you can also specify how many copies (or replicas) you want to run. Additionally, the description also includes which of those components provide a service to either internal or external clients and should be exposed through a single IP address and made discoverable to the other components.
+
+Understanding how the description results in a running container
+When the API server processes your app’s description, the Scheduler schedules the specified groups of containers onto the available worker nodes based on computational resources required by each group and the unallocated resources on each node at that moment.
+The Kubelet on those nodes then instructs the Container Runtime (Docker, for example) to pull the required container images and run the containers.
+pods
+a set of containers -> pod ; node run a pod or pods ; pull the container images and run the containers
+
+Keeping the
+Kubernetes continuously makes sure that the deployed state of the application always matches the description you provided.
+instance stop , restart ; node dies , select new node
+
+Scaling the number of copies
+automatically keep adjusting the number, based on real-time metrics, 
+such as CPU load, memory consumption, queries per second, or any other metric your app exposes.
+
+Hitting a moving terget
+To allow clients to easily find containers that provide a specific service, you can tell Kubernetes which containers provide the same service and Kubernetes will expose all of them at a single static IP address and expose that address to all applications running in the cluster.
+This is done through environment variables, but clients can also look up the service IP through good old DNS.
+The kube-proxy will make sure connections to the service are load balanced across all the containers that provide the service.
+The IP address of the service stays constant, so clients can always connect to its containers, even when they’re moved around the cluster.
+
+Understanding the benefits of using kubernetes
+
+Simplifying application deployment
+in essence, all the nodes are now a single bunch of computional resources that are waiting fro application to comsume them
+
+Achieving better utilization of hardware
+decoupled your app from the infrastructure
+
+Health checking and self-healing
+
+Automatic scaling
+
+Simplifying application development
+
+Summary
 
 
