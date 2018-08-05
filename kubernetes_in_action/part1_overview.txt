@@ -304,13 +304,57 @@ Node.js web application and package it into a container iamge
 the application will accept HTTP requests and respond with the hostname of the machine it's running in
 app running inside a container see its own hostname and not that of the host machine, even though it's running on the host like any other process
 later, when you deploy the app on kubernetes and scale it out (scale it horizontally; that is run multiple instances of the app ). you'll see your HTTP request hitting different instances of the app
-app.js
+	ch02/app.js
 it starts up an HTTP server on port 8080.
 the serever responds with an HTTP response status code 200 OK and the text "you've hit <hostname>" to every request. the request handler also logs the client's IP address to the standard output, later
 the returned hostname is the server's actual hostname, not the on the client send in the HTTP request's Host hander
 use Docker to package the app into a container image and enable to be run anywhere without having to download or install anything(except Docker, )
 
+Creating Dockerfile for the image
+to package your app into an image, create file called Dockerfile, which will contain a list of instructions that Docker will perform when building the image
+the Dockerfile needs to be in the same directory as the app.js file and should contain the commands shown in the following listing
+	ch02/Dockerfile
+the FROM line defines the container image you'll use as a starting point( the base image you're building on top of)
+using the node container image, tag 7
+second line , adding app.js file from local directory into the root directory in the image, under the same name (app.js)
+third line, defining the what command should be executed when somebody runs the image
+the node image is made specifically for running Node.js apps
 
+Build the container image
+Dockerfile and the app.js file, command (pwd /home/liuh/go/go_portfolio/kubernetes_in_action/ch02)
 
+$ docker build -t kubia .
+
+build an image called kubia based on the cotents of the current directory ( note the dot at the end of the build command )
+	1. docker build kubia . -> Docker client
+	2. Docker client uploads directory contents to daemon (Dockerfile app.js)
+	Docker daemon node:7.0 -> kubia:latest
+	3. Docker pulls image node:7.0 if it isn't stored locally yet
+	4. build new image
+
+Understanding how an image is built
+the client and daemon don't need to be on the same machine at all. If you're using Docker on a non-Linux OS, the client is on your host OS, but the daemon runs inside a VM
+all the files in the build directory are uploaded to the daemon, if ti contains many large files and the daemon isn't running locally, the upload may take longer
+
+Understand image layers
+An image isn't single, big, binary blob, but is composed of multiple layers, which you may have already noticed when running the busybox example (there were multiple Pull complete lines-one of each layer)
+different images may share several layers, which makes storing and transferring images much more efficient
+if you create multiple images based on the same base image (such as node:7 in the example), all the layers comprising the base image will be stored only once.
+when pulling an image, Docker will download each layer individually.
+several layers may already be stored on your machine, so Docker will only download those that aren't
+When building an image, a new layer is created for each individual command in the Dokcerfile.
+during the build of your image, after pulling all the layers of the base image, Docker will create a newe layer on top of them and add the app.js file into ti
+then it will create yet another layer that will spcify the command that should be excuted when the image is run
+this last layer will then be tagged as kubia:latest
+kubia:latest image : buildpack-deps:jessie image ; node:0.12 image  other:latest image
+
+$ docker images
+
+Comparing building images with a Dokcer file va manually
+Dockerfile, automatically and repeatable
+
+Running the container image
+
+$ docker run --name kubia-container -p 8080:8080 -d kubia
 
 
