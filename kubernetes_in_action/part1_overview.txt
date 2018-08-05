@@ -110,6 +110,44 @@ a processes can't use more than the configured amount of CPU,memory,network band
 This way, processes cannot hog resources reserved for other processes, which is similar to when each process runs on a separate machine.
 
 Introducing the Docker container platform
+It simplified the process of packaging up not only the application but also all its libraries and other dependencies, even the whole OS file system, into a simple, portable package that can be used to provision the application to any other machine running Docker.
+a big different between Docker-based container images and VM images is that container images are composed of layers, which can be shared and reused across multiple images
+This means only certain layers of an image need to be downloaded if the other layers were already downloaded previously when running a different container image that also contains the same layers
+
+Understanding Docker concepts
+Docker is a platform for packaging,distributing,and running applications
+three main concepts in Docker comprise this scenario
+Images : 
+A Docker-based container image is something you package your application and its environment into.
+it contains the filesystem that will be available to the application and other metadata, such as the path to the executable that should be executed when the image is run
+Register :
+A Docker Registry is a repository that stores your Dokcer images and facilitates easy sharing of the images between different people and computers
+Containers :
+A Docker-based container is a regular Linux container created from a Docker-based container image.
+A running container is a process running on the host running Docker, but it’s completely isolated from both the host and all other processes running on it.
+
+Building, Distributing, and Running a Docker image
+1. developer tells Docker to build and push image
+2. Docker builds image
+3. Docker pushes image to registry
+4. developer tells Docker on production machine to run image
+5. Docker pulls image from registry
+6. Docker runs container from image
+
+Comparing virtual machine and Dokcer contianers
+each container has its own isolated filesystem . how can both them share the same files?
+
+Understanding image Layers
+Docker images are composed of layers
+different images can contain the exact same layer because every Docker image is built on top of another image and two different images can both use the parent image as their base
+But layers don’t only make distribution more efficient, they also help reduce the storage footprint of images. Each layer is only stored once.
+Two containers created from two images based on the same base layers can therefore read the same files, but if one of them writes over those files, the other one doesn’t see those changes.
+Therefore, even if they share files, they’re still isolated from each other. This works because container image layers are read-only.
+When a container is run, a new writable layer is created on top of the layers in the image. When the process in the container writes to a file located in one of the underlying layers, a copy of the whole file is created in the top-most layer and the process writes to the copy.
+
+Understanding the portability limitations of container images
+
+
 
 
 
