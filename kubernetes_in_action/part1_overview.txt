@@ -258,3 +258,59 @@ Summary
 	Kubernetes exposes the whole datacenter as a single computational resource for running applications
 	developers can deploy apps through Kubernetes without assistence from sysadmins
 	sysadmin can sleep better by having Kubernetes deal with failed nodes automatically
+
+
+CH02 First steps with Docker and Kubernetes
+covers
+creating, running, and sharing a container image with Docker
+running a single-node kubernetes cluster locally 
+setting up a kubernetes cluster on google kubernetes engine
+setting up and using the kubectl command-line client
+deploying an app on kubernetes and scaling it horizontally
+
+Creating , running , and sharing a container image
+running application in Kubernetes requires them to be packaged into container images
+	1. install Docker and run your first "Hello world" contaienr
+	2. create a trivial Node.js app that you'll later deploy in Kubernetes
+	3. Package the app into a container image so you can then run it as an isolated container
+	4. run a container based on the image
+	5. push the image to Docker Hub so that anyone anywhere can run it
+
+Install Docker an running a Hello World container
+if you're using a Mac or Windows and install Docker per instructions, Docker will set up a VM fro you and run the Docker daemon inside that VM.
+busybox image, echo "Hello world"
+busybox is a single executable that combines many of the standard UNIX command-line tools, such as echo,ls,gzip, and so on
+
+$ docker run busybox echo "Hello world"
+
+Understanding what happens behind the scenes
+	1. docker run busybox echo "hello world"
+	2. Docker check if busybox image is already stored locally
+	3. docker pulls busybox image from registry(if not available locally)
+	4. docker runs echo "hello world" in isolated container
+
+Running other images
+the command that should be executed is usually baked into the image itself, but you can override it if you want.
+
+$ docker run <image>
+
+Versioning container images
+when referring to images without explicitly specifying the tag, Docker will assume you're referring to the so-called latest tag
+
+$ docker run <image>:<tag>
+
+Creating a trivial Node.js app
+Node.js web application and package it into a container iamge
+the application will accept HTTP requests and respond with the hostname of the machine it's running in
+app running inside a container see its own hostname and not that of the host machine, even though it's running on the host like any other process
+later, when you deploy the app on kubernetes and scale it out (scale it horizontally; that is run multiple instances of the app ). you'll see your HTTP request hitting different instances of the app
+app.js
+it starts up an HTTP server on port 8080.
+the serever responds with an HTTP response status code 200 OK and the text "you've hit <hostname>" to every request. the request handler also logs the client's IP address to the standard output, later
+the returned hostname is the server's actual hostname, not the on the client send in the HTTP request's Host hander
+use Docker to package the app into a container image and enable to be run anywhere without having to download or install anything(except Docker, )
+
+
+
+
+
