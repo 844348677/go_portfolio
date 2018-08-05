@@ -385,9 +385,52 @@ $ docker inspect  kubia-container
 Docker will print out a long JSON containeing low-level information about the container
 
 Exploring the inside of a running container
+what the environment is like inside the container
 
+Running a shell inside an existing container
 
+$ docker exec -it kubia-container bash
 
+this will run bash inside the existing kubia-container container.
+the bash process will have the same Linux namespace as the main container process
+this allows you to explore the container from within and see how Node.js and your app see the system when running inside the container. the -it option
+	-i, which makes sure STDIN is kept open. you need this fro entering commands into the shell
+	-t, which allocates a pseudo terminal (TTY)
+you need both if you want the use the shell like you're  used to 
+(if you leave out the first one , you can't type any commands, and if you leave out the second one, the command prompt won't be displayed and some commands will complian about the TERM variable not being set)
 
+Exploring the container from within
+use the shell in the following listint to see the processes running in the contaienr
+
+root@883e3b443576:/# ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.4 813604 25616 ?        Ssl  14:10   0:00 node app.js
+root        13  0.0  0.0  20248  3128 pts/0    Ss   18:46   0:00 bash
+root        25  0.0  0.0  17504  2004 pts/0    R+   18:53   0:00 ps aux
+
+three processes. 
+
+Understanding that processes in a container run it the host operating system
+open another terminal and list the processes on the host OS itself
+
+liuh@liuh-pc:~$ ps aux | grep app.js
+root     22906  0.0  0.4 813604 25616 ?        Ssl   8月05   0:00 node app.js
+
+this proves that processes running in the container are running in the host OS
+hte processes have different IDs inside the container vs. on the host
+the container is using its own PID Linux namespace and has a completely isolated process tree, with its own sequence of numbers
+
+The container's filesystem is also isolated
+like having an isolated precess tree, each container also has an isolated filesystem
+
+root@883e3b443576:/# ls
+app.js	bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv  sys  tmp  usr  var
+
+Entering a running contaienr like this is useful when debugging an app running in a container
+an application will not see its own unique filesystem, but alse processes, users, hostname, and network interfaces
+
+Stopping and removing a container
+
+$ docker stop kubia-container
 
 
