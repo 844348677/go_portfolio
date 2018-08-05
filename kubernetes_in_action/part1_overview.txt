@@ -357,4 +357,37 @@ Running the container image
 
 $ docker run --name kubia-container -p 8080:8080 -d kubia
 
+run a new container called kubia-container from the kubia image.
+the container will be detached from the console (-d flag), which means it will run in the background
+port 8080 on the local machine will be mapped on port 8080 inside the container (-p 8080:8080)
+if you're not running the Docker daemon on your local machine, you'll need to use the hostname or IP of the VM running the daemon instead of localhost.
+http://localhost:8080
+
+Accessing your app
+
+$ curl localhost:8080
+you've hit 883e3b443576
+
+that's the reponse from your app. it is running inside a container, isoldated from everything else
+883e3b443576 is its hostname, and not the actual hostname of your host machine . ID of the docker container
+
+Listring all running container
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                    NAMES
+883e3b443576        kubia               "node app.js"       4 hours ago         Up 4 hours          0.0.0.0:8080->8080/tcp   container
+
+Getting additional information about a container
+to see additional information , you can use docker inspect
+
+$ docker inspect  kubia-container
+
+Docker will print out a long JSON containeing low-level information about the container
+
+Exploring the inside of a running container
+
+
+
+
+
 
