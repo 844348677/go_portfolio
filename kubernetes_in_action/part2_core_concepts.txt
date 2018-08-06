@@ -1,0 +1,8 @@
+ch03 Pods:running containers in Kubernetes
+	creating, running, and stopping pods
+	organizing pods and other resources with labels
+	performing an operation on all pods with a specific label
+	using namespaces to split pods into non-overlapping groups
+	scheduling pods onto specific types of worker nodes
+
+

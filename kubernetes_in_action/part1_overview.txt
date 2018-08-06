@@ -640,6 +640,55 @@ to solve the problem of ever-changing pod IP addresses, as well as exposing mult
 Horizontally scaling the application
 a running application, monitored and kept running by a ReplicationController and exposed to the world through a service
 
+Listing all the resource types with kubectl get
+
+the DESIRED column shows the number of pod replicas you want the ReplicationController to keep, whereas the CURRENT column shows the actual number of pods currently running
+
+Increasing the DEDIRED replica count
+
+$ kubectl scale rc kubia --replicas=3
+
+you only set the new desired number of instances and let Kubernetes determine what actions it need to take to achieve the request state
+instead of telling Kubernetes exactly what actions it should perform, you're only declaratively changing the desired state of the system and letting Kubernetes examine the current actual state and reconcile it with the desired state
+
+Seeing the results of the scale-out
+
+$ kubectl get rc
+$ kubectl get pods
+
+Seeing requests hit all three pods when hitting the service
+request are hitting different pods randomly.
+they act as a load balancer standing in front of multiple pods
+
+visualizing the new state of your system
+a single service and a single ReplicationController, three instances of your pod, all mannaged by the ReplicationController
+the service no longer sends all request to a single pod, bur spreads them across all three pods
+
+Examming what nodes your app is running on
+what node a pod is running on isn't that important, as long as it gets sheduled to a node that can provide the CPU and memory the pod needs to run properly
+
+Displaying the pod IP and pod's node when listing pods
+
+$ kubectl get pods -o wide
+
+Inspecting other details of a pod with kubectl describe
+
+$ kubectl describe pod 
+
+Introducing the kubernetes dashboard
+
+summary
+	pull and run any publicly available container image
+	package your apps into contaienr images and make them avaible to anyone by pushing the images to a remote image registry
+	enter a running container and inspect its environment
+	set up a multi-node Kubernetes cluster on Google Kubernetes Engine
+	Configure an alias and tab completion fro the kubectl command-line tool
+	list and inspect Nodes, Pods, Services, and ReplicationCOntrollers in a Kubernetes cluster
+	run a containre in kubernetes and make it accessiable from outside the cluster
+	have a basic sense of how Pods, ReplicationControllers, and Services relate to one another
+	scale an app horizontally by changing the ReplicationController's replica count
+	Access the web-based Kubernetes dashboard on both Minikue and GKE
+
 
 
 
