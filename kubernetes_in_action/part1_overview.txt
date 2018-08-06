@@ -433,4 +433,92 @@ Stopping and removing a container
 
 $ docker stop kubia-container
 
+this will stop the main process running in the container and consequently stop the container, because no other processes are running inside the container
+the container itself still exists and you can see it with (docker ps -a). the -a option prints out all the  containers , those running  and those that have benen stopped 
+to truly remove a container , you need to remove it with th docker rm command
+
+$ docker rm kubia-container
+
+Pushing the image to an image registry
+Docker Hub (http://hub.docker.com), which is one fo the publicly available registries
+Quay.io and Google container Registry
+before you do that, you need to re-tag your image according to Docker Hub's rules.
+Docker Hub will allow you to push an image if the  image's repository name starts with your Docker Hub
+
+Tagging an image under an additional tag
+once you know your ID (844348677) , you're ready to rename your image, currently tagged as kubia, to 844348677/kubia 
+
+$ docker tag kubia 844348677/kubia
+
+this doesn't rename the tag; it creates an additional tag fro the same image
+
+liuh@liuh-pc:~/go/go_portfolio/kubernetes_in_action/ch02$ sudo docker images |head
+REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
+844348677/kubia                                latest              febbdf6cf0b1        7 hours ago         660MB
+kubia                                          latest              febbdf6cf0b1        7 hours ago         660MB
+busybox                                        latest              e1ddd7948a1c        4 days ago          1.16MB
+844348677/testserver                           latest              0411d0d1b02c        8 days ago          4.39MB
+testserver                                     latest              0411d0d1b02c        8 days ago          4.39MB
+
+both kubia and 844348677/kubia point to the same image ID, so they're in fact one single image with two tags
+
+Pushing the image to Docker Hub
+before you can push the image to Docker Hub, you need to log in under your user ID with the docker login command
+
+$ docker login
+$ docker push 844348677/testserver
+$ docker push 844348677/kubia
+
+Running the image on a different machine
+
+$ docker run -p 8080:8080 -d 844348677/kubia
+
+the best thing about is that your application will have the exact same environment every time and everywhere it's run
+
+Setting up a Kubernetes cluster
+setting up a full-fledged, multi-node Kubernetes cluster isn't a simple task,
+the documentation at http://kubernetes.io
+Kubernetes can be run on your local development machine, your own organization's cluster of machines, on cloud providers providing virtual machines (Google Compute Engine, Amazon EC2, Microsoft Azure, and so on), or by using a  managed Kubernetes cluster such as Google Kubernetes Engine(previously known a as Google contaienr Engine)
+run a single-node Kubernetes cluster on your local machine 
+
+Running a local single-node Kubernetes cluster with Minikube
+the simplest and quickest path to a fully functioning Kubernetes cluster is by using Minikube
+Minikube is a tool that sets up a single-node cluster that's great for both testing Kubernetes and developing apps locally
+
+Installing Minikube
+Minikube is a single binary that needs to be download and put onto your path.
+http://github.com/kubernetes/minikube
+Install a Hypervisor
+For Linux, install VirtualBox or KVM.
+https://www.virtualbox.org/wiki/Downloads
+https://www.linux-kvm.org/page/Main_Page
+Note: Minikube also supports a --vm-driver=none option that runs the Kubernetes components on the host and not in a VM. Docker is required to use this driver but a hypervisor is not required.
+--vm-driver=none
+Install kubectl
+https://kubernetes.io/docs/tasks/tools/install-kubectl/
+Install kubectl binary via curl
+1. Download the latest release with the command:
+$ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+! www.google.com GFW
+$ scp -P xxxxx root@xxx.xxx.xxx.xxx:/root/kubectl .
+2. Make the kubectl binary executable.
+$ chmod +x ./kubectl
+3. Move the binary in to your PATH.
+$ sudo mv ./kubectl /usr/local/bin/kubectl
+Install Minikube
+$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
+$ scp -P xxxxx root@xxx.xxx.xxx.xxx:/root/minikube .
+
+Staring a Kubernetes cluster with Minikube
+
+$ minikube start
+
+$ minikube --vm-driver=none start
+
+Installing the kubernetes client (kubectl)
+to interact with kubernetes , you also need the kubectl CLI client
+
+Checking to see the cluster is up and Kubectl can talk to it
+
+
 

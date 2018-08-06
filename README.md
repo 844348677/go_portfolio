@@ -26,3 +26,5 @@ http://www.foxebook.net/
 https://www.wowebook.org/
 
 https://coderprog.com/
+
+terminal 使用　tsocks , 直接 command 　tsocks , tsocks配置文件　/etc/tsocks.con
