@@ -519,6 +519,57 @@ Installing the kubernetes client (kubectl)
 to interact with kubernetes , you also need the kubectl CLI client
 
 Checking to see the cluster is up and Kubectl can talk to it
+to verify your cluster is working, you can use the kubectl cluster-info command 
+$ kubectl cluster-info
+
+you can run minikube ssh to log into the Minikube VM and explore it from the inside.
+
+Using a hosted Kubernetes cluster with Google Kubernetes Engine
+
+Setting up a Google Cloud Project and download the necessary client binaries
+the whole procedure includes
+	1. Signing up for a Google account,
+	2. creating a project in the Google Cloud Platform Console
+	3. Enabling billing. this does require your credit card info, but Google provides a 12-month free tail. and they're nice enough to not start charging automatically after the free trial is over
+	4. Enabling the Kubernetes Engine API
+	5. downloading and installing Google Gloud SDK (this includes the gcloud command-line tool,which you'll need to create a Kubernetes cluster)
+	6. Installing the kubectl command-line tool with gcloud components install kubectl
+
+Creating a Kubernetes cluster with three nodes
+
+Getting an overview of your cluster
+each node runs Docker, the Kubelet and  the kube-proxy
+
+local dev machine (kubectl) -- (REST call) --> Kubernetes cluster (REST API server) master node
+worker nodes , (Docker, Kubelet, kube-proxy)
+
+Checking if the cluster  is up yb listing cluster nodes
+use the kubectl command now to list all the nodes in your cluster
+
+kubectl get nodes
+
+Retrieving additional details of an object
+you can use the kubectl describe command, 
+
+$ kubectl describe node 
+
+Setting up an alias and command-line completion for kubectl
+
+Creating an alias
+
+Configuring tab completion for kubectl
+
+Running your first app on Kubernetes
+
+Deploying your Node.js app
+kubectl run
+
+$ kubectl run kubia --image=844348677/kubia --port=8080 --generator=run/v1
+
+the --image=844348677/kubia , --port=8080 , the last flag (--generator) does require an explanation, so Kubernetes creates a ReplicationController instead of a Deployment
+a ReplicationController called kubia has been created
+
+
 
 
 
