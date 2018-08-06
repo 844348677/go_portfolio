@@ -77,6 +77,7 @@ then, three important section are found in almost all Kubernets resouces
 	Spec contains the actual description of the pod's contents, such as the pod's containers, volumes, and other data
 	Status contains the current information about the running pod, such as what condition the pod is in, the description and status of each container, and the pod's inteernal IP and other basic info
 the status part contains read-only runtime data that shows the state of the resource at a given moment.
+ch03/kubia-manual.yaml
 
 Creating a simple YAML descriptor for a pod
 // Descriptor conforms to version v1 of Kubernetes API
@@ -154,6 +155,26 @@ $ curl localhost:8888
 
 using port forwarding like this is an effective way to test an individual pod
 
+Organizing pods with labels
+as the number of pods increases, the need for categorizing them into subsets becomes more and more evident
+microservices architectures
+those components will porbably be replicated(multiple copies of the same componen will be deployed) and multiple versions or releases (stable, beta, canary, and so on) will run concurrently
+you'll want to operate on every pod belonging to a certain group with a single action instead of having to perform the action for each pod  individually
+organizing pods and all other Kubernetes objects is done through labels
+
+Introducing labels
+labels are simple, yet incredibly powerful, Kubernetes feature for organizing not only pods, but all other Kubernetes resources
+a label is an arbitrary key-value pair you attach to a resource, which is then utilized when selecting resources using label selectors ( resources are filtered based on whether they include the label specified in the selector)
+a resource can have more than on label, as long as the keys of the labels are unique within that resource.
+you usually attach labels to resources when you create them, but you can also add additional labels or even modify the values of existing labels later without having to recreate the resource
+by adding labels to those pods, you get a much-better-organized system that everyone can easily make sense of
+	app, which specifies which app, component, or microservice the pod belongs to
+	rel, which shows whether the application running in the pod is a stable, beta, or a canary release
+by adding these two labels, you've essentially organized your pods into two dimensions (horizontally by app and vertically by release)
+
+Specifying labels when creating a pod
+labels in action by creating a new pod with two labels
+ch03/kubia-manual-with-labels.yaml
 
 
 
