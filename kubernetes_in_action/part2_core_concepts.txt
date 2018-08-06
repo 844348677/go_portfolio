@@ -5,4 +5,82 @@ ch03 Pods:running containers in Kubernetes
 	using namespaces to split pods into non-overlapping groups
 	scheduling pods onto specific types of worker nodes
 
+Introducing pods
+when a pod does contain multiple containers, all of them are always run on a single worker node, it never spans multiple worker nodes
+
+Understanding why we need pods
+
+Understanding why multiple containers are better than one container running multiple precess
+containers are designed to run only a single process per container (unless the process itself spawn)
+
+Understanding pods
+you need another higher-level construct that will allow you to bind containers together and manage them as a single unit
+almost the same environment as if ther were all running in a single container, while keeping them somewhat isolated
+you can take advangtage of all the features containers provide, while at the same time giving the processes the illusion of running together
+
+Understanding the partial isolation between containers of the same pod
+you want to isolate groups of containers instead of individual ones
+Kubernetes achieves this by configuring Docker to have all container of a pod share the same set of Linux namespaces instead of each container having its own set
+Because all containers of a pod run under the same Network and UTS namespaces(Linux namespace here), they all share the same hostname and network interfaces
+similarly, all container of a pod run under the same IPC namespace and can communicate through IPC (Inter-Process Communication), and can communication through IPC. (PID namespace)
+when containers of the same pod use seperate PID namespaces, you only see the contaienr's own processes when running ps aux in the container
+But when ti comes to the filesystem, things are a little different.
+because most of the container's filesystem comes from the container image, by default, the filesystem of each container is fully isolated from other containers
+using a Kubernetes concept called a Volume
+
+Understanding how containers share the same IP and PORT space
+because containers in a pod run in the same Network namespace, they share the same IP address and port space
+ports conflicts
+
+Introducing the flat inter-pod network
+every pod can access every other pod at the other pod's IP address
+communication between pods is always simple
+it doesn't matter if two pod are sheduled onto a single or onto different worker nodes
+containers inside those pods can communicate with each other across the flat NAT-less (Network Address Translation) network, much like computers on a local area network (LAN)
+pods are logical hosts and behave much like physical hosts or VMs in the non-container world
+
+Organizing containers across pods properly
+you should think of pods as seperate mahines
+unlike the old days, when we used to cram all sorts of apps onto the same hosts
+you should organize app into multiple pods, where each one contains only tightly related components or process
+
+Splitting multi-tier apps into multiple pods
+
+Splitting into multiple pods to enable individual scaling
+Kubernetes can't horizontally scale individual containers; instead, it scales whole pods
+
+Understanding when to use multiple containers in a pod
+wehn the application consists of one process and one or more complementary process
+Pods should contain tightly coupled containers, usually a main container and contianers that support the main one
+for example, the main container in a pod could be a web server that serves files from a certain file directory, while an additional container (a sidecar container) periodically downloads content from an external source and stores it in the web server's directory
+(use a Kubernetes Volume that you mount into both containers)
+
+Deciding when to use multiple containers in a pod
+recap how container should be grouped into pods
+	Do they need to be run together or can they run on different hosts
+	Do they represent a single whole or are they independent components
+	Must they be scaled together or individually
+a container shouldn't run multiple process. a pod shouldn't contain multiple containers if they don't need to run on the same machine
+
+Creating pods from YAML or JSON descriptors
+pods an other kubernetes resources are usually created by posting a JSON or YAML manifest to the Kubernetes REST API endpoint
+
+Examining a YAML descriptor of an existing pod
+you'll use the kubectl get command with the -o yaml option to get the whole YAML definition of the pod
+
+$ kubectl get po kubia-zxzij -o yaml
+
+Introducing the main parts of a pod definition
+first, there's the Kubernetes API version used in the YAML and the type of resource the YAML is describing
+then, three important section are found in almost all Kubernets resouces
+	Metadata includes the name, namespace, labels, and other infromation about the pod
+	Spec contains the actual description of the pod's contents, such as the pod's containers, volumes, and other data
+	Status contains the current information about the running pod, such as what condition the pod is in, the description and status of each container, and the pod's inteernal IP and other basic info
+the status part contains read-only runtime data that shows the state of the resource at a given moment.
+
+Creating a simple YAML descriptor for a pod
+
+
+
+
 
