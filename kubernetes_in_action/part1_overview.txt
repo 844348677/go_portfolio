@@ -569,6 +569,77 @@ $ kubectl run kubia --image=844348677/kubia --port=8080 --generator=run/v1
 the --image=844348677/kubia , --port=8080 , the last flag (--generator) does require an explanation, so Kubernetes creates a ReplicationController instead of a Deployment
 a ReplicationController called kubia has been created
 
+Introducing Pods
+it doesn't deal with individual containers directly, 
+instead, it uses the concept of multiple co-located containers , This group of contaienrs is called a Pod
+a pod is a group of one or more tightly related containers that will always run together on the same worker node and in the same Linux namespace(s)
+each pod is like a separate logical machine with its own IP, hostname, processes, and so on, running a single container, or it can be a main application process and additional supporting processes,each running in its own container
+All the container in a pod will appear to be running on the same logical machine, whereas containers in other pods, even if they're running on the same worker node, will appear to be running on a different one
+the relationship between containers, pods, nodes
+each pod has its own IP and contains one or more containers , each running an application process, 
+Pods are spread out across different worker nodes
+Worker node 1 {Pod1(IP:10.1.0.1){Container}, Pod2(10.1.0.2){Container1, Container2}}
+
+Listing pods
+you can't list individual containers, since they're not standalone kubernetes objects
+
+$ kubectl get pods
+
+pod STATUS Pending -> Running ; READY 0/1 -> READY 1/1
+
+Understanding what happened behind the scenes
+	1. docker push 844348677/kubia -> local dev machine (Docker)
+	2. image 844348677/kubia is push to Docker Hub -> Docker Hub
+	3. kubectl run kubia --image=844348677/kubia --port=8080 -> local dev machine (kubectl)
+	4. kubectl issues REST call -> Master node REST API server 
+	5. pod created and scheduled to a worker node (Master node (Scheduler))
+	6. Kubelet is notified -> woker node (Kubelet)
+	7. Kubelet instructs Docker to run the image -> Docker
+	8. Docker pulls and runs 844348677/kubia
+
+Accessing your web application
+each pod gets its own IP address, but this adress is internal to the cluster and isn't accessible from outside of it
+By creating a LoadBalance-type service, an external load balancer will be created and you can connact to the pod through the load balancer's public IP
+
+Creating a service object
+to create the service, you'll tell Kubernetes expose the ReplicationController you created earlier
+
+$ kubectl expose rc kubia --type=LoadBalancer --name kubia-http
+
+rc for replicationcontroller ; po for pods ; svc fro services 
+
+Listing services
+the expose command's output mentions a service called kubia-http
+you can see the newly created Service object by running the kubectl get services
+
+$ kubectl get services
+
+EXTERNAL-IP , load balancer
+
+Accessing your service through its external IP
+
+$ curl 104.155.74.57:8080
+
+The logical parts of your system
+
+Understanding how the ReplicationController, the Pod, and the Service fit together
+you're not creating and working with containers directly
+the basic building block in Kubernetes is the pod. but you didn't really create any pods either , at least not directly
+by running the kubectl run command you created a ReplicationController, and this ReplicationCotnroller is what created the actual Pod object
+to make that pod accessible from outside the cluster,you told kubernetes to expose all the pods managed by that RelicationControlller as a single Service.
+
+understanding the pod and container
+
+Understanding the role of the ReplicationController
+ReplicationController. it make sure there's always exactly on instance of your pod running
+ReplicationControllers are used to replicate pods
+
+Understanding why you need a service
+to solve the problem of ever-changing pod IP addresses, as well as exposing multiple pods at a single constant IP and port pair
+
+Horizontally scaling the application
+a running application, monitored and kept running by a ReplicationController and exposed to the world through a service
+
 
 
 
