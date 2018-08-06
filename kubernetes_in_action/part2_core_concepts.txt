@@ -79,6 +79,83 @@ then, three important section are found in almost all Kubernets resouces
 the status part contains read-only runtime data that shows the state of the resource at a given moment.
 
 Creating a simple YAML descriptor for a pod
+// Descriptor conforms to version v1 of Kubernetes API
+apiVersion: V1
+// you're describing a pod
+kind: Pod
+metadata:
+	// the name of the pod
+  name: kubia-manual
+spec:
+  containers:
+  	// Container image to create the container from 
+    - image: 844348677/kubia
+    	// name of the contaienr
+       name: kubia
+       // the port the app is listening on
+       ports:
+       - containerPort: 8080
+          protocol: TCP
+
+Specifying container ports
+it makes sense to define the ports explicitly so that everyone using your cluster can quickly see what ports each pod exposes
+explicitly defining ports also allows you to assign a name to each port
+
+$ kubectl explain pods
+$ kubectl explain pod.spec
+
+Using kubectl create to create the pod
+to create the pod from your YAML file, use the kubectl create command
+
+$ kubectl create -f kubia-manual.yaml
+
+the kubectl create -f command is used fro creating any resource (not only pods) from a YAML or JSON file
+
+Retrieving the whole definition of a running pod
+after creating the pod, you can ask Kubernetes for the full YAML of the pod
+
+$ kubectl get po kubia-manual -o yaml
+$ kubectl get po kubia-manual -o json
+
+Seeing your newly created pod in the list of pods
+
+$ kubectl get pods
+
+Viewing application logs
+containerized application usually log to the standard output and standard error stream instead of writing their logs to files
+the container runtime (Docker in your case) redirects those stream to files and allow you to get the container's log by running
+
+$ docker logs <container id>
+
+Retrieving a pod's log with kubectl logs
+
+$ kubectl logs kubia-manual
+
+Specifying the container name when getting logs fo a multi-container pod
+
+$ kubectl logs kubia-manul -c kubia
+
+centralized, cluster-wide logging, which stores all the logs into a central store
+
+Sending requests to the pod
+the kubectl expose command to create a service to gain access to the pod externally
+other ways of connecting to a pod for testing and debugging purposes
+one of them is through port forwarding
+
+Forwarding a local network port to a port in the pod
+when you want to talk to a specific pod without going through a service (for debugging or other reasonss), Kubernetes allows you to configure port forwarding to the pod
+local port 8888 to port 8080 of your kubia-manual pod
+
+$ kubectl port-forward kubia-manual 8888:8080
+
+Connecting to the pod trough the port forwarder
+
+$ curl localhost:8888
+
+using port forwarding like this is an effective way to test an individual pod
+
+
+
 
 
 
