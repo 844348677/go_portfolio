@@ -247,6 +247,90 @@ $ kubectl get nodes -l gpu=true
 $ kubectl get nodes -L gpu
 
 Scheduling pods to specific nodes
+now imagine you want to deploy a new pod that needs a GPU to perform its work
+to ask the scheduler to only choose among the nodes that provide a GPU, you'll add a node seletor to the pod's YAML
+ch03/kubia-gpu.yaml 
+kubectl create -f kubia-gpu.yaml
+
+apiVesion: v1
+kind: Pod
+metadata:
+  name: kubia-gpu
+spec:
+	// node selector tells Kubernetes to deploy this pod only to nodes containing the gpu=true label.
+  nodeSelector:
+    gpu: "true"
+  containers:
+    - image: 844348677/kubia 
+      name: kubia
+
+you've added a nodeSelector field under the spec section. when you create the pod, the scheduler will only choose among the nodes that contain the gpu=true label
+
+Schedule to on specific node
+you could also schedule a pod to an exact node, because each node also has a unique label with the key kubernetes.io/hostname and value set to the actual hostname of the node
+but setting the nodeSelector to a specific node by the hostname label may lead to the pod being unschedulable if the node is offline
+you shouldn't think in terms of individual nodes. always think about logical groups of nodes that satisfy certain criteria specified through label selectors
+
+Annotating pods
+pods and other objects can also contain annotations
+annotations are also key-value pairs
+but they aren't meant to hold identifying information. they can't be used to group objects the way labels can
+
+Looking up an object's annotations
+to see the annotations, you'll need to request the full YAML of the pod or use the kubectl desribe commad
+annotations:
+
+Adding and modifying annotations
+
+$ kubectl annotate pod kubia-manual mycompany.com/someannotation="foo bar"
+$ kubectl describe pod kubia-manual
+
+Using namespace to group resource
+
+Understanding the need fro namespaces
+using multiple namespace allow you to split complex systems with numerous components into smaller distinct groups
+spliting up resources into production, development, and QA environment
+resource names only need to be unique within namespace
+(These aren't the Linux namespace)
+
+Discovering other namespace and their pods
+
+$ kubectl get ns
+
+default ; kube-public ; kube-system
+
+$ kubectl get po --namespace kube-system
+$ kubectl get po -n kube-system
+
+besides isolating resources, namespaces are also used for allowing only certain users access to particular resources and even for limiting the amount of computational resources available to individual user
+
+Creating namespace
+a namespace is a Kubernetes resources like any other, so you can create it by posting a YAML file to the Kubernetes API server.
+
+Creating a namespace from a YAML file
+ch03/custom-namespace.yaml
+
+apiVersion: v1
+// this says you're defining a namespace
+kind: Namespace
+metadata:
+	// this is the name of the namespace
+  name: custom-namespace
+
+use kubectl to post the file to the Kubernetes API server:
+
+$ kubectl create -f custom-namespace.yaml
+
+Creating a namespace with kubectl create namespace
+everything in Kubernetes has a corresponding API object that you can create, read, update, and delete by posting a YAML manifest to the API server
+
+$ kubectl create namespace custom-namespace
+
+Managing objects in other namespaces
+
+
+
+
 
 
 

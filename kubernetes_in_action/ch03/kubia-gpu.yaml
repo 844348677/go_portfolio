@@ -1,0 +1,10 @@
+apiVesion: v1
+kind: Pod
+metadata:
+  name: kubia-gpu
+spec:
+  nodeSelector:
+    gpu: "true"
+  containers:
+    - image: 844348677/kubia 
+      name: kubia
