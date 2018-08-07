@@ -397,11 +397,105 @@ you create other types of resources, such as ReplicationControllers or Deploymen
 but if the whole node fails, the pods on the node are lost and will not be replaced with new ones, unless those pods are managed by the previously mentioned ReplicationController or similar
 
 Keeping pods healthy
+the ability to give it a list of contaienrs and let it keep those containers running somewhere in the cluster
+as soon as a pod is scheduled to a node, the Kubelet on that node will run its containers and, from then on, keep them running as long as the pod exists
+if the container's main process crashes, the Kubelet will restart the container
 
+Introducing liveness probes
+Kubernetes can check if a container is still alive through liveness probes
+you can specify a liveness probe for each container in the pod's specification 
+Kubernetes will periodically execute the probe and restart the container if the probe fails
 
+Kubernetes can probe a container using one of the three mechanisms
+	an HTTP GET probe performs an HTTP GET request on the container's IP address, a port an path you specify. if the probe receives a response, and the response code doesn't represent an error(in other words, if the HTTP response code is 2xx or 3xx), the probe is considered successful. if the server returns an error response code or if it doesn't respond at all, the probe is considered a failure and the container will be restarted as a result
+	A TCP Socket probe tries to open a TCP connetion to the specified port of the container. if the connection is established successfully, the probe is successful. Otherwise, the container is restarted
+	an Exec probe executes an arbitrary command inside the container and checks the command's exit status code. if the status code is 0, the probe is successful. all other codes are considered failure
 
+Creating an http-based liveness probe
+create a new pod that includes an HTTP GET liveness probe
+ch04/kubia-probe.yaml
 
+apiVersion: v1
+kind: pod
+metadata:
+  name: kubia-liveness
+spec:
+  containers:
+  	// this is the image containing the (somewhat) broken app
+    - image: luksa/kubia-unhealthy
+      name: kubia
+      // a liveness probe that will perform an HTTP GET
+      livenessProbe:
+        httpGet:
+        	// the path to request in the HTTP request
+          path: /
+          // the network port the  probe should connect to 
+          port: 8080
 
+the pod descriptor defines an httpGet liveness probe, which tells Kubernetes to periodically perform HTTP GET request on path / on port 8080 to determine if the container is still healthy
+
+Seeing a liveness probe in action
+
+$ kubectl get po kubia-liveness
+
+the RESTARTS column shows that the pod's container has been restarted once
+
+Obtaining the application log of a crash container
+
+$ kubectl logs mypod --previous 
+
+$ kubectl describe po kubia-liveness
+
+the exit code was 137, which has special meaning-it denotes that the process was terminated by an external signal. 
+the number 137 is a sum of two numbers:128+x, where x is the signal number sent to the process that caused it to terminate. in the example, x equals 9, which is the number of the SIGKILL signal, meaning the process was killed forcibly
+
+Configuring additional properties of the liveness probe
+
+Liveness: http-get http://:8080/ delay=0s timeout=1s period=10s #success=1 #failure=3
+
+beside the liveness probe options you specified explicitly, you can also see additional properties, such as delay, timeout, period, and so on
+the delay=0s part shows that the probing begins immediately after the container is started
+the timeout is set to only 1 second, so the container must return a response in 1 second or the probe is counted as failed
+the container is probed every 10 seconds (period=10s) and the container is restarted after the probe fails three consecutive times (#failure=3)
+ch04/kubia-liveness-probe-initial-delay.yaml
+
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 8080
+          // kubernetes will wait 15 seconds before executing the first probe
+        initialDelaySeconds: 15
+
+Always remember to set an initial delay to account for your app's startup time
+exit code is 128+9 (SIGKILL). likewise, exit code 143 corresponds to 128+15(SIGTERM)
+
+Creating effective liveness probes
+
+What a liveness probe should check
+but for a better liveness chech, you'd configure the probe to perform request on a specific URL path(/heath, for example) and have the app perform an internal status check of all the vital components running inside the app to ensure none of them has died or is unresponsive
+be sure to check only the internals of the app and nothing influenced by an external factor
+a frontend web server's liveness probe shouldn't return cause a failure when the server can't connect to the backend database.
+if the underlying cause is in the database itself, restarting the web server container will not fix the problem
+
+Keeping probes light
+Liveness probes shouldn't use too many computational resources and shouldn't take too long to complete
+the probe's CPU time is counted in the container's CPU time quota, so having a heavyweight liveness probe will reduce the CPU time available to the main application processes
+
+Don't bother implementing retry loops in your probes
+
+Liveness probe wrap-up
+this job is performed by the Kubelet on the node hosting the pod - the Kubernetes Control Plane components running on the master(s) have no part in the process
+but if the node itself crashes, it's the Control Plane that must create replacements for all the pods that went down with the code
+
+Introducing ReplicationgControllers
+a ReplicationController is a Kubernetes resource that ensures its pod are always kept running 
+
+the operation of a ReplicationController
+a ReplicationController constantly monitors the list of running pods and makes sure the actual number of pods of a "type" always matches the desired number
+if too few such pods are running, it creates new replicas from a pod templete. if too many such pods are running , it removes the excess replicas
+ReplicationController operate on sets of pods that match a certain label selector
+
+Introducing the controller's reconciliation loop
 
 
 
