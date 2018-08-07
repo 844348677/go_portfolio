@@ -176,8 +176,77 @@ Specifying labels when creating a pod
 labels in action by creating a new pod with two labels
 ch03/kubia-manual-with-labels.yaml
 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubia-manual-v2
+  // two labels are attached to the pod
+  labels:
+    creation_method: manual 
+    env: prod
+spec:
+  containers:
+    - image: 844348677/kubia
+       name: kubia
+       ports:
+       - containerPort: 8080
+          protocol: TCP
 
+the labels creatinon_method=manual and env=prod
 
+$ kubectl create -f kubia-manul-with-labels.yaml
+$ kubectl get po --show-labels
+
+instead of listing all labels, if you're only interested in certain labels, you can specify them with the -L switch and have each displayed in its own column
+
+$ kubectl get po -L creation_method,env
+
+Modify labels of existing pods
+labels can also be added to and modified on existing pods
+
+$ kubectl label po kubia-manual creation_method=manula
+$ kubectl label po kubia-manula-v2 env=debug --overwrite
+
+you need to use the --overwrite option when changing existing labels
+
+$ kubectl get po -L creation_method,env
+
+Listing subsets of pods through label selectors
+label selectors allow you to select a subset of pods tagged with certain labels and perform an operation on those pods
+a label selector is a criterion, which filters resources based on whether they include a certian label with a certain value
+	contains (or doesn't contain) a label with a certain key
+	contains a label with a certain key and value
+	contains a label with a certain key, but with a value not equal to the one you specify
+
+Listing pods using a label selector
+
+$ kubectl get po -l creation_method=manual
+$ kubectl get po -l env
+$ kubectl get po -l '!env'
+
+	creation_method!=manual to select pods with the creation_method label  with any value other than manual
+	env in (prod,devel) to select pods with the env label set to either prod or devel
+	env notion (prod,devel) to select pods with the env label set to any value other than prod or devel
+
+Using multiple condition in a label selector
+a selector can also include multiple comma-separated criteria
+label selectors aren't usefor only fro listing pods, but also for performing actions on a subset of all pods
+
+Using labels and selectors to constrain pod scheduling
+when your hardware infrastructure isn't homogenous
+when you need to schedule pods performing intensive GPU-based computation only to nodes that provides the required GPU acceleration
+if you want to have a say in where a pod should be sheduled, instead of specifying an exact node, you should describe the node requirement and then let Kubernetes select a node that matches those requirement
+this can be done through node labels and node label selectors
+
+Using labels for categerizing worker nodes
+labels can be attached to any Kubernetes object, including nodes.
+when the ops team adds a new node to the cluster, they'll categorize the node by attaching labels specifying the type of hardware the node provides anything else that may come in handy when sheduling pods
+
+$ kubectl label node gke-kubia-xxx-xx-xx gpu=true
+$ kubectl get nodes -l gpu=true
+$ kubectl get nodes -L gpu
+
+Scheduling pods to specific nodes
 
 
 
