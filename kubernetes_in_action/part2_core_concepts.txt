@@ -496,6 +496,87 @@ if too few such pods are running, it creates new replicas from a pod templete. i
 ReplicationController operate on sets of pods that match a certain label selector
 
 Introducing the controller's reconciliation loop
+a ReplicationController's job is to make sure that an exact number of pod always matches its label selector
+
+Understanding the three parts of a ReplicatonController
+a ReplicationController has three essential parts
+A label selector, which determines what pods are in the ReplicationController's scope
+A replica count, which specifies the desired number of pods that should be running
+A pod template, which is used when creating new pod replicas
+
+ReplicationControler: kubiao {Pod selector:app=kubia ; Replica:3 ; Pod template:{Pod(app:kubia)}}
+a ReplicationController's replica count, the label selector, and even the pod template can all be modified at any time, but only changes to the replica count affect existing pods
+
+Understanding the effect of changing teh controller's label selector or pod template
+changes to the label selector and the pod template have no effect on existing pods
+changing the label selector makes teh existing pod fall out of the scope of the ReplicationController
+
+Understing teh benefit of using a ReplicationController
+a ReplicationController, although an incredibly simple concept, provides or enable the following powerful features
+	it makes sure a pod(or multiple pod replicas) is always running by starting a new pod when an existing one goes missing
+	when a cluster node fails, it creates replacement replicas for all the pods that were running on the failed node ( those that were under the ReplicationController's control)
+	it enable easy horizontal scaling of pods - both manual and automatic
+a pod instance is never relocated to another node. instead, the ReplicationController creates completely new pod instance that has  no relation to the instance it's replacing
+
+Creating a ReplicationController
+how to create a ReplicationController , how it keeps your pods running
+ch04/kubia-rc.yaml
+
+apiVersion: v1
+// this manifest defines a ReplicationController (RC)
+kind: ReplicationController
+metadata:
+// the name of this ReplicationController
+  name: kubia
+spec:
+	// the desired number of pod instances
+  replicas: 3
+  // the pod selector determining what pods the RC is operating on
+  selector:
+    app: kubia
+    // the pod tempelete for creating new pods
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: 844348677/kubia
+        ports:
+        - containersPort: 8080
+
+when you post the file to the API server, Kubernetes creates a newe ReplicationController named kubia, which nakes sure three pod instances always match teh label selector app=kubia
+when there aren't enough pods, new pods will be created from the provided pod template.
+not specifying the selector at all is also an option. in that case, it will be configured automatically from the labels in the pod remplate
+
+$ kubectl create -f kubia-rc.yaml
+
+Seeing the ReplicationController in action
+because no pods exist with the app=kubia, the ReplicationController should spin up  three new pods from the pod template.
+
+$ kubectl get pods
+
+Seeing the ReplicationController response to a deleted pod
+first, you'll delete one of the pods manually to see how the ReplicationController spins up a new immediately, bring the number of matching pods back to three
+
+$ kubectl delete pod kubia-xxx
+$ kubectl get pods
+
+Getting information about a ReplicationController
+
+$ kubectl get rc
+
+derised number of pods; the actual number of pods ; and how many of them are ready
+
+$ kubectl describe rc kubia
+
+Understanding exactly what caused the controller to create a new pod
+if a pod disappears, the ReplicationController sees too few pods and creates a new replacement pod
+while a ReplicationController is immediately notified about a pod being deleted (the API server allows clients to watch for changes to resources and resource lists), that's not what causes it to create replacement pod
+the notification triggers the controller to check the actual number of pods and take appropriate action
+
+Responding to a node failure
 
 
 
