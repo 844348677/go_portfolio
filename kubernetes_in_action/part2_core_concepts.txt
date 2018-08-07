@@ -577,6 +577,112 @@ while a ReplicationController is immediately notified about a pod being deleted 
 the notification triggers the controller to check the actual number of pods and take appropriate action
 
 Responding to a node failure
+if a node fails in the non-Kubernetes world, the ops team would need to migrate the applications running on that node to other machines manually
+Kubernetes waits a while before resheduling pods (in case the node is unreachable because of a temporary network glitch or because the Kubelet is restarting)
+if the node stays unreachable for several minutes, the status of the pods that were sheduled to that node changes to Unkown
+
+Moving pods in and out of the scope of a ReplicationController
+a ReplicationController manages pods that match is label selector
+by changing a pod's labels, it can be removed from or added to the scope of a ReplicationController
+
+Adding labels to pods managed by a ReplicationControllerr
+
+$ kubectl label pod kubia-dmdck type=special
+$ kubectl get pods --show-labels
+
+Changing the labels of a mananged pod
+
+$ kubectl label pod kubia-dmdck app=foo --overwrite
+$ kubectl get pods -L app
+
+Removing pods from controllers in practice
+
+Changing teh ReplicationController's label selector
+modified the ReplicationController's label selector
+kuberntes does allow you to change a ReplicationController's label selector,
+you'll never change a controller's label selector, but you'll regularly change its pod template
+
+Changing the pod template
+changing a ReplicationController's pod template only affects pod created afterward and has no effect on existing pods
+
+$ kubectl edit rc kubia 
+
+Horizontally scalling pods
+
+Scaling up a ReplicationController
+
+$ kubectl scale rc kubia --replication=10
+
+Scaling a ReplicationController by editing its definition
+instead of using the kubectl scale command, you're goint to scale it in a declarative way by editing the ReplicationController's definition
+
+$ kubectl edit rc kubia
+$ kubectl get rc
+
+Scaling down with the kubectl scale command
+
+$ kubectl scale rc kubia --replicas=3
+
+All this command does is modify the spec.replicas field of the ReplicationController's definition-like when you changed it through kubectl edit
+
+Understanding the declaration approach to scaling
+you're not telling Kubernetes what or how to do it. you're just specifying the desired state
+
+Deleting a ReplicaitonController
+through kubectl delete, the pods are also deleted
+you can delete only teh ReplicationController and leave the pods  running
+this may be useful when you initially have a set of pods managed by a ReplicationController, and then decide to replace the ReplicationController with a ReplicaSet for example
+you can do this without affecting the pods and keep them runnign without interruption while you replace the ReplicationController that manages them
+you can keep its pods running by passing the --cascade=false option on the command
+
+$ kubectl delete rc kubia --cascade=false
+
+Using ReplicaSets instead of ReplicationControllers
+Later , a similar resource called a ReplicaSet was introduced
+it's a new generation of ReplicationController and replaces it completely(ReplicationController will eventually be deprecated)
+you should always create ReplicaSets instead of ReplicationControllers from now on
+
+comparing a ReplicaSet a ReplicationController
+it has more expressive pod selectors
+whereas a ReplicationCotnroller's label selector only allows  matching pods that include a certain latel
+a ReplicaSet's selector also allows matching pods that lack a  certain label or pods that include a certian label key, regardless of its value
+a single ReplicaitonController can't match pods with the label env=production and those with the label env=devel at the same time
+but a single ReplicaSet can match both sets of pods and treat them as single group
+
+Defining a ReplicaSet
+ch04/kubia-replicaset.yaml
+
+# ReplicaSets aren't part of the v1 API, but belong to the apps API group and version v1beta2
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: kubia
+spec:
+  replicas: 3
+  # you're using the simpler matchLabels selector here, which is much like a ReplicationController's selector
+  selector:
+    matchLabels:
+      app: kubia
+  # the tamplate is the same as in the ReplicationController
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: 844348677/kubia
+
+the only difference is in the selector. instead of listing labels the pods need to have directly under the selector property, you're specifying them under selector.matchLabels
+
+Creating and examing a ReplicaSet
+
+$ kubectl get rs
+$ kubectl describe rs
+
+Using the ReplicaSet's more expressive label selectors
+the main improvements of
+
 
 
 

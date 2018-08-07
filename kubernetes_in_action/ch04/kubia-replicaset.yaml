@@ -1,0 +1,20 @@
+# ReplicaSets aren't part of the v1 API, but belong to the apps API group and version v1beta2
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: kubia
+spec:
+  replicas: 3
+  # you're using the simpler matchLabels selector here, which is much like a ReplicationController's selector
+  selector:
+    matchLabels:
+      app: kubia
+  # the tamplate is the same as in the ReplicationController
+  template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: 844348677/kubia
