@@ -911,6 +911,37 @@ spec:
 Using named ports
 
 Discovering services
+Kubernetes also provides ways for client pods to discover a service's IP and port
 
+Discovering services through environment variables
+if you create the service before creating the client pods, process in those pods can get the IP address and port of the services by inspecting their environment variables
 
+$ kubectl delete po --all
+$ kubectl exec kubia-xxx env
+
+Discovering services through DNS
+kube-system  namespece ; one of the pods are called kube-dns
+any DNS query performed by a process running in a pod will be handled by Kubernetes'own DNS server, which knows all the services running in you system
+each service gets a DNS entry in the internal DNS server, and client pods that know the name of the service can access it through its fully qualified domain name (FQDN) instead of resorting to environment variable
+
+Connecting to the service through its FQDN
+backend-database.default.svc.cluster.local
+backend-database corresponds to the service name
+default stands for the namespace the service is defined in
+and svc.cluster.local is configurable cluster domain suffix used in all cluster local service names
+you can omit the svc.cluster.local suffix and even the namespace, when the fronted pod is in the same namespace as the database pod
+
+Running a shell in a pod's container
+the shell's binary executable must be available in the container image for this to work
+
+$ kubectl exec -it kubia-xxx bash
+
+root@kubia-xxx:/# curl http://kubia.default.svc.cluster.local
+root@kubia-xxx:/# curl http://kubia.default
+root@kubia-xxx:/# curl http://kubia
+root@kubia-xxx:/# cat /etc/resolv.conf
+
+Understanding why you can't ping a service  IP
+curling the service works, but pinging it doesn't.
+that's because the service's cluster IP is a virtual IP, and only has meaning when combined with the service port
 
