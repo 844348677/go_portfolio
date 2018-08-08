@@ -765,6 +765,54 @@ $ kubectl logs batch-job-xxx
 $ kubectl get job
 
 Running multiple pod instances in a Job
+Jobs many be configured to create more than on pod instance and run them in parallel or sequentially
+this is done by setting the completions and the parallelism properties in the Job spec
+
+Running Job pods sequentially
+if you need a Job to run more than once, you set completions to how many times you want the Job's pod to run. the following listing shows an example
+ch04/multi-completion-batch-job.yaml
+
+this job will run five pods one after the other
+
+Running Job pods in parallel
+you can also make the Job run multiple pods in parallel
+ch04/multi-compeltion-parallel-batch-job.yaml
+
+$ kubectl get go
+
+Scaling a Job
+you can even change a Job's parallelism property while the job running.
+
+$ kubectl scale job multi-completion-batch-job --replicas 3
+
+Limiting the time allowed for a Job pod to complete
+a pod's time can be limited by setting the activeDeadlineSeconds property in the pod spec
+you can configure how many times a Job can be retried before it is marked as failed by specifying the spec.backoffLimit field in the Job manifest
+
+Scheduling Job to run periodically or once in the future
+a cron job in Kubernetes is configured by creating a CronJob resource
+
+Creating a CronJob
+ch04/cronjob.yaml
+
+Configuring the schedule
+left to right, the schedule contains the following five entries:
+	minute
+	hour
+	day of month
+	month
+	day  of weed
+
+Understanding how scheduled jobs are run
+Job resources will be created from the CronJob resource at approximately the  scheduled time. the Job then creates the pods
+
+# at the latest, the pod must start running at 15 seconds past the scheduled time
+startingDeadlineSecond: 15
+
+Summary
+
+
+ch05 Services: enabling clients to discover and talk to pods
 
 
 
