@@ -681,9 +681,90 @@ $ kubectl get rs
 $ kubectl describe rs
 
 Using the ReplicaSet's more expressive label selectors
-the main improvements of
+the main improvements of ReplicaSets over ReplicationController are their more expressive label selector
+ch04/kubia-replicaset-matchexpressions.yaml
 
+  selector:
+    matchExpressions:
+      # this selector requires the pod to contain a label with the "app" key
+      - key: app
+      # the label's value must be "kubia"
+      operator: In
+      values:
+        - kubia
 
+each expression must contain a key, an operator, and possibly (depending on the operator) a list of values
+four valid operator
+	In - label's value must match one of the specified values
+	NotIn - label's value must not match any of the specified values
+	Exists - Pod must indluce a label with specified key (the value isn't important). when using this operator, you shouldn't specify the values field
+	DoesNotExist - Pod must not include a label with the specified key. the values property must not be specified
+
+if you specify multiple expressions, all those expressions must evaluate to true fro the selector match a pod
+if you specify both matchLabels and matchExpressions, all the labels must match and all the expresesions must evaluate to true fro the pod to match the selector
+
+Wrapping up ReplicaSets
+
+$ kubectl delete rs kubia
+
+Running exactly on pod on each node with DaemonSet
+when you want a pod to run on each and every node in the cluster ( and each node needs to run exactly on instance of the pod)
+Kubernetes'own kube-proxy process, which needs to run on all nodes to make services work
+DaemonSet exactly on replica on each node
+DaemonSets run only a single pod replica on each node, whereas ReplicaSets scatter them around the whole cluster randomly
+
+Using a DaemonSet to run a pod on every node
+to run a pod on all cluster nodes, you create a DaemonSet object
+a DaemonSet makes sure it creates as many pods as there are nodes and deploys each one on its own
+
+Using a DaemonSet to run pods only on certain nodes
+A DaemonSet deplays pods to all nodes in the cluster, unless you specify that the pods should only run on a subset of all the nodes
+this si done by specify the nodeSelecotor property in the pod template
+nodes can be made unschedulable, a DaemonSet will  deploy pods even on such nodes, pods managed by a DaemonSet bypass the Scheduler completely
+
+Explaining DaemonSets with an example
+
+Creating a daemonSet YAML definition
+
+you're defining a DaemonSet that will run a pod with a single container based on the luksa/ssd-monitor container image. an instance of this pod will be created for each node that has the disk=ssd label
+
+Creating the DaemonSet
+
+$ kubectl create -f ssd-monitor-daemonset.yaml
+$ kubectl get ds
+$ kubectl get po
+
+Adding the required label to your node(s)
+
+$ kubectl get node
+(NAME minikube)
+$ kubectl label node minikube disk=ssd
+$ kubectl get po
+
+Removing the required label from the node
+
+$ kubectl label node minikube disk=hdd --overwrite
+
+Running pods that perform a single completely tash
+you only want to run a task that terminates after completing its work
+ReplicationControllers, ReplicaSet, and DaemonSets run continuous task that are never considered completed. Processes in such pods are restarted when they exit
+
+Introducing the Job resource
+Job resource, it allow you to run a pod whose container isn't restarted when then process running inside finishes successfully
+the event of a node failure ; the event of a failure of the process itself (when the process returns an error exit code)
+
+Defining a Job resource
+ch04/exporter.yaml
+
+Seeing a Job run a pod
+
+$ kubectl get jobs
+$ kubectl get po
+$ kubectl get po -a
+$ kubectl logs batch-job-xxx
+$ kubectl get job
+
+Running multiple pod instances in a Job
 
 
 

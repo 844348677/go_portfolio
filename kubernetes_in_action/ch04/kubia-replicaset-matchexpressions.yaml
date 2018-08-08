@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: kubia
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      # this selector requires the pod to contain a label with the "app" key
+      - key: app
+      # the label's value must be "kubia"
+      operator: In
+      values:
+        - kubia
+ template:
+    metadata:
+      labels:
+        app: kubia
+    spec:
+      containers:
+      - name: kubia
+        image: 844348677/kubia
