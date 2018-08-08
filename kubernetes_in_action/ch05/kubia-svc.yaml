@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  ports:
+    # the port this service will be available on
+  - port: 80
+    # the container port the service will forward to 
+    targetPort: 8080
+    # all pods with the app=kubia label will be part of this service
+  selector:
+    app: kubia

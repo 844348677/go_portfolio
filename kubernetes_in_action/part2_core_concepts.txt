@@ -813,6 +813,104 @@ Summary
 
 
 ch05 Services: enabling clients to discover and talk to pods
+	creating Service resources to expose a group of pods  at a single address
+	discovering services in the cluster
+	exposing services to external clients
+	connecting to external services from inside the cluster
+	controlling whether  a pod  is ready to be part of the service or not
+	troubleshooting services
+in the case of microservices, pods will usually respond to HTTP requests comming either from other pods inside the cluster or from outside the cluster
+pods need a way of finding other pods if they want to consume the services they provide
+	pods are ephemeral - they may come and go at any time, whether it's because a pod is removed from a node to make room fro other pods, bacause someone scaled down the number of pods, or because a cluster node has failed
+	Kubernets assigns an IP address to a pod after the pod has been scheduled to a node and before it's started - client thus can't know the IP address of the server pod up front
+	horizontal scaling means multiple pods may provide the same service - each of those pods has its own IP address. clients shouldn't care how may pods are backing the service and what IPs are. they shouldn't have  to keep a list of all the individual IPs of pods. Instead, all those pods should be accessible through a single IP address
+
+Introducing services
+A kubernetes Service is a resource you create to make a single, contant point of entry to a group of pods providing the same service
+each service has an IP adress and port that never change while the service exists
+clients can open connections to that IP and port, and those connections are then routed to one fo the pods backing that service
+this way, clients of a service don't need to know the location of individual pods providing the service, allowing  those pods to be moved  around the cluster at any time
+
+Explaing Services with an example
+by creating a service for the fronted pods and configuring it to be accessible from outside the cluster, you expose a single, constant IP address through which external clients can connect to the pods
+by creating a service for the backend pod, you create a stable address for the backend pod 
+the service address doesn't change even if the pod's IP address changes
+
+Creating services
+a service can be backed by more than one pod. Connection to the service are load-balanced across all the backing pods
+label selectors
+Label selectors determine which pods belong to the Service
+
+Creating a service through Kubectl expose
+the expose command created a Service resource with the same pod selector as the one used by the RC, thereby exposing all its pods through a single IP address and port
+ch05/kubia-svc.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia
+spec:
+  ports:
+    # the port this service will be available on
+  - port: 80
+    # the container port the service will forward to 
+    targetPort: 8080
+    # all pods with the app=kubia label will be part of this service
+  selector:
+    app: kubia
+
+Examining your new service
+
+$ kubectl get svc
+
+Testing your service from within the cluster
+you can send requests to your service from within the cluster in a few ways
+	the obvious way is to create a pod that will send the request to the service's cluster IP and log the request. you can examine the pod's log to see what the service's response was
+	you can ssh into one of the Kubernetes nodes and use the curl command
+	you can execute the curl command inside on of your existing pods through the kubectl  exec command
+
+Remotely executing commands in running containers
+the kubectl exec command allows you to remotely run arbitrary commands inside an existing container of a pod
+
+$ kubectl get pods
+$ kubectl get svc
+$ kubectl exec kubia-xxx -- curl -s http://xx.xx.xx.xx
+
+everything after the double dash is the command that should be executed inside the pod
+when you ran the command
+	1. kubectl exec
+	2. curl is executed inside the container running node.js
+	3. curl sends http get request
+	4. service redirects http connection to a randomly selected pod
+	5. http response is sent back to curl
+	6. the output of the curl command is sent back to kubectl  and printed by it
+
+configuring session affinity on the service
+if you want all request made by a certain client to be redirected to the same pod every time, you can set the service's sessionAffinity property to ClientIP (instead of None, which is the default)
+Kubernetes supports only two types of service session affinity: None and ClientIP
+Kubernetes services don't operate at the HTTP level
+cookies  are a construct of the HTTP protocol
+
+Exposing multiple ports in the same service
+ch05/kubia-svc-multipleports.yaml
+
+spec:
+  # port 80 is mapped to the pods' port 8080
+  port:
+  - name: http
+    port: 80
+    targetPort: 8080
+    # port 443 is mapped to pods' port 8443
+  - name: https
+    port: 443
+    targetPort: 8443
+    # the label selector always applies to the whole  service
+  selector:
+    app: kubia
+
+Using named ports
+
+Discovering services
 
 
 
