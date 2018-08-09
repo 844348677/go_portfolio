@@ -1333,4 +1333,67 @@ fisrt, if you don't add a readiness probe to your pods, they'll become service e
 Don't include pod shutdown logic to your readiness probes
 
 Using a headless service fro discovering individual pods
+what if the client needs to connect to all of those pods?
+what if the backing pods themselves need to each connect to all the other backing pods
+Kubernetes allows clients to discover pod IPs through DNS lookups
+when you perform a DNS lookup fro a service, the DNS server returns a single IP - the service's cluster IP
+but if you tell Kubernetes you don't need a  cluster IP for your service (you do this by setting the clusterIP field to None in the service specification), the DNS server will return the pod IPs instead of the single  service IP
+instead fo returning s single DNS A record, the DNS server will return multiple A records fro the service, each pointing to the IP of an individual pod backing the service  at that moment
+
+Creating a headless service
+ch05/kubia-svc-headless.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-headless
+spec:
+  # this make the service headless
+  clusterIP: None
+  ports:
+  - port: 80
+    target: 8080
+  selector:
+    app: kubia 
+
+kubectl create ; kubectl get ; kubectl describe
+
+Discoveriong pods through DNS
+
+Running a pod without writing a YAML manifest
+
+$ kubect run dnsutils --image=tutum/dnsutils --generator=run-pod/v1 --command -- sleep infinity
+
+--generator-run-pod/v1 ; tell  kubectl to create the pod directly, withou any kind of ReplicationController or similar behind it
+
+Understanding DNS a records returned for a headless service
+
+$ kubectl exec dnsutils nslookup kubia-headless
+$ kubectl exec dnsutils nslookup kubia
+
+Discovering all pods - even those that aren't ready
+publicNotReadyAddresss
+
+Troubleshooting services
+when you're unable access your pods through the services, you should start by going through the following list:
+	first make sure you're connecting to the service's cluster IP from within the cluster, not from the outside
+	don't bother pinging the service IP to figure out if the service is accessible (remember, the service's cluster IP is a virtual IP and pinging it will never work)
+	if you've defined a readiness probe, make sure it's successing; otherwise the pod won't be port of the service
+	to confirm that a pod is part of the service, examine the corresponding Endpoints object with Kubectl get endpoints
+	if you're tring to access the service through its FQDN or a part of it (for example, myservice.mynamespace.svc.cluster.local or myservice.mynamespace) and it doesn't work, see if you can access it using its cluster IP instead of the FQDN
+	check whether you're connecting to the port exposed by the service and not the target port
+	try connecting to the pod IP directly to confirm you pod is accepting connections on the correct port
+	if you can't even access your app through the pod's IP, make sure your app isn't only binding to localhost
+
+Summary
+
+ch06 Volumes: attaching disk storage to containers
+	creating multi-container pods
+	creating a volume to share disk storage between containers
+	using a Git repository inside a pod
+	attaching persistent storage such as a GCE Persistent Disk to pods
+	using pre-provisioned persisten storage
+	dynamic provisioning of persistent storage
+
+
 
