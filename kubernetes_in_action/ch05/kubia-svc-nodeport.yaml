@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Servcie
+metadata:
+  name: kubia-nodeport
+spec:
+  # Set the service type to NodePort
+  type: NodePort 
+  ports:
+    # this is the port of the service's internal cluster IP
+  - port: 80
+  # this is the target port of the backing pods
+    targetPort: 8080
+    # the service will be accessible through port 30123 of each of your cluster nodes
+    nodePort: 30123
+  selector:
+    app: kubia

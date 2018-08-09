@@ -1020,7 +1020,90 @@ a CNAME record points to a fullly qualified domain name instead of a numeric IP 
 Exposing services to external clients
 expose certain services, such as fronted webservers, to the outside, so external clients can access them
 a few ways to make a service accessible externally
-	
+	setting teh service type to NodePort - for a NodePort service, each cluster node opens a port on the node itself and redirects traffic received on that port the the underlying service, the service isn't accessible only at the internal cluster IP adn port, but also through a dedicated port on all nodes
+	Setting the service type to LoadBalancer, an extension of the NodePort type - this makes the services accessible through a dedicated load balancer, provisioned from the cloud infrastructure Kubernetes is running on. The load balancer redirects traffic to the node port across all the nodes.Clients connect to the service through the load balancer's IP
+	Creating an Ingress resource, a radically different mechanism fro exposing multiple services through a single IP address - It operates at the HTTP level (network layer 7) and can thus offer more features than layer 4 services can 
+
+Using a NodePort service
+
+Creating a NodePort service
+ch05/kubia-svc-nodeport.yaml
+
+apiVersion: v1
+kind: Servcie
+metadata:
+  name: kubia-nodeport
+spec:
+  # Set the service type to NodePort
+  type: NodePort 
+  ports:
+    # this is the port of the service's internal cluster IP
+  - port: 80
+  # this is the target port of the backing pods
+    targetPort: 8080
+    # the service will be accessible through port 30123 of each of your cluster nodes
+    nodePort: 30123
+  selector:
+    app: kubia
+
+Examining your NodePort service
+
+# kubectl get svc kubia-nodeport
+
+an incoming connection to one of those ports will be redirected to a randomly selected pod, which may or may not be the one running on the node the connection is being made to 
+
+Changing firewall rules to let external clients access our NodePort service
+
+$ kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(.type="ExternalIP")].address}'
+
+as you can see, you pods are now accessible to the whole internet through port 30123
+but if you only point your clients to the first node, when that node fails, your client can't access the service anymore
+
+Exposing a service through an external load balancer
+Kubernetes clusters running on cloud provides usually support the automatic provision of a load balancer from the cloud infrastructure
+set service's type to LoadBalancer instead fo NodePort
+the load balancer will have its own unique, publicly accessible IP address and will redirect all connections to your service
+
+Creating a LoadBalancer service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-loadbalancer
+spec:
+  # this type of service obtains a load balancer from the infrastructure hosting the Kubernetes cluster
+  type: LoadBalancer 
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: kubia 
+
+Connecting to the service through the load balancer
+
+$ kubectl get svc kubia-loadbalancer
+
+session affinity ; web browsers ; curl
+a LoadBalancer type service is a NodePort service with an additional infrastructure-porvided load balaner
+
+Understanding the peculiarities of external connections
+you must be aware of several things related to externally originating connections to services
+
+Understanding and preventing unnecessary network hops
+when an external client connects to a service through the node port (also load balancer), the randomly chosen pod may or may not be running on the same node that received the connection
+you can prevent this additional hop by configuring the service to redirect external traffic only to pods running on the  node that received the connection
+
+spec:
+	externalTrafficPolicy: Local
+
+if a service definition includes this setting and an external connection is opened through the service's node port, the service proxy will choose a locally running pod
+if no local pods exist, the connection will hang (it won't  be forward to a random global pod)
+you therefore need to ensure the load balancer forwards connections only  to nodes that have at least one such pod
+using this annotation alse has other drawbacks. normally, connections are spread evenly across all the pods
+
+Being aware of the non-preservation of the client's IP
+
+
 
 
 

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubia-loadbalancer
+spec:
+  # this type of service obtains a load balancer from the infrastructure hosting the Kubernetes cluster
+  type: LoadBalancer 
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: kubia 
