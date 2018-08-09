@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubia
+spec:
+  rules:
+    # this Ingress maps the kubia.example.com domain name to your service
+  - host: kubia.example.com
+    http:
+      paths:
+        # all requests will be sent to port 80 of the kubia-nodeport service
+      - path: /
+        backend:
+          serviceName: kubia-nodeport
+          servicePort: 80

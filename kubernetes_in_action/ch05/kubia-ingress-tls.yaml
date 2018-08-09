@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubia
+spec:
+  # the whole TLS configuration is under this attribute
+  tls:
+    # TLS connection will be accepted for the kubia.example.com hostname
+  - host:
+    - kubia.example.com
+    # the private key and the certificate should be obtained from the tls-secret you create previously
+    secretName: tls-secret
+  rules:
+  - host: kubia.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubia-nodeport
+          servicePort: 80

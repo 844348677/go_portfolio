@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubia
+spec:
+  rules:
+    # request for foo.example.com will be routed to servie foo
+  - host: foo.example.com
+    http:
+      paths:
+      - path: / 
+        backend:
+          serviceName: foo
+          servicePort: 80
+    # Requests for bar.example.com will be routed to service bar
+  - host: bar.example.com
+    http:
+      paths:
+      - path: / 
+        backend:
+          serviceName: bar
+          servicePort: 80    
