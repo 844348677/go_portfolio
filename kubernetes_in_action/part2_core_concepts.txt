@@ -945,3 +945,82 @@ Understanding why you can't ping a service  IP
 curling the service works, but pinging it doesn't.
 that's because the service's cluster IP is a virtual IP, and only has meaning when combined with the service port
 
+Connecting to services living outside the cluster
+instead of having the service redirect connection to pods in the cluster, you want it to redirect to external IP(s) and port(s)
+this allows you to take advantage of both service load balancing and service discovery
+
+Introducing service endpoints
+Services don't link to pods directly. Instead, a resource sits in between - the Endpioints resource.
+an Endpoints resource is a list of IP address an ports exposing a service
+
+$ kubectl get endpoints kubia
+
+the selector is used to build a list of IPs and ports, which is stored in the Endpoints resource.
+when a client connects to a service, the service proxy selects one of those IP and port pair and redirects the incoming connection to the server listening at that location
+
+Manually configuring service endpoints
+if you create a servic without a pod selector, Kubernetes won't even create the Endpoints resource (after all , without a selector, it can't know which pods to include in the services)
+to create a service with manually managed endpoints, you need to create both a Service and an Endpoints resource
+
+Create a service without  a selector
+ch05/external-service.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  # the name of the service must match the name of the Endpoints object(see next listing)
+  name: external-service
+# this service has no selector defined
+spec:
+  ports:
+  - port: 80
+
+ Creating an Endpoints resource for a service without a selector
+ Endpoints are a separate resource and not an attribute of a service
+ ch05/external-service-endpoints.yaml
+
+apiVersion: v1
+kind: Endpoints
+metadata:
+  # the name of the Endpoints object  must match the name of the service (see previous)
+  name: external-service
+subsets:
+  # the IPs of the endpoints that the service will forward connection to
+  - addresses:
+    - ip: 11.11.11.11
+    - ip: 22.22.22.22
+    # the target port of the endpoints
+    ports:
+    - port: 80
+
+the Endpoints object needs to have the same name as the service and contain the list of target IP address and ports for the service
+container created after the service is created will include  the environment variables fro the service, and all connections to its IP:port pair will be load balanced between the service's endpoints
+
+Creating an aliea fro an external service
+instead fo exposing an external service by manually configuring the service's Endpoints , a simpler method allows you to refer to an external service by its fully qualified domain name (FQDN)
+
+Create an ExternalName service
+ch05/external-service-externalname.yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+spec:
+  # service type is set to ExternalNames
+  type: ExternalName
+  # the fully qualified domain name of the actual service
+  externalName: someapi.somecompay.com
+  ports:
+  - port: 80
+
+after service is created, pods can connect to the external service through the external-service.defualt.svc.cluster.local domain name instead of using the service's actual FQDN (maybe there is IP)
+a CNAME record points to a fullly qualified domain name instead of a numeric IP address
+
+Exposing services to external clients
+expose certain services, such as fronted webservers, to the outside, so external clients can access them
+a few ways to make a service accessible externally
+	
+
+
+
