@@ -71,5 +71,11 @@ http://remix.ethereum.org
 
 https://metamask.io/
 
+https://ethereum.org/
+
+https://github.com/ethereum/mist/releases
+
+
+
 
 
