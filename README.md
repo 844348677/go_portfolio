@@ -35,8 +35,9 @@ excercise
 
 想了很久，方向定了，就区块链了
 
-下月10号房租到期，这个月我在深圳先边学技术，边找区块链的工作。下个月，直接去上海找区块链的
+下月10号房租到期，这个月我在深圳先边学技术，边找区块链的工作。(如果不理想)下个月，直接去上海找区块链的
 
+./blockchain02 : 子文件夹remixd　里面是solidity语言的基本语法，开发工具用的在线的Remix　Solidity IDE
 
 中文
 https://studygolang.com/pkgdoc
@@ -74,6 +75,9 @@ https://metamask.io/
 https://ethereum.org/
 
 https://github.com/ethereum/mist/releases
+
+https://blockgeeks.com/
+
 
 
 
