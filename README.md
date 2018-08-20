@@ -33,8 +33,9 @@ excercise
 
 未完待续...
 
+想了很久，方向定了，就区块链了
 
-
+下月10号房租到期，这个月我在深圳先边学技术，边找区块链的工作。下个月，直接去上海找区块链的
 
 
 中文
@@ -61,3 +62,14 @@ https://www.wowebook.org/
 https://coderprog.com/
 
 terminal 使用　tsocks , 直接 command 　tsocks , tsocks配置文件　/etc/tsocks.con
+
+https://www.myetherwallet.com/
+
+https://solidity.readthedocs.io
+
+http://remix.ethereum.org
+
+https://metamask.io/
+
+
+

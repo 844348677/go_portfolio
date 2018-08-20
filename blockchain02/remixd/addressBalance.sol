@@ -4,6 +4,5 @@ contract addressBalance{
     
     function getBalance(address addr) constant public returns (uint){
         return addr.balance;
-        
     }
 }
