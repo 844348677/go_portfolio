@@ -23,3 +23,7 @@ contract C {
         _name2 = "HELLOWORLD2";
     }
 }
+
+
+
+
