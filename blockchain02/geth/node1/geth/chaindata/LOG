@@ -1,0 +1,36 @@
+=============== Aug 21, 2018 (CST) ===============
+09:18:03.882514 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+09:18:03.980105 db@open opening
+09:18:04.038755 version@stat F·[] S·0B[] Sc·[]
+09:18:04.101749 db@janitor F·2 G·0
+09:18:04.101845 db@open done T·121.641925ms
+=============== Aug 21, 2018 (CST) ===============
+09:21:08.992962 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+09:21:08.993190 version@stat F·[] S·0B[] Sc·[]
+09:21:08.993208 db@open opening
+09:21:08.993274 journal@recovery F·1
+09:21:09.004014 journal@recovery recovering @1
+09:21:09.090886 memdb@flush created L0@2 N·9 S·546B "H\v\xca..쟄,v3":"r\x00\x00..쟄,v5"
+09:21:09.095101 version@stat F·[1] S·546B[546B] Sc·[0.25]
+09:21:09.224989 db@janitor F·3 G·0
+09:21:09.225064 db@open done T·231.833237ms
+09:37:18.045210 db@close closing
+09:37:18.218683 db@close done T·173.465005ms
+=============== Aug 21, 2018 (CST) ===============
+09:44:39.603943 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+09:44:39.656923 version@stat F·[1] S·546B[546B] Sc·[0.25]
+09:44:39.656963 db@open opening
+09:44:39.657058 journal@recovery F·1
+09:44:39.660693 journal@recovery recovering @3
+09:44:39.859492 memdb@flush created L0@5 N·131 S·5KiB "\b\xad\xce..S\xfc\x90,v140":"\xe9\x8e\xf7..\x89{\x02,v141"
+09:44:39.863217 version@stat F·[2] S·5KiB[5KiB] Sc·[0.50]
+09:44:39.993569 db@janitor F·4 G·0
+09:44:39.993614 db@open done T·336.635022ms
+10:10:21.902377 table@compaction L0·2 -> L1·0 S·5KiB Q·154
+10:10:23.000163 table@build created L1@8 N·98 S·4KiB "\b\xad\xce..S\xfc\x90,v140":"\xe9\x8e\xf7..\x89{\x02,v141"
+10:10:23.000274 version@stat F·[0 1] S·4KiB[0B 4KiB] Sc·[0.00 0.00]
+10:10:23.088581 table@compaction committed F-1 S-766B Ke·0 D·42 T·1.186119862s
+10:10:23.088753 table@remove removed @5
+10:10:23.088814 table@remove removed @2
+10:25:09.856150 db@close closing
+10:25:09.856223 db@close done T·70.464µs

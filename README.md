@@ -78,7 +78,11 @@ https://github.com/ethereum/mist/releases
 
 https://blockgeeks.com/
 
+https://ethfans.org/
 
+https://ethereum.github.io/go-ethereum/
+
+https://ethereum.gitbooks.io/frontier-guide/content/
 
 
 

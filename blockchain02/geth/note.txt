@@ -1,0 +1,112 @@
+主网络　
+
+测试网络
+
+开发网络
+
+$ ps -ef|grep geth
+
+$ geth --datadir node1 init genesis.json 
+
+启动私有链节点
+
+$ geth --datadir node1 --networkid 72 --port 3100 
+
+$ geth --datadir node1 --networkid 72 --port 3100 console
+
+node1　中多一个 geth.ipc , 网络通过ipc 与私链进行交互
+
+重启终端　
+
+$ geth attach ipc:node1/geth.ipc
+
+eth.accounts
+
+personal.newAccount("111")
+
+eth.coinbase
+
+miner.setEtherbase(eth.accounts[1])
+
+eth.coinbase
+
+eth.getBalance(eth.accounts[0])
+
+eth.getBalance(eth.accounts[1])
+
+miner.start()
+
+web3.fromWei(eth.getBalance(eth.accounts[1]),'ether')
+
+eth.blockNumber
+
+eth.getBalance(eth.accounts[0])
+
+admin.peers
+
+$ geth --datadir node1 --networkid 72 --port 3100 --nodiscover
+
+$ geth --datadir node2 init genesis.json
+
+$ geth --datadir node2 --networkid  72 --nodiscover
+
+$ geth --datadir node2 --networkid  72 --nodiscover console --port 3200
+
+查看当前节点信息
+
+admin.nodeInfo
+
+url :enode: "enode://995747bafcfdd0affbd645f94aba4925d355af11b6fe47408fc5178e62cd73e6c9f890352e179c5a91b8c1b7ea91825e42feef3e8eeeb8f7f5650c4c773292e6@[::]:3200?discport=0",
+
+admin.addPeer("enode://995747bafcfdd0affbd645f94aba4925d355af11b6fe47408fc5178e62cd73e6c9f890352e179c5a91b8c1b7ea91825e42feef3e8eeeb8f7f5650c4c773292e6@[::]:3200?discport=0")
+
+
+node1
+
+account1 : eth.getBalance(eth.accounts[1]) : 65
+
+eth.sendTransaction({from : eth.accounts[1], to: "0x29f39568ec9e98266af5fc2b5b492d551a49bda7",value : web3.toWei(15,'ether')})
+
+personal.unlockAccount(eth.accounts[1])
+
+passphrase : 111
+
+txpool.status
+
+// pending: 1, 因为还没有人挖矿
+
+eth.blockNumber
+
+miner.start()
+
+txpool.status
+
+> eth.getBalance(eth.accounts[1])
+
+54999622000000000000　// 有一笔手续费
+
+> eth.getBalance(eth.coinbase)
+
+
+注意事项　创建一个新节点　　需要有init操作
+
+没有init操作，直接启动也会成功运行，但是后续添加节点总是失败
+两个节点想相互链接，需要使用　--network 72
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
