@@ -94,6 +94,18 @@ txpool.status
 两个节点想相互链接，需要使用　--network 72
 
 
+Mist 和私有链交互
+
+geth.ipc
+
+linux 启动　Mist 会生成　ipc 文件调用　目录如下：
+
+/home/liuh/.ethereum/geth.ipc
+
+$ geth --datadir "./node1" --networkid 72 --port 30301 --ipcpath /home/liuh/.ethereum/geth.ipc
+
+$ geth attach ipc:/home/liuh/.ethereum/geth.ipc
+
 
 
 

@@ -39,6 +39,9 @@ excercise
 
 ./blockchain02 : 子文件夹remixd　里面是solidity语言的基本语法，开发工具用的在线的Remix　Solidity IDE
 
+./blockchain02/geth : go-ethereum , 私链，通过geth.ipc, Mist连接私链
+
+
 中文
 https://studygolang.com/pkgdoc
 
@@ -83,6 +86,8 @@ https://ethfans.org/
 https://ethereum.github.io/go-ethereum/
 
 https://ethereum.gitbooks.io/frontier-guide/content/
+
+https://truffleframework.com/
 
 
 
