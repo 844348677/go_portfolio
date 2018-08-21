@@ -63,6 +63,24 @@ liuh@liuh-pc:~/web3/web3.js/example$ node node-app.js
 0xee0cc6a1e748b148066f2a8d771d8b29906e3f5b
 20000756000000000000
 
+使用命令行编译　　.sol　文件
+
+solcjs --abi --bin math.sol
+
+
+var MyContract = web3.eth.contract(abiArray);
+
+// instantiate by address
+var contractInstance = MyContract.at(address);
+
+// deploy new contract
+var contractInstance = MyContract.new([constructorParam1] [, constructorParam2], {data: '0x12345...', from: myAccount, gas: 1000000});
+
+// Get the data to deploy the contract manually
+var contractData = MyContract.new.getData([constructorParam1] [, constructorParam2], {data: '0x12345...'});
+// contractData = '0x12345643213456000000000023434234'
+
+
 
 
 
