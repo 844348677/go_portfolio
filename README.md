@@ -37,6 +37,8 @@ excercise
 
 ./blockchain02/geth : go-ethereum , 私链，通过geth.ipc, Mist连接私链
 
+一直在忙找工作，今天下午去健身，明天继续再深入学习下go语言，这一周过去了，感受颇多
+
 
 中文
 https://studygolang.com/pkgdoc
